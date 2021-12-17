@@ -67,11 +67,13 @@ function newclient() {
 
 function listarUsuarios(){
     var pesquisa = document.getElementById("pesquisa").value;
+    var status = document.getElementById("status").value;
+    console.log(status);
     console.log(pesquisa);
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
-        data:{acao: 'RELATORIO', conteudo: pesquisa },
+        data:{acao: 'RELATORIO', conteudo: pesquisa, status },
         dataType: "text",
         success: function (data) {
             $("#tabela-usuario").html(data)

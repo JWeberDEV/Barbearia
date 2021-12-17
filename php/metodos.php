@@ -55,8 +55,15 @@ switch ($acao) {
   
   case 'RELATORIO':
     $busca =($_POST['conteudo']);
+    $status =($_POST['status']);
+    
 
-    $sql = "SELECT nome_usuario,email,perfil,user_status FROM usuario WHERE nome_usuario LIKE '%$busca%';";
+    $sql = "SELECT nome_usuario,email,perfil,user_status FROM usuario WHERE nome_usuario LIKE '%$busca%'"; 
+    if($status !="Todos"){
+    $sql .= " AND user_status = '$status'"; 
+    }
+    $sql .= " ORDER BY nome_usuario ";
+
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
     
     if ($resultado->num_rows > 0) {
