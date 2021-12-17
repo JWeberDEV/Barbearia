@@ -54,9 +54,11 @@ switch ($acao) {
   break;
   
   case 'RELATORIO':
-    $sql = "SELECT nome_usuario,email,perfil,user_status FROM usuario ";
-    $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
+    $busca =($_POST['conteudo']);
 
+    $sql = "SELECT nome_usuario,email,perfil,user_status FROM usuario WHERE nome_usuario LIKE '%$busca';";
+    $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
+    
     if ($resultado->num_rows > 0) {
       while($user = $resultado->fetch_assoc()) {
         echo "<tr>
