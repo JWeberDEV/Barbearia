@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>CLIENTES</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="../img/logo_barber.png" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/styles 2.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css">
+</head>
+<body>
+    <div class="d-flex" id="wrapper">
+        <!-- Sidebar-->
+        <div class="border-end bg-white" id="sidebar-wrapper" style="background-color: #5c50e0;">
+            <div class="sidebar-heading border-bottom" style="background-color: #5c50e0;">Barbearia </div>
+            <div class="list-group list-group-flush">
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="users.html">Usuários <i class="fa fa-user" aria-hidden="true"></i></a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Clients.html">Clientes  <i class="fa fa-users" aria-hidden="true"></i></a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="schedules.html">Agenda <i class="fa fa-calendar" aria-hidden="true"></i></a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="profile.html">Meu Perfil <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
+                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="../index.html">Nome do usuário logado <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+            </div>
+        </div>
+        <div id="page-content-wrapper">
+            <!-- Top navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                <div class="container-fluid">
+                    <button class="btn" style="background-color: #5c50e0;" id="sidebarToggle"><strong>Menu</strong></button>
+                </div>
+            </nav>
+            <!-- Page content-->
+            <div class="fundo">
+                <img class="fundo" src="../img/Fundo.png" alt="Plano de fundo">
+            </div>
+
+            <div class="container nome_status">
+                <div class="row">
+                    <div class="col-md-4 status" style="align-items: flex-start;">
+                        <label for="status">Proffissional:</label>
+                        <select name="cars" id="status">
+                            <option value="todos">Todos</option>
+                            <option value="Tio Zé">Tio Zé</option>
+                            <option value="Henrique">Henrique</option>
+                            <option value="Gustavo">Gustavo</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label>Proffissional:</label>
+                        <input class="campos" type="text" name="nome" autocomplete="off" class="inputCustom">
+                    </div>
+                    <div class="col-md-4">
+                        <label>Cliente:</label>
+                        <input class="campos" type="text" name="nome" autocomplete="off" class="inputCustom">
+                    </div>
+                </div>
+            </div>
+
+            <div style="padding-top: 2%;">
+                <div class="tabela tabela table-responsive-md container">
+                    <table class="table table-striped table-bordered">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th scope="col" class="titulos"><a class="filtro" href="#">Mes</a></th>
+                                <th scope="col" class="titulos"><a class="filtro" href="#">Dia</a></th>
+                                <th scope="col" class="titulos"><a class="filtro" href="#">Ano</a></th>
+                            </tr>
+                        </thead>
+                        <thead style="background-color: #aea7f8;">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col" class="titulos">Tio Zé</th>
+                            <th scope="col" class="titulos">Henrrique</th>
+                            <th scope="col" class="titulos">Gustavo</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                            <th scope="row">08:00</th>
+                            <td class="teste1"><button onclick="agendar(this)">Teste</button></td>
+                            <td class="teste1" ><button onclick="agendar(this)">Teste</button></td>
+                            <td class="teste1" ><button onclick="agendar(this)">Teste</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">09:00</th>
+                            <td class="teste1" ><button onclick="agendar(this)">Teste</button></td>
+                            <td class="teste1" ><button onclick="agendar(this)">Teste</button></td>
+                            <td class="teste1" ><button onclick="agendar(this)">Teste</button></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">10:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">11:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">12:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">13:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">14:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">15:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">16:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">17:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">18:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        <tr>
+                            <th scope="row">19:00</th>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                            <td class="teste1" ></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+
+<!--------------------------------------------------------->
+<!------------------------Modal---------------------------->
+<!--------------------------------------------------------->
+
+<div class="modal" id="menu">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color: #aea7f8;">
+                <h4 class="modal-title">Opções Agendamento</h4>
+                <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+    
+            <div class="modal-body corpomodal">
+                <div>
+                    <button type="button" class="btn-warning btnmodal" data-bs-toggle="modal" data-bs-target="#editar">Editar<i class="fa fa-pencil pull-right" aria-hidden="true"></i></button>
+                </div>
+                <div>
+                    <button type="button" class="btn-danger btnmodal" data-bs-toggle="modal" data-bs-target="#cancelar">Cancelar<i class="fa fa-ban pull-right" aria-hidden="true"></i></button>
+                </div>
+                <div>
+                    <button type="button" class="btn-success btnmodal" data-bs-toggle="modal" data-bs-target="#finalizar">Finalizar<i class="fa fa-check-circle pull-right" aria-hidden="true"></i></button>
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="finalizar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color: #aea7f8;">
+                <h4 class="modal-title">Finalizar agendamento</h4>
+                <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+    
+            <div class="modal-body corpomodal">
+                <h1 style="text-align: center;">Yuppp!!!</h1>
+                <p>Este já é o décimo atendimento deste cliente!!! que tal conceder um desconto!</p>
+                <div>
+                    <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal" value="Cancel">Finalizar</button>
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="cancelar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color: #aea7f8;">
+                <h4 class="modal-title">Finalizar agendamento</h4>
+                <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+    
+            <div class="modal-body">
+                <div class="">
+                    <textarea class="campotexto" id="story" name="story" rows="5" cols="33"></textarea>
+                </div>
+                <div>
+                    <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal">Finalizar</button>
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>
+</div>
+
+<div class="modal" id="editar">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color: #aea7f8;">
+                <h4 class="modal-title">Finalizar agendamento</h4>
+                <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+    
+            <div class="modal-body">
+                <h1>Editar agendamento</h1>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Cliente:</label>
+                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" Nome Cliente">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Data:</label>
+                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" __/__/____">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Horario:</label>
+                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" 00:00 - 00:00">
+                        </div>
+                        <div class="col-md-12">
+                            <label>Perfil:</label>
+                            <br>
+                            <select class="campotexto" name="Perfil">
+                                <option value="Tio Zé">Tio Zé</option>
+                                <option value="Henrique">Henrique</option>
+                                <option value="Gustavo">Gustavo</option>
+                            </select>
+                        </div>
+                        <div style="padding-top: 3%;">
+                            <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal">Finalizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>
+</div>
+<script src="../js/teste.js"></script>
+</body>
+</html>
+
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="../js/scripts.js"></script>
+
+<script>
+
+function agendar(el) {
+    // console.log(document.getElementsByClassName("teste1"))
+//    document.getElementsByClassName("teste1")[2].innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
+//     Agendamento
+// </button>`;
+
+el.innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
+    Agendamento
+</button>`;
+}
+
+</script>
+

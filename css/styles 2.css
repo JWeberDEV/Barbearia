@@ -1,0 +1,398 @@
+@charset "UTF-8";
+
+/*------------------------------------*\
+	            Fundo
+\*------------------------------------*/
+
+.fundo{
+    position: absolute;
+    padding-top: 5%;
+    margin-left: auto;
+    margin-right: auto;
+    width: 65%;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    opacity: 0.7;
+    z-index: -1;
+}
+
+
+/*------------------------------------*\
+	            Geral
+\*------------------------------------*/
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.links{
+    text-decoration: none;
+}
+
+button > a{
+    padding-top: 5%;
+    text-decoration: none;
+    color: black;
+}
+
+button > a:hover {
+    color: white;
+}
+
+.campos{
+    padding: 10px;
+    width: 60%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    display: flex;
+}
+
+.campos:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.campos:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+.profcampos{
+    padding-top: 5%;
+    display: flex;
+    flex-direction: column; 
+    align-items: stretch;
+}
+
+.profcampos > input{
+    width: 70%;
+}
+
+.profcampos > button{
+    width: 70%;
+}
+
+.profcampos > select{
+    width: 70%;
+}
+
+.profcampos > select:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.profcampos > select:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+/*------------------------------------*\
+	            Tabelas
+\*------------------------------------*/
+
+.btns{
+    padding-top: 3%;
+    padding-left: 15%;
+    padding-right: 15%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.pesquisa{
+    text-align: right;
+}
+
+.divfunc{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    
+}
+
+.funcoes{
+    box-shadow: 1px 1px 1px #999;
+    padding: 3;  
+    width: 100%;
+    background-color: #aea7f8;
+    font-size: 16px;
+    margin-top: 10px;
+    border: 1px solid #5c50e0;
+    border-radius: 5px;
+}
+
+.botoes{
+    padding-top: 5%;
+    padding: 5px;
+    display: inline;
+    flex-direction: row;
+    justify-content: stretch;
+}
+
+.pencil{
+    color: #f7c325;
+}
+
+.cross{
+    color: #d3455b;
+}
+
+.tabela{
+    background-color: rgba(255, 255, 255, 0.664);
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border: 2px solid grey;
+
+}
+
+/*------------------------------------*\
+	        Create_clients
+\*------------------------------------*/
+.formulario{
+    border-radius: 10px;
+    border: 2px solid #ccc;
+    width: 90%;
+    height: 90%;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.itens{
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    width: 100%;
+    height: 50px;
+    padding: 1%;
+}
+
+.itens:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.itens:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+#submit{
+    padding-top: 20%;
+    padding-left: 30%;
+}
+
+.salvar{
+    box-shadow: 1px 1px 1px #999;
+    padding: 7px;   
+    width: 15%;
+    background-color: #6558f5;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    border: 2px solid #5c50e0;
+    border-radius: 5px;
+    
+}
+
+.salvar:hover {
+    background-color: #4f44be;
+    border: 2px solid #483eaf;
+    color: white   ;
+}
+
+.salvar > a:hover {
+    color: white   ;
+}
+
+/*------------------------------------*\
+	            Profiles
+\*------------------------------------*/
+
+.nome_status{
+    padding-top: 2%;
+}
+
+.status{
+    text-align: right;
+    display: flex;
+    flex-direction: column; 
+    align-items: flex-start;
+
+}
+
+.status > select{
+    width: 35%;
+}
+
+.status > select:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.status > select:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+select{
+    padding: 10px;
+    max-width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.btnfull{
+    margin: 5px;
+    padding: 15px;
+    text-align: center;
+    font-size: 1em;
+    color: black;
+    height: 60%;
+    width: calc(100%);
+
+}
+
+.container2{
+    width: 80%;
+    margin: auto;
+    border: 3px solid rgb(116, 114, 114);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.item2{
+    margin: 5px;
+    padding: 15px;
+    text-align: left;
+    font-size: 1em;
+    color: black;
+    height: 60%;
+    width: calc(50% - 40px);
+}
+
+.campos2{
+    padding: 10px;
+    width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+}
+
+.campos2:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.campos2:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+.item2 > select{
+    width: 35%;
+}
+
+.item2 > select:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.item2 > select:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+
+/*------------------------------------*\
+	            Schedules
+\*------------------------------------*/
+
+.filtro{
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+}
+
+.filtro:hover{
+    color: #5c50e0;
+    text-decoration: underline;
+}
+
+.close{
+    background-color: rgba(116, 114, 114, 0);
+    border: rgba(116, 114, 114, 0);
+}
+
+.close > i {
+    font-size: 28px;
+    color: rgb(235, 45, 45);
+}
+
+.close > i:hover{
+    color: rgb(189, 43, 43);
+}
+
+.corpomodal > div{
+    padding-top: 1.7%;
+}
+
+.btnmodal{
+    font-weight: bold;
+    font-size: 18px;
+    width: 100%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    border: solid;
+    border-radius: 5px;
+}
+
+.btnmodal > i{
+    font-size: 28px;
+}
+
+
+.hmodal{
+    border-bottom: 1px 1px 1px #999;
+    background-color: #8dd7cf ;
+    border: 2px solid #1aae9f;
+    width: 100%;
+}
+
+.campotexto {
+    padding: 10px;
+    width: 100%;
+    line-height: 1.5;
+    border-radius: 5px;
+    border: 2px solid #ccc;
+    box-shadow: 1px 1px 1px #999;
+    font-size: .8rem;
+    letter-spacing: 1px;
+}
+
+.campotexto:hover{
+    background-color: rgba(115,115,115,0.4); 
+    border: 2px solid #5c50e0;
+}
+
+.campotexto:focus-visible{
+    border: 2px solid #5c50e0;
+    outline: #5c50e0;
+}
+
+.titulos{
+    text-align: center;
+}
+
+
+
+
+
+
