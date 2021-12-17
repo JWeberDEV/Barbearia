@@ -28,7 +28,7 @@ switch ($acao) {
 
   break;
   
-  case 'NEW_USER':
+  case 'NEW_CLIENT':
     
     $nome = ($_POST['nome']);
     $cpf = ($_POST['cpf']);
@@ -84,6 +84,10 @@ switch ($acao) {
       }
     }
     break;
+
+    case 'NEW_CLIENT':
+    $sql = "INSERT INTO usuario (id,nome_usuario,cpf,email,telefone,senha,perfil,user_status) VALUES ('$nome','$cpf','$email','$numero','$datanasc','$profissao','$cidade')"
+      break;
 }
 
 

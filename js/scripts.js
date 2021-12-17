@@ -53,7 +53,7 @@ function newclient() {
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
-        data: {acao: 'NEW_USER', nome, cpf, email, numero, datanasc, profissao, cidade },
+        data: {acao: 'NEW_CLIENT', nome, cpf, email, numero, datanasc, profissao, cidade },
         datatype: "text",
         success: function name(data) {
             if(data == 1){
