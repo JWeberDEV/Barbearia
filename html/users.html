@@ -13,6 +13,7 @@
     <link href="../css/styles 2.css" rel="stylesheet" />
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -45,22 +46,24 @@
                         <button type="button" class="btn" style="background-color: #5c50e0;"><strong>Novo</strong></button>
                     </a>
                 </div>
-                <div>
-                    <button class="btn" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true"></i></button>
-                </div>
             </div>
+
                 <div class="container nome_status">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-5">
                             <label>Seu Nome:</label>
-                            <input class="campos" type="text" name="nome" autocomplete="off" placeholder="Nome do Usuário">
+                            <input id="pesquisa" class="campos" type="text" name="nome" autocomplete="off" placeholder="Nome do Usuário" required>
                         </div>
-                        <div class="col-md-6 status">
+                        <div class="col-md-5 status">
                             <label for="status">Status:</label>
                             <select name="cars" id="status">
+                                <option value="Todos">Todos</option>
                                 <option value="Ativo">Ativo</option>
                                 <option value="Inativo">Inativo</option>
                             </select>
+                        </div>
+                        <div class="col-md-2" style="padding-top: 1.5%;">
+                            <button class="buscar" style="background-color: #5c50e0;" onclick="listarUsuarios() "><i class="fa fa-search" aria-hidden="true"></i></button>
                         </div>
                     </div>
                 </div>
@@ -92,65 +95,7 @@
 </html>
 
 <script>
-    const usuarios = [
-        {
-            nome: "Josias",
-            email: "josias@gmail.com",
-            perfil: "Profissional",
-            status: "Ativo",
-        },
-        {
-            nome: "Josemar",
-            email: "josemar@gmail.com",
-            perfil: "Profissional",
-            status: "Ativo",
-        },
-        {
-            nome: "Welington",
-            email: "welington@gmail.com",
-            perfil: "Profissional",
-            status: "Ativo",
-        },
-        {
-            nome: "Igor",
-            email: "igor@gmail.com",
-            perfil: "Profissional",
-            status: "inativo",
-        }
-    ];
 
     listarUsuarios();
     
-    
-    function listarUsuarios(){
-
-        var tabelaUsuario = document.getElementById("tabela-usuario");
-
-        var html = "";
-
-
-        for (let i = 0; i < usuarios.length; i++) {
-            const usuario = usuarios[i];
-
-            html += 
-                `<tr>
-                    <th scope="row">${usuario.nome}</th>
-                    <td>${usuario.email}</td>
-                    <td>${usuario.perfil}</td>
-                    <td>${usuario.status}</td>
-                    <td>
-                        <div class="divfunc">
-                            <a href="create_users.html"><button class="funcoes"><i class="fa fa-pencil pencil" aria-hidden="true"></i></button></a>
-                            <a href="#"><button class="funcoes"><i class="fa fa-times cross" aria-hidden="true"></i></button></a>
-                        </div>
-                    </div>
-                    </td>
-                </tr>`;
-            
-        }
-
-        tabelaUsuario.innerHTML = html;
-
-    }
-
 </script>

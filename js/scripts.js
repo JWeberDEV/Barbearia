@@ -7,6 +7,14 @@
 // Scripts
 // 
 
+document.addEventListener("keypress", function(e) {
+
+    const btn = document.querySelector("#send");
+
+    btn.click();
+
+    });
+
 function login() {
     var usuario = document.getElementById("usuario").value;
     var senha = document.getElementById("senha").value;
@@ -17,7 +25,7 @@ function login() {
     }
 
     $.ajax({
-        url: "../php/metodos.php",
+        url: "php/metodos.php",
         type: "post",
         data: {acao: 'LOGIN', usuario, senha},
         dataType: "text",
@@ -43,7 +51,7 @@ function newclient() {
 
 
     $.ajax({
-        url: "../php/metodos.php",
+        url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
         data: {acao: 'NEW_USER', nome, cpf, email, numero, datanasc, profissao, cidade },
         datatype: "text",
@@ -56,6 +64,24 @@ function newclient() {
         }
     })
 }
+
+function listarUsuarios(){
+    var pesquisa = document.getElementById("pesquisa").value;
+    console.log(pesquisa);
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'RELATORIO', conteudo: pesquisa },
+        dataType: "text",
+        success: function (data) {
+            $("#tabela-usuario").html(data)
+        }
+
+    });
+
+}
+
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
