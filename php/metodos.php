@@ -2,14 +2,15 @@
 
 include 'conexao.php';
 
-$login = addslashes($_POST['usuario']);
-$senha = addslashes($_POST['senha']);
+
 $acao = $_POST['acao'];
 
 
 
 switch ($acao) {
   case 'LOGIN':
+    $login = addslashes($_POST['usuario']);
+    $senha = addslashes($_POST['senha']);
     
     $sql = "SELECT nome_usuario,senha FROM usuario WHERE nome_usuario = '$login' and senha = '$senha'";
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de consulta esta incorreta");
@@ -26,7 +27,7 @@ switch ($acao) {
     echo ($valida);
 
   break;
-
+  
   case 'NEW_USER':
     
     $nome = ($_POST['nome']);
@@ -52,8 +53,27 @@ switch ($acao) {
     
   break;
   
-  default:
-    # code...
+  case 'RELATORIO':
+    $sql = "SELECT nome_usuario,email,perfil,user_status FROM usuario ";
+    $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
+
+    if ($resultado->num_rows > 0) {
+      while($user = $resultado->fetch_assoc()) {
+        echo "<tr>
+                <td>".$user["nome_usuario"]."</td>
+                <td>".$user["email"]." </td> 
+                <td>".$user["perfil"]."</td>
+                <td>".$user["user_status"]."</td>
+                <td>
+                    <div class='divfunc'>
+                        <a href='create_users.html'><button class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                        <a href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
+                    </div>
+                  </div>
+                </td>
+              </tr>";
+      }
+    }
     break;
 }
 
