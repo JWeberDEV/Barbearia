@@ -189,7 +189,6 @@ button > a:hover {
 .salvar{
     box-shadow: 1px 1px 1px #999;
     padding: 7px;   
-    width: 15%;
     background-color: #6558f5;
     font-size: 16px;
     font-weight: bold;
@@ -399,7 +398,6 @@ select{
 .buscar{
     box-shadow: 1px 1px 1px #999;
     padding: 7px;   
-    width: 25%;
     background-color: #6558f5;
     font-size: 16px;
     font-weight: bold;

@@ -58,7 +58,7 @@ switch ($acao) {
     $status =($_POST['status']);
     
 
-    $sql = "SELECT nome_usuario,email,perfil,user_status FROM usuario WHERE nome_usuario LIKE '%$busca%'"; 
+    $sql = "SELECT id,nome_usuario,email,perfil,user_status FROM usuario WHERE nome_usuario LIKE '%$busca%'"; 
     if($status !="Todos"){
     $sql .= " AND user_status = '$status'"; 
     }
@@ -76,7 +76,7 @@ switch ($acao) {
                 <td>
                     <div class='divfunc'>
                         <a href='create_users.html'><button class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
-                        <a href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
+                        <a onclick='deletar(".$user["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross'  aria-hidden='true'></i></button></a>
                     </div>
                   </div>
                 </td>
@@ -84,10 +84,13 @@ switch ($acao) {
       }
     }
     break;
+    case 'DELETAR':
+      $id = ($_POST['id']);
 
-    case 'NEW_CLIENT':
-    $sql = "INSERT INTO usuario (id,nome_usuario,cpf,email,telefone,senha,perfil,user_status) VALUES ('$nome','$cpf','$email','$numero','$datanasc','$profissao','$cidade')"
-      break;
+      $mysqli->query("DELETE FROM usuario WHERE id = '$id'");
+
+    break;
+
 }
 
 

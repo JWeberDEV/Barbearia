@@ -68,8 +68,8 @@ function newclient() {
 function listarUsuarios(){
     var pesquisa = document.getElementById("pesquisa").value;
     var status = document.getElementById("status").value;
-    console.log(status);
-    console.log(pesquisa);
+
+
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
@@ -79,10 +79,27 @@ function listarUsuarios(){
             $("#tabela-usuario").html(data)
         }
 
+        
     });
 
 }
 
+function deletar(id) {
+    
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'DELETAR', id: id},
+        dataType: "text",
+        success: function (data) {
+            // alert(data);
+            $("#tabela-usuario").html(data)
+            listarUsuarios();
+        }
+
+        
+    });
+}
 
 
 window.addEventListener('DOMContentLoaded', event => {
