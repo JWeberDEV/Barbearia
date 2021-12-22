@@ -57,9 +57,9 @@ function newclient() {
         datatype: "text",
         success: function name(data) {
             if(data == 1){
-                alert("Sucesso");
+                alert("Usuário criado com sucesso");
             }else{
-                alert("erro");
+                alert("Erro ao criar o usuario");
             }
         }
     })
@@ -67,28 +67,34 @@ function newclient() {
 
 function newuser() {
     event.preventDefault()
-    var nome = document.getElementById("altname").value;
-    var nome = document.getElementById("altname").value;
-    var nome = document.getElementById("altname").value;
-    var nome = document.getElementById("altname").value;
-    var nome = document.getElementById("altname").value;
-    var nome = document.getElementById("altname").value;
-    var nome = document.getElementById("altname").value;
+    var nomecompleto = document.getElementById("fullname").value;
+    var cpf = document.getElementById("cpf").value;
+    var email = document.getElementById("email").value;
+    var perfil = document.getElementById("profile").value;
+    var login = document.getElementById("login").value;
+    var password = document.getElementById("password").value;
+    var status_user = document.getElementById("status").value;
 
+    // Gambiarra para evitar enviar para o PHP um campo de senha vazio
+    if (password == "" ) {
+        alert("Preencha o campo de senha");
+        return;
+    }
 
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
-        data: {acao: 'NEW_USER', nome, cpf, email, numero, datanasc, profissao, cidade },
+        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, password, status: status_user },
         datatype: "text",
         success: function name(data) {
             if(data == 1){
-                alert("Sucesso");
+                alert("Usuário criado com sucesso");
             }else{
-                alert("erro");
+                alert("Erro ao criar o usuario");
             }
         }
-    })
+        
+    });
 }
 
 function listarUsuarios(){
@@ -140,6 +146,8 @@ function exibir(id) {
             $("#altcpf").val(data[0].cpf);
             $("#altnumberclient").val(data[0].telefone);
             $("#altmailclient").val(data[0].email);
+            $("#altprofile").val(data[0].perfil);
+            $("#altstatus").val(data[0].perfil);
         }
 
         

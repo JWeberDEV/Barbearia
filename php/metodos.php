@@ -93,19 +93,41 @@ switch ($acao) {
     case 'EXIBIR':
       $id = ($_POST['id']);
 
-      $result = $mysqli->query("SELECT nome_usuario,cpf,telefone,email FROM usuario WHERE id = '$id'");
+      $result = $mysqli->query("SELECT nome_usuario,cpf,telefone,email,perfil,user_status FROM usuario WHERE id = '$id'");
       $retorno = $result->fetch_all(MYSQLI_ASSOC);
       $retorno = json_encode($retorno);
       echo $retorno;
+
+    break;
+    case 'NEW_USER':
+      $nome = ($_POST['nome']);
+      $cpf = ($_POST['cpf']);
+      $email = ($_POST['email']);
+      $perfil = ($_POST['perfil']);
+      $login = ($_POST['login']);
+      $password = ($_POST['password']);
+      $status = ($_POST['status']);
+
+      $sql = "INSERT INTO usuario (nome_usuario,cpf,email,telefone,senha,perfil,user_status,nome) VALUES ('$login','$cpf','$email','NULL','$password','$perfil','$status','$nome')";
+      $resultado = $mysqli->query($sql) or die ("ERRO: A query de criacao esta incorreta");
+
+      $valida = 1;
+      
+      if ($resultado != 1) {
+        $valida = o;
+      }
+
+      echo ($valida);
+
     break;
     // case '':
-    // $altnome = ($_POST['nome']);
-    // $altcpf = ($_POST['cpf']);
-    // $altemail = ($_POST['email']);
-    // $altnumero = ($_POST['numero']);
-    // $altdatanasc = ($_POST['datanasc']);
-    // $altprofissao = ($_POST['profissao']);
-    // $altcidade = ($_POST['cidade']);
+    //   $altnome = ($_POST['nome']);
+    //   $altcpf = ($_POST['cpf']);
+    //   $altemail = ($_POST['email']);
+    //   $altnumero = ($_POST['numero']);
+    //   $altdatanasc = ($_POST['datanasc']);
+    //   $altprofissao = ($_POST['profissao']);
+    //   $altcidade = ($_POST['cidade']);
     // break;
 
 }
