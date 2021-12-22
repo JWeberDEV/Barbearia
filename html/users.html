@@ -85,6 +85,57 @@
                     </table>
                 </div>
             </div>
+            <div class="modal" id="editar">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+            
+                        <div class="modal-header" style="background-color: #aea7f8;">
+                            <h4 class="modal-title">Finalizar agendamento</h4>
+                            <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </div>
+                
+                        <div class="modal-body">
+                            <form class="formulario">
+                                <div class="item2">
+                                    <label>Nome Cliente:</label>
+                                    <input id="altname" class="itens" type="text" name="nome" autocomplete="off" placeholder=" Nome Completo">
+                                </div>
+                                <div class="item2">
+                                    <label>CPF Cliente:</label>
+                                    <input id="altcpf" class="itens" type="text" name="nome" autocomplete="off" placeholder="___.___.___-__">
+                                </div>
+                                <div class="item2">
+                                    <label>Numero Cliente:</label>
+                                    <input id="altnumberclient" class="itens" type="text" name="nome" autocomplete="off" placeholder="(__) _____-____">
+                                </div>
+                                <div class="item2">
+                                    <label>Email Usuário:</label>
+                                    <input id="altmailclient" class="itens" type="text" name="nome" autocomplete="off" placeholder="email@exemplo.com">
+                                </div>
+                                <div class="item2">
+                                    <label>Data de Nascimento:</label>
+                                    <input id="altdateborn" class="itens" type="date" name="nome" autocomplete="off" placeholder="__/__/___">
+                                </div>
+                                <div class="item2">
+                                    <label>Perfil:</label>
+                                    <input id="altprofi" class="itens" type="text" name="nome" autocomplete="off">
+                                </div>
+                                
+                                
+                            </form>
+                                <div style="padding-top: 1%;">
+                                    <button class="btn-success btnmodal" type="button" onclick="editar()" >Salvar</button>
+                                </div>
+                                <div style="padding-top: 1%;">
+                                    <button type="button" class="btn-primary btnmodal close" data-bs-dismiss="modal">Finalizar</button>
+                                </div>
+                            </div>
+                        </div>
+                
+                        
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
     <!-- Bootstrap core JS-->

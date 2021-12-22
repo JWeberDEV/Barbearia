@@ -65,6 +65,32 @@ function newclient() {
     })
 }
 
+function newuser() {
+    event.preventDefault()
+    var nome = document.getElementById("altname").value;
+    var nome = document.getElementById("altname").value;
+    var nome = document.getElementById("altname").value;
+    var nome = document.getElementById("altname").value;
+    var nome = document.getElementById("altname").value;
+    var nome = document.getElementById("altname").value;
+    var nome = document.getElementById("altname").value;
+
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data: {acao: 'NEW_USER', nome, cpf, email, numero, datanasc, profissao, cidade },
+        datatype: "text",
+        success: function name(data) {
+            if(data == 1){
+                alert("Sucesso");
+            }else{
+                alert("erro");
+            }
+        }
+    })
+}
+
 function listarUsuarios(){
     var pesquisa = document.getElementById("pesquisa").value;
     var status = document.getElementById("status").value;
@@ -92,13 +118,33 @@ function deletar(id) {
         data:{acao: 'DELETAR', id: id},
         dataType: "text",
         success: function (data) {
-            // alert(data);
             $("#tabela-usuario").html(data)
             listarUsuarios();
         }
 
         
     });
+}
+
+function exibir(id) {
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'EXIBIR', id: id},
+        dataType: "text",
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+            $("#altname").val(data[0].nome_usuario);
+            $("#altcpf").val(data[0].cpf);
+            $("#altnumberclient").val(data[0].telefone);
+            $("#altmailclient").val(data[0].email);
+        }
+
+        
+    });
+
 }
 
 

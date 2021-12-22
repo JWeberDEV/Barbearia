@@ -75,7 +75,7 @@ switch ($acao) {
                 <td>".$user["user_status"]."</td>
                 <td>
                     <div class='divfunc'>
-                        <a href='create_users.html'><button class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                        <a onclick='exibir(".$user["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editar' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
                         <a onclick='deletar(".$user["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross'  aria-hidden='true'></i></button></a>
                     </div>
                   </div>
@@ -90,6 +90,23 @@ switch ($acao) {
       $mysqli->query("DELETE FROM usuario WHERE id = '$id'");
 
     break;
+    case 'EXIBIR':
+      $id = ($_POST['id']);
+
+      $result = $mysqli->query("SELECT nome_usuario,cpf,telefone,email FROM usuario WHERE id = '$id'");
+      $retorno = $result->fetch_all(MYSQLI_ASSOC);
+      $retorno = json_encode($retorno);
+      echo $retorno;
+    break;
+    // case '':
+    // $altnome = ($_POST['nome']);
+    // $altcpf = ($_POST['cpf']);
+    // $altemail = ($_POST['email']);
+    // $altnumero = ($_POST['numero']);
+    // $altdatanasc = ($_POST['datanasc']);
+    // $altprofissao = ($_POST['profissao']);
+    // $altcidade = ($_POST['cidade']);
+    // break;
 
 }
 

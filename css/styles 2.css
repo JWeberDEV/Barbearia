@@ -125,6 +125,10 @@ button > a:hover {
     border-radius: 5px;
 }
 
+.funcoes:hover{
+    background-color: #675dd3;
+}
+
 .botoes{
     padding-top: 5%;
     padding: 5px;
@@ -338,6 +342,10 @@ select{
 
 .close > i:hover{
     color: rgb(189, 43, 43);
+}
+
+.teste1:hover{
+    background-color: #b0aaf1;
 }
 
 .corpomodal > div{
