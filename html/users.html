@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="../font-awesome-4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -85,6 +86,7 @@
                     </table>
                 </div>
             </div>
+            
             <div class="modal" id="editar">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -97,15 +99,15 @@
                         <div class="modal-body">
                             <form class="formulario">
                                 <div class="item2">
-                                    <label>Nome Cliente:</label>
+                                    <label>Nome Usuário:</label>
                                     <input id="altname" class="itens" type="text" name="nome" autocomplete="off" placeholder=" Nome Completo">
                                 </div>
                                 <div class="item2">
-                                    <label>CPF Cliente:</label>
+                                    <label>CPF Usuário:</label>
                                     <input id="altcpf" class="itens" type="text" name="nome" autocomplete="off" placeholder="___.___.___-__">
                                 </div>
                                 <div class="item2">
-                                    <label>Numero Cliente:</label>
+                                    <label>Numero Usuário:</label>
                                     <input id="altnumberclient" class="itens" type="text" name="nome" autocomplete="off" placeholder="(__) _____-____">
                                 </div>
                                 <div class="item2">
@@ -114,13 +116,12 @@
                                 </div>
                                 <div class="item2">
                                     <label>Data de Nascimento:</label>
-                                    <input id="altdateborn" class="itens" type="date" name="nome" autocomplete="off" placeholder="__/__/___">
+                                    <input id="altdateborn" class="itens" type="date" name="nome" autocomplete="off" >
                                 </div>
                                 <div class="item2">
                                     <label>Perfil:</label>
                                     <br>
                                     <select id="altprofile" name="Perfil">
-                                        <option value="Todos">Todos</option>
                                         <option value="Analista de Sistemas">Analista de Sistemas</option>
                                         <option value="ADM">ADM</option>
                                         <option value="Profissional">Profissional</option>
@@ -131,7 +132,6 @@
                                     <label for="status">Status:</label>
                                     <br>
                                     <select id="altstatus" name="status">
-                                        <option value="Todos">Todos</option>
                                         <option value="Ativo">Ativo</option>
                                         <option value="Inativo">Inativo</option>
                                     </select>
@@ -162,5 +162,6 @@
 <script>
 
     listarUsuarios();
+    
     
 </script>

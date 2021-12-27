@@ -133,7 +133,6 @@ function deletar(id) {
 }
 
 function exibir(id) {
-
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
@@ -153,6 +152,25 @@ function exibir(id) {
         
     });
 
+}
+
+
+function editar(id) {
+    var alteranome = document.getElementById("altname").value;
+    var alteracpf = document.getElementById("altcpf").value;
+    var alteranumero = document.getElementById("altnumberclient").value;
+    var alteraemail = document.getElementById("altmailclient").value;
+    var alteradata = document.getElementById("altdateborn").value;
+    var alteraprofile = document.getElementById("altprofile").value;
+    var alterastatus = document.getElementById("altstatus").value;
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'EDITAR', id: id , altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altdatanasc: alteradata, altprofissao: alteraprofile, altstatus: alterastatus,},
+        dataType: "text",
+        
+    });
 }
 
 
