@@ -124,11 +124,11 @@ function deletar(id) {
         data:{acao: 'DELETAR', id: id},
         dataType: "text",
         success: function (data) {
+            
             $("#tabela-usuario").html(data)
             listarUsuarios();
         }
 
-        
     });
 }
 
@@ -146,31 +146,44 @@ function exibir(id) {
             $("#altnumberclient").val(data[0].telefone);
             $("#altmailclient").val(data[0].email);
             $("#altprofile").val(data[0].perfil);
-            $("#altstatus").val(data[0].perfil);
+            $("#altstatus").val(data[0].status);
+            
+            
         }
-
         
     });
 
+    
 }
 
-
-function editar(id) {
+function editar() {
     var alteranome = document.getElementById("altname").value;
     var alteracpf = document.getElementById("altcpf").value;
     var alteranumero = document.getElementById("altnumberclient").value;
     var alteraemail = document.getElementById("altmailclient").value;
-    var alteradata = document.getElementById("altdateborn").value;
     var alteraprofile = document.getElementById("altprofile").value;
     var alterastatus = document.getElementById("altstatus").value;
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "http://localhost/barbearia/php/list.php",
         type: "post",
-        data:{acao: 'EDITAR', id: id , altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altdatanasc: alteradata, altprofissao: alteraprofile, altstatus: alterastatus,},
+        data: {cpf: alteracpf },
         dataType: "text",
-        
+        success: function (data) {
+            alert(data);
+            $.ajax({
+                url: "http://localhost/barbearia/php/metodos.php",
+                type: "post",
+                data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus,},
+                dataType: "text",
+                success: function (data) {
+                    alert("Cadastro Editado Com sucesso");
+                }
+            });
+        }
     });
+
+
 }
 
 
