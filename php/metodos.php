@@ -122,7 +122,7 @@ switch ($acao) {
 
     break;
     case 'EDITAR':
-      
+      $id = ($_POST['id']);
       $altnome = ($_POST['altnome']);
       $altcpf = ($_POST['altcpf']);
       $altemail = ($_POST['altemail']);
@@ -131,7 +131,7 @@ switch ($acao) {
       $altstatus = ($_POST['altstatus']);
 
       
-      $sql = "UPDATE usuario SET nome = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', perfil= '$altprofissao', user_status = '$altstatus', WHERE id = '$id' ";
+      $sql = "UPDATE usuario SET nome = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', perfil= '$altprofissao', user_status = '$altstatus' WHERE id = '$id' ";
       echo $sql;
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
       echo $resultado;

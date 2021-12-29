@@ -132,6 +132,8 @@ function deletar(id) {
     });
 }
 
+var exibeid;
+
 function exibir(id) {
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
@@ -148,13 +150,15 @@ function exibir(id) {
             $("#altprofile").val(data[0].perfil);
             $("#altstatus").val(data[0].status);
             
-            
+            exibeid = (data[0].cpf);
+            return exibeid;
         }
         
     });
-
     
 }
+
+
 
 function editar() {
     var alteranome = document.getElementById("altname").value;
@@ -163,11 +167,11 @@ function editar() {
     var alteraemail = document.getElementById("altmailclient").value;
     var alteraprofile = document.getElementById("altprofile").value;
     var alterastatus = document.getElementById("altstatus").value;
-
+    alert(exibeid);
     $.ajax({
         url: "http://localhost/barbearia/php/list.php",
         type: "post",
-        data: {cpf: alteracpf },
+        data: {id: exibeid },
         dataType: "text",
         success: function (data) {
             alert(data);
@@ -177,7 +181,7 @@ function editar() {
                 data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus,},
                 dataType: "text",
                 success: function (data) {
-                    alert("Cadastro Editado Com sucesso");
+                    
                 }
             });
         }
