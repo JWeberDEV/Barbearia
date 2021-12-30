@@ -280,7 +280,53 @@
         </div>
     </div>
 </div>
-<script src="../js/teste.js"></script>
+
+<div class="modal" id="Novo">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header" style="background-color: #aea7f8;">
+                <h4 class="modal-title">Novo Agendamento</h4>
+                <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
+            </div>
+    
+            <div class="modal-body">
+                
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <label>Cliente:</label>
+                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" Nome Cliente">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Data:</label>
+                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" __/__/____">
+                        </div>
+                        <div class="col-md-6">
+                            <label>Horario:</label>
+                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" 00:00 - 00:00">
+                        </div>
+                        <div class="col-md-12">
+                            <label>Perfil:</label>
+                            <br>
+                            <select class="campotexto" name="Perfil">
+                                <option value="Tio Zé">Tio Zé</option>
+                                <option value="Henrique">Henrique</option>
+                                <option value="Gustavo">Gustavo</option>
+                            </select>
+                        </div>
+                        <div style="padding-top: 3%;">
+                            <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal">Finalizar</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            
+        </div>
+    </div>
+</div>
+
 </body>
 </html>
 
@@ -291,15 +337,23 @@
 
 <script>
 
-function agendar(el) {
-    // console.log(document.getElementsByClassName("teste1"))
+function agendar() {
+
+    var myModal = new bootstrap.Modal(document.getElementById('Novo'), {
+        keyboard: false
+    })
+    myModal.show();
+}
+
+function name(params) {
+        // console.log(document.getElementsByClassName("teste1"))
 //    document.getElementsByClassName("teste1")[2].innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
 //     Agendamento
 // </button>`;
 
-el.innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
-    Agendamento
-</button>`;
+// el.innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
+//     Agendamento
+// </button>`;
 }
 
 </script>
