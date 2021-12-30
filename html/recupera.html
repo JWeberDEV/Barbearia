@@ -15,14 +15,14 @@
         <form class="formulario" action="#" method="#">
             <div class="itens">
                 <legend class="legenda">
-                    <p> Recuperar senha </p>
+                    <h1>Recuperar senha</h1>
                 </legend>
                 <div class="caixa">
                     <input class="campos" type="text" id="email" name="nome" autocomplete="off" class="inputCustom" placeholder="Informe seu e-mail">
                 </div>
                 <br/>
                 <div class="submit">
-                    <button class="salvar" type="button" onclick="login()"> Enviar </button>
+                    <button class="salvar" type="button" onclick="sendemail()"> Enviar </button>
                 </div>
             </div>
         </form>  
@@ -35,7 +35,7 @@
 
 <script>
 
-    function login(){
+    function sendemail(){
     var email = document.getElementById("email").value;
 
     if(email.trim() == ""){
@@ -52,8 +52,6 @@
     // }else{
     //     alert("dados enviados com sucesso");
     // }
-    
-
     
     }
 

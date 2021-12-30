@@ -49,6 +49,10 @@ function newclient() {
     var profissao = document.getElementById("profi").value;
     var cidade = document.getElementById("city").value;
 
+    if (nome == "" || cpf == "" || numero =="" || email == "") {
+        alert("Os Campos obrigatórios precisam ser preenchidos");
+        return;
+    }
 
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
@@ -75,7 +79,7 @@ function newuser() {
     var password = document.getElementById("password").value;
     var status_user = document.getElementById("status").value;
 
-    // Gambiarra para evitar enviar para o PHP um campo de senha vazio
+    
     if (password == "" || status_user == "" ) {
         alert("Os Campos obrigatórios precisam ser preenchidos");
         return;

@@ -3,10 +3,19 @@
 body {
     font-family: Arial, Helvetica, sans-serif;
     margin: auto;
+    background-color: rgb(230, 215, 245);
+}
+
+.formulario{
+    width: 80%;
+    text-align: center;
+    border: 3px solid rgba(105,105,105,1);
+    border-radius: 10px;
+    background-color: rgb(228, 226, 226);
 }
 
 .form { 
-    background-color: white; 
+    background-color: rgb(230, 215, 245); 
     background-position: center; 
     height: 50%; 
     width: 50%; 
@@ -14,12 +23,6 @@ body {
     padding-top: 10%;
     display: flex; 
     justify-content: center;
-}
-
-.formulario{
-    width: 80%;
-    text-align: center;
-    border: 3px solid rgba(105,105,105,1);
 }
 
 .caixa{
@@ -49,7 +52,7 @@ label{
     
 }
 
-.campos :hover{
+.campos:hover{
     background-color: rgba(115,115,115,0.4); 
     border: 2px solid #5c50e0;
 }
@@ -58,8 +61,6 @@ label{
     border: 2px solid #5c50e0;
     outline: #5c50e0;
 }
-
-
 
 .salvar{
     box-shadow: 1px 1px 1px #999;

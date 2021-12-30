@@ -19,12 +19,14 @@
             <form class="formulario" action="#" method="#">
             <div class="itens">
                 <legend class="legenda">
-                    <p> Barbearia Login </p>
+                    <h1>Barbearia Login</h1>
                 </legend>
-                <label>Usuario:</label>
-                <div class="caixa"><input class="campos" type="text" id="usuario" autocomplete="off" required></div>
-                <label>Senha:</label>
-                <div class="caixa"><input class="campos" type="password" id="senha" autocomplete="off" required></div>
+                    <div class="caixa" style="padding-top: 4%;">
+                        <input class="campos" type="text" id="usuario" autocomplete="off" placeholder="Login" required>
+                    </div>
+                    <div class="caixa" style="padding-top: 4%;">
+                        <input class="campos" type="password" id="senha" autocomplete="off" placeholder="Senha" required>
+                    </div>
                 <br/>
                 <div class="submit">
                     <input class="salvar" type="submit" id="entrar" onclick="login()"></input>
