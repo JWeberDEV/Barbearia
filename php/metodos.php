@@ -57,18 +57,18 @@ switch ($acao) {
     $status =($_POST['status']);
     
 
-    $sql = "SELECT id,nome_usuario,email,perfil,user_status FROM usuario WHERE nome_usuario LIKE '%$busca%'"; 
+    $sql = "SELECT id,nome,email,perfil,user_status FROM usuario WHERE nome LIKE '%$busca%'"; 
     if($status !="Todos"){
     $sql .= " AND user_status = '$status'"; 
     }
-    $sql .= " ORDER BY nome_usuario ";
+    $sql .= " ORDER BY nome ";
 
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
     
     if ($resultado->num_rows > 0) {
       while($user = $resultado->fetch_assoc()) {
         echo "<tr>
-                <td>".$user["nome_usuario"]."</td>
+                <td>".$user["nome"]."</td>
                 <td>".$user["email"]." </td> 
                 <td>".$user["perfil"]."</td>
                 <td>".$user["user_status"]."</td>
@@ -94,7 +94,7 @@ switch ($acao) {
     case 'EXIBIR':
       $id = ($_POST['id']);
 
-      $result = $mysqli->query("SELECT nome_usuario,cpf,telefone,email,perfil,user_status FROM usuario WHERE id = '$id'");
+      $result = $mysqli->query("SELECT nome,cpf,telefone,email,perfil,user_status FROM usuario WHERE id = '$id'");
       $retorno = $result->fetch_all(MYSQLI_ASSOC);
       $retorno = json_encode($retorno);
       echo $retorno;
@@ -132,10 +132,10 @@ switch ($acao) {
 
       
       $sql = "UPDATE usuario SET nome = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', perfil= '$altprofissao', user_status = '$altstatus' WHERE id = '$id' ";
-      echo $sql;
+      // echo $sql;
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
       echo $resultado;
-      
+
     break;
     
     

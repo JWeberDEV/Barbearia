@@ -90,6 +90,11 @@ button > a:hover {
     outline: #5c50e0;
 }
 
+.required:after {
+    content:"*"; 
+    color: red;
+  }
+
 /*------------------------------------*\
 	            Tabelas
 \*------------------------------------*/

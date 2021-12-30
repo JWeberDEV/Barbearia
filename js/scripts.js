@@ -76,8 +76,8 @@ function newuser() {
     var status_user = document.getElementById("status").value;
 
     // Gambiarra para evitar enviar para o PHP um campo de senha vazio
-    if (password == "" ) {
-        alert("Preencha o campo de senha");
+    if (password == "" || status_user == "" ) {
+        alert("Os Campos obrigatórios precisam ser preenchidos");
         return;
     }
 
@@ -143,7 +143,7 @@ function exibir(id) {
         success: function (data) {
             data = JSON.parse(data);
             console.log(data)
-            $("#altname").val(data[0].nome_usuario);
+            $("#altname").val(data[0].nome);
             $("#altcpf").val(data[0].cpf);
             $("#altnumberclient").val(data[0].telefone);
             $("#altmailclient").val(data[0].email);
@@ -167,21 +167,23 @@ function editar() {
     var alteraemail = document.getElementById("altmailclient").value;
     var alteraprofile = document.getElementById("altprofile").value;
     var alterastatus = document.getElementById("altstatus").value;
-    alert(exibeid);
     $.ajax({
         url: "http://localhost/barbearia/php/list.php",
         type: "post",
         data: {id: exibeid },
         dataType: "text",
         success: function (data) {
-            alert(data);
             $.ajax({
                 url: "http://localhost/barbearia/php/metodos.php",
                 type: "post",
                 data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus,},
                 dataType: "text",
                 success: function (data) {
-                    
+                    if(data == 1){
+                        alert("Usuário criado com sucesso");
+                    }else{
+                        alert("Erro ao criar o usuario");
+                    }
                 }
             });
         }
