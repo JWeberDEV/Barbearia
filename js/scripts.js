@@ -6,14 +6,14 @@
 // 
 // Scripts
 // 
+// --------------------------------------------------------------------------------------------
+// document.addEventListener("keypress", function(e) {
 
-document.addEventListener("keypress", function(e) {
+//     const btn = document.querySelector("#send");
 
-    const btn = document.querySelector("#send");
+//     btn.click();
 
-    btn.click();
-
-    });
+//     });
 
 function login() {
     var usuario = document.getElementById("usuario").value;
@@ -37,36 +37,6 @@ function login() {
             }
         }
       });
-}
-
-function newclient() {
-    event.preventDefault()
-    var nome = document.getElementById("name").value;
-    var cpf = document.getElementById("cpf").value;
-    var email = document.getElementById("mailclient").value;
-    var numero = document.getElementById("numberclient").value;
-    var datanasc = document.getElementById("dateborn").value;
-    var profissao = document.getElementById("profi").value;
-    var cidade = document.getElementById("city").value;
-
-    if (nome == "" || cpf == "" || numero =="" || email == "") {
-        alert("Os Campos obrigatórios precisam ser preenchidos");
-        return;
-    }
-
-    $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
-        type: "post",
-        data: {acao: 'NEW_CLIENT', nome, cpf, email, numero, datanasc, profissao, cidade },
-        datatype: "text",
-        success: function name(data) {
-            if(data == 1){
-                alert("Usuário criado com sucesso");
-            }else{
-                alert("Erro ao criar o usuario");
-            }
-        }
-    })
 }
 
 function newuser() {
@@ -162,8 +132,6 @@ function exibir(id) {
     
 }
 
-
-
 function editar() {
     var alteranome = document.getElementById("altname").value;
     var alteracpf = document.getElementById("altcpf").value;
@@ -184,7 +152,8 @@ function editar() {
                 dataType: "text",
                 success: function (data) {
                     if(data == 1){
-                        alert("Usuário criado com sucesso");
+                        alert("Usuário editado com sucesso");
+                        listarUsuarios();
                     }else{
                         alert("Erro ao criar o usuario");
                     }
@@ -193,9 +162,93 @@ function editar() {
         }
     });
 
-
 }
 
+function newclient() {
+    event.preventDefault()
+    var nome = document.getElementById("name").value;
+    var cpf = document.getElementById("cpf").value;
+    var email = document.getElementById("mailclient").value;
+    var numero = document.getElementById("numberclient").value;
+    var datanasc = document.getElementById("dateborn").value;
+    var profissao = document.getElementById("profi").value;
+    var cidade = document.getElementById("city").value;
+
+    if (nome == "" || cpf == "" || numero =="" || email == "") {
+        alert("Os Campos obrigatórios precisam ser preenchidos");
+        return;
+    }
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data: {acao: 'NEW_CLIENT', nome, cpf, email, numero, datanasc, profissao, cidade },
+        datatype: "text",
+        success: function name(data) {
+            if(data == 1){
+                alert("Usuário criado com sucesso");
+            }else{
+                alert("Erro ao criar o usuario");
+            }
+        }
+    })
+}
+
+function listarclientes() {
+    var cliente = document.getElementById("nome").value;
+    var cpf= document.getElementById("cpf").value;
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'RELATORIO CLIENTE', cliente, cpf },
+        dataType: "text",
+        success: function (data) {
+            $("#tabela-clientes").html(data)
+        }
+
+        
+    });
+}
+
+function deletarcliente(id) {
+    
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao:'DELETAR CLIENTE',id: id},
+        dataType: "text",
+        success: function (data) {
+            
+            $("#tabela-usuario").html(data)
+            listarclientes();
+        }
+
+    });
+}
+
+function exibircliente(id) {
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'EXIBIR', id: id},
+        dataType: "text",
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+            $("#altname").val(data[0].nome);
+            $("#altcpf").val(data[0].cpf);
+            $("#altnumberclient").val(data[0].telefone);
+            $("#altmailclient").val(data[0].email);
+            $("#altprofile").val(data[0].perfil);
+            $("#altstatus").val(data[0].status);
+            
+            exibeid = (data[0].cpf);
+            return exibeid;
+        }
+        
+    });
+}
 
 window.addEventListener('DOMContentLoaded', event => {
 

@@ -2,7 +2,6 @@
 
 include 'conexao.php';
 
-
 $acao = $_POST['acao'];
 
 
@@ -26,30 +25,27 @@ switch ($acao) {
     echo ($valida);
 
   break;
-  
-  case 'NEW_CLIENT':
-    
+
+  case 'NEW_USER':
     $nome = ($_POST['nome']);
     $cpf = ($_POST['cpf']);
     $email = ($_POST['email']);
-    $numero = ($_POST['numero']);
-    $datanasc = ($_POST['datanasc']);
-    $profissao = ($_POST['profissao']);
-    $cidade = ($_POST['cidade']);
+    $perfil = ($_POST['perfil']);
+    $login = ($_POST['login']);
+    $password = ($_POST['password']);
+    $status = ($_POST['status']);
 
-    $sql = "INSERT INTO cliente (nome_cliente,cpf,email,telefone,data_nasc,profissao,cidade) VALUES ('$nome','$cpf','$email','$numero','$datanasc','$profissao','$cidade')";
+    $sql = "INSERT INTO usuario (nome_usuario,cpf,email,telefone,senha,perfil,user_status,nome) VALUES ('$login','$cpf','$email','NULL','$password','$perfil','$status','$nome')";
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de criacao esta incorreta");
-    
-    $linha = mysqli_num_rows($resultado);
 
-    $valida = 0;
-    if($linha == 0){
-      $valida = 0;
-    }else{
-      $valida = 1;
-    }
-    echo ($valida);
+    $valida = 1;
     
+    if ($resultado != 1) {
+      $valida = o;
+    }
+
+    echo ($valida);
+
   break;
   
   case 'RELATORIO':
@@ -85,12 +81,14 @@ switch ($acao) {
     }
 
     break;
+
     case 'DELETAR':
       $id = ($_POST['id']);
 
       $mysqli->query("DELETE FROM usuario WHERE id = '$id'");
 
     break;
+
     case 'EXIBIR':
       $id = ($_POST['id']);
 
@@ -100,27 +98,7 @@ switch ($acao) {
       echo $retorno;
 
     break;
-    case 'NEW_USER':
-      $nome = ($_POST['nome']);
-      $cpf = ($_POST['cpf']);
-      $email = ($_POST['email']);
-      $perfil = ($_POST['perfil']);
-      $login = ($_POST['login']);
-      $password = ($_POST['password']);
-      $status = ($_POST['status']);
-
-      $sql = "INSERT INTO usuario (nome_usuario,cpf,email,telefone,senha,perfil,user_status,nome) VALUES ('$login','$cpf','$email','NULL','$password','$perfil','$status','$nome')";
-      $resultado = $mysqli->query($sql) or die ("ERRO: A query de criacao esta incorreta");
-
-      $valida = 1;
-      
-      if ($resultado != 1) {
-        $valida = o;
-      }
-
-      echo ($valida);
-
-    break;
+    
     case 'EDITAR':
       $id = ($_POST['id']);
       $altnome = ($_POST['altnome']);
@@ -132,13 +110,85 @@ switch ($acao) {
 
       
       $sql = "UPDATE usuario SET nome = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', perfil= '$altprofissao', user_status = '$altstatus' WHERE id = '$id' ";
-      // echo $sql;
+      
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
       echo $resultado;
 
     break;
     
+    case 'NEW_CLIENT':
     
+      $nome = ($_POST['nome']);
+      $cpf = ($_POST['cpf']);
+      $email = ($_POST['email']);
+      $numero = ($_POST['numero']);
+      $datanasc = ($_POST['datanasc']);
+      $profissao = ($_POST['profissao']);
+      $cidade = ($_POST['cidade']);
+  
+      $sql = "INSERT INTO cliente (nome_cliente,cpf,email,telefone,data_nasc,profissao,cidade) VALUES ('$nome','$cpf','$email','$numero','$datanasc','$profissao','$cidade')";
+      $resultado = $mysqli->query($sql) or die ("ERRO: A query de criacao esta incorreta");
+      
+      $linha = mysqli_num_rows($resultado);
+  
+      $valida = 0;
+      if($linha == 0){
+        $valida = 0;
+      }else{
+        $valida = 1;
+      }
+      echo ($valida);
+      
+    break;
+
+    case 'RELATORIO CLIENTE':
+    $cliente =($_POST['cliente']);
+    $cpf =($_POST['cpf']);
+
+    $sql = "SELECT id,nome_cliente,email,telefone,total_agendados FROM cliente WHERE nome_cliente LIKE '%$cliente%'"; 
+    if($cpf !=""){
+    $sql .= " AND cpf = '$cpf'"; 
+    }
+    $sql .= " ORDER BY nome_cliente ";
+
+    $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
+    
+    if ($resultado->num_rows > 0) {
+      while($client = $resultado->fetch_assoc()) {
+        echo "<tr>
+                <td>".$client["nome_cliente"]."</td>
+                <td>".$client["email"]." </td> 
+                <td>".$client["telefone"]."</td>
+                <td>".$client["total_agendados"]."</td>
+                <td>
+                    <div class='divfunc'>
+                        <a onclick='exibircliente(".$client["id"].")' href='create_users.html'><button class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                        <a onclick='deletarcliente(".$client["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
+                    </div>
+                  </div>
+                </td>
+              </tr>";
+        
+      }
+    }
+
+      break;
+
+    case 'DELETAR CLIENTE':
+      $id = ($_POST['id']);
+
+      $mysqli->query("DELETE FROM cliente WHERE id = '$id'");
+      break;
+    
+    case 'EXIBIR CLIENTE':
+      $id = ($_POST['id']);
+
+      $result = $mysqli->query("SELECT nome,cpf,telefone,email,perfil,user_status FROM cliente WHERE id = '$id'");
+      $retorno = $result->fetch_all(MYSQLI_ASSOC);
+      $retorno = json_encode($retorno);
+      echo $retorno;
+
+      break;  
 }
 
 

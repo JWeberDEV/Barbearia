@@ -410,7 +410,9 @@ select{
 
 .buscar{
     box-shadow: 1px 1px 1px #999;
-    padding: 7px;   
+    padding: 7px; 
+    padding-left: 7%;
+    padding-right: 7%;  
     background-color: #6558f5;
     font-size: 16px;
     font-weight: bold;
