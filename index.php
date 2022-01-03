@@ -15,8 +15,9 @@
 
   <?php
    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+     echo "USUARIO -> ";
      echo $_POST['usuario'];
-     echo "imagina que aqui vem um monte de coisa pra conectar com o banco e
+     echo "<br>imagina que aqui vem um monte de coisa pra conectar com o banco e
      dizer pro backend que está logado <br>
      sem JS, apenas PHP bem arcaico";
    }
