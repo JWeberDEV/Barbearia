@@ -142,8 +142,8 @@ switch ($acao) {
     break;
 
     case 'RELATORIO CLIENTE':
-    $cliente =($_POST['cliente']);
-    $cpf =($_POST['cpf']);
+    $cliente = ($_POST['cliente']);
+    $cpf = ($_POST['cpf']);
 
     $sql = "SELECT id,nome_cliente,email,telefone,total_agendados FROM cliente WHERE nome_cliente LIKE '%$cliente%'"; 
     if($cpf !=""){
@@ -162,7 +162,7 @@ switch ($acao) {
                 <td>".$client["total_agendados"]."</td>
                 <td>
                     <div class='divfunc'>
-                        <a onclick='exibircliente(".$client["id"].")' href='create_users.html'><button class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                        <a onclick='exibircliente(".$client["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editarcliente' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
                         <a onclick='deletarcliente(".$client["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
                     </div>
                   </div>
@@ -183,14 +183,18 @@ switch ($acao) {
     case 'EXIBIR CLIENTE':
       $id = ($_POST['id']);
 
-      $result = $mysqli->query("SELECT nome,cpf,telefone,email,perfil,user_status FROM cliente WHERE id = '$id'");
-      $retorno = $result->fetch_all(MYSQLI_ASSOC);
+      $sql = "SELECT nome_cliente,cpf,telefone,email FROM cliente WHERE id = $id";
+      $resultado = $mysqli->query($sql) or die ("ERRO: A query de exibção esta incorreta");
+      $retorno = $resultado->fetch_all(MYSQLI_ASSOC);
       $retorno = json_encode($retorno);
       echo $retorno;
 
       break;  
-}
 
+    case 'DELETA CLENTE':
+      
+      break;
+}
 
 ?>
 

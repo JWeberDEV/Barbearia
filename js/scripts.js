@@ -227,27 +227,62 @@ function deletarcliente(id) {
     });
 }
 
+var clientid;
+
 function exibircliente(id) {
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
-        data:{acao: 'EXIBIR', id: id},
+        data:{acao: 'EXIBIR CLIENTE', id: id},
         dataType: "text",
         success: function (data) {
+            alert (data);
             data = JSON.parse(data);
             console.log(data)
-            $("#altname").val(data[0].nome);
-            $("#altcpf").val(data[0].cpf);
-            $("#altnumberclient").val(data[0].telefone);
-            $("#altmailclient").val(data[0].email);
-            $("#altprofile").val(data[0].perfil);
+            $("#clientname").val(data[0].nome_cliente);
+            $("#clientcpf").val(data[0].cpf);
+            $("#clientnumber").val(data[0].telefone);
+            $("#clientmail").val(data[0].email);
+            $("#clientdateborn").val(data[0].perfil);
             $("#altstatus").val(data[0].status);
             
-            exibeid = (data[0].cpf);
-            return exibeid;
+            clientid = (data[0].cpf);
+            return clientid;
         }
         
     });
+}
+
+function editar() {
+    var alteranome = document.getElementById("altname").value;
+    var alteracpf = document.getElementById("altcpf").value;
+    var alteranumero = document.getElementById("altnumberclient").value;
+    var alteraemail = document.getElementById("altmailclient").value;
+    var alteraprofile = document.getElementById("altprofile").value;
+    var alterastatus = document.getElementById("altstatus").value;
+    $.ajax({
+        url: "http://localhost/barbearia/php/list.php",
+        type: "post",
+        data: {id: exibeid },
+        dataType: "text",
+        success: function (data) {
+            $.ajax({
+                url: "http://localhost/barbearia/php/metodos.php",
+                type: "post",
+                data:{acao: 'EDITAR CLIENTE', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus,},
+                dataType: "text",
+                success: function (data) {
+                    if(data == 1){
+                        alert("Usuário editado com sucesso");
+                        listarUsuarios();
+                    }else{
+                        alert("Erro ao criar o usuario");
+                    }
+                }
+            });
+        }
+    });
+
 }
 
 window.addEventListener('DOMContentLoaded', event => {
