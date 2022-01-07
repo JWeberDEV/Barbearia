@@ -122,7 +122,7 @@ function exibir(id) {
             $("#altnumberclient").val(data[0].telefone);
             $("#altmailclient").val(data[0].email);
             $("#altprofile").val(data[0].perfil);
-            $("#altstatus").val(data[0].status);
+            $("#altstatus").val(data[0].user_status);
             
             exibeid = (data[0].cpf);
             return exibeid;
@@ -142,13 +142,13 @@ function editar() {
     $.ajax({
         url: "http://localhost/barbearia/php/list.php",
         type: "post",
-        data: {id: exibeid },
+        data: {acao: 'IDUSUARIO',id: exibeid },
         dataType: "text",
         success: function (data) {
             $.ajax({
                 url: "http://localhost/barbearia/php/metodos.php",
                 type: "post",
-                data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus,},
+                data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus},
                 dataType: "text",
                 success: function (data) {
                     if(data == 1){
@@ -253,23 +253,24 @@ function exibircliente(id) {
     });
 }
 
-function editar() {
-    var alteranome = document.getElementById("altname").value;
-    var alteracpf = document.getElementById("altcpf").value;
-    var alteranumero = document.getElementById("altnumberclient").value;
-    var alteraemail = document.getElementById("altmailclient").value;
-    var alteraprofile = document.getElementById("altprofile").value;
-    var alterastatus = document.getElementById("altstatus").value;
+function editarcliente() {
+    var altnome = document.getElementById("clientname").value;
+    var altcpf = document.getElementById("clientcpf").value;
+    var altnumero = document.getElementById("clientnumber").value;
+    var altemail = document.getElementById("clientmail").value;
+    var altdata = document.getElementById("clientdateborn").value;
+    var altprofissao = document.getElementById("clientprofi").value;
+    var altcidade = document.getElementById("clientcity").value;
     $.ajax({
         url: "http://localhost/barbearia/php/list.php",
         type: "post",
-        data: {id: exibeid },
+        data: {acao:'IDCLIENTE' ,id: clientid },
         dataType: "text",
         success: function (data) {
             $.ajax({
                 url: "http://localhost/barbearia/php/metodos.php",
                 type: "post",
-                data:{acao: 'EDITAR CLIENTE', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus,},
+                data:{acao: 'EDITAR CLIENTE', id: data, altnome: altnome, altcpf: altcpf, altnumero: altnumero, altemail: altemail, altdata: altdata, altprofissao: altprofissao, altcidade: altcidade},
                 dataType: "text",
                 success: function (data) {
                     if(data == 1){
