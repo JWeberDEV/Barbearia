@@ -130,7 +130,7 @@
                         </div>
                     </form>
                         <div style="padding-top: 1%;">
-                            <button class="btn-success btnmodal" type="button" onclick="e" >Salvar</button>
+                            <button class="btn-success btnmodal" type="button" onclick="editarcliente()" >Salvar</button>
                         </div>
                         <div style="padding-top: 1%;">
                             <button type="button" class="btn-primary btnmodal close" data-bs-dismiss="modal">Finalizar</button>
@@ -151,82 +151,3 @@
     listarclientes();
 
 </script>
-
-<!-- const clientes = [
-{
-    nome: "Manuel",
-    email: "manuel@gmail.com",
-    telefone: "(51) 9-9543-1561",
-    agendamentos: "15",
-},
-{
-    nome: "Mathias",
-    email: "mat12_@yahoo.com",
-    telefone: "(51) 9-9585-4541",
-    agendamentos: "22",
-},
-{
-    nome: "Diego",
-    email: "didi_effect@hotmail.com",
-    telefone: "(51) 9-9650-0713",
-    agendamentos: "14",
-},
-{
-    nome: "Fernando",
-    email: "nando.lima@gmail.com",
-    telefone: "(51) 9-8290-7951",
-    agendamentos: "19",
-},
-{
-    nome: "Carlos",
-    email: "carlos@gmail.com",
-    telefone: "(51) 9-8220-4007",
-    agendamentos: "	2",
-},
-{
-    nome: "João",
-    email: "joao@gmail.com",
-    telefone: "(51) 9-9502-1345",
-    agendamentos: "14",
-},
-{
-    nome: "Claudio",
-    email: "claudio@hotmail.com",
-    telefone: "(51) 9-9238-3715",
-    agendamentos: "7",
-}
-];
-
-listarClientes();
-
-
-function listarClientes(){
-
-var tabelaCliente = document.getElementById("tabela-clientes");
-
-var html = "";
-
-
-for (let i = 0; i < clientes.length; i++) {
-    const cliente = clientes[i];
-
-    html += 
-        `<tr>
-            <th scope="row">${cliente.nome}</th>
-            <td>${cliente.email}</td>
-            <td>${cliente.telefone}</td>
-            <td>${cliente.agendamentos}</td>
-            <td>
-                <div class="divfunc">
-                <a href="create_users.html"><button class="funcoes"><i class="fa fa-pencil pencil" aria-hidden="true"></i></button></a>
-                <a href="#"><button class="funcoes"><i class="fa fa-times cross" aria-hidden="true"></i></button></a>
-                </div>
-            </div>
-            </td>
-        </tr>`;
-    
-}
-
-tabelaCliente.innerHTML = html;
-
-} -->

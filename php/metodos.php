@@ -155,26 +155,25 @@ switch ($acao) {
     
     if ($resultado->num_rows > 0) {
       while($client = $resultado->fetch_assoc()) {
-        echo "<tr>
-                <td>".$client["nome_cliente"]."</td>
-                <td>".$client["email"]." </td> 
-                <td>".$client["telefone"]."</td>
-                <td>".$client["total_agendados"]."</td>
-                <td>
-                    <div class='divfunc'>
-                        <a onclick='exibircliente(".$client["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editarcliente' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
-                        <a onclick='deletarcliente(".$client["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
-                    </div>
+      echo "<tr>
+              <td>".$client["nome_cliente"]."</td>
+              <td>".$client["email"]." </td> 
+              <td>".$client["telefone"]."</td>
+              <td>".$client["total_agendados"]."</td>
+              <td>
+                  <div class='divfunc'>
+                      <a onclick='exibircliente(".$client["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editarcliente' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                      <a onclick='deletarcliente(".$client["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
                   </div>
-                </td>
-              </tr>";
-        
+                </div>
+              </td>
+            </tr>";
       }
     }
 
       break;
 
-    case 'DELETAR CLIENTE':
+    case 'DELETA CLIENTE':
       $id = ($_POST['id']);
 
       $mysqli->query("DELETE FROM cliente WHERE id = '$id'");
@@ -183,7 +182,7 @@ switch ($acao) {
     case 'EXIBIR CLIENTE':
       $id = ($_POST['id']);
 
-      $sql = "SELECT nome_cliente,cpf,telefone,email FROM cliente WHERE id = $id";
+      $sql = "SELECT nome_cliente,cpf,telefone,email,data_nasc,profissao,cidade FROM cliente WHERE id = $id";
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de exibção esta incorreta");
       $retorno = $resultado->fetch_all(MYSQLI_ASSOC);
       $retorno = json_encode($retorno);
@@ -191,8 +190,22 @@ switch ($acao) {
 
       break;  
 
-    case 'DELETA CLENTE':
+    case 'EDITA CLIENTE':
+      $id = ($_POST['id']);
+      $altnome = ($_POST['altnome']);
+      $altcpf = ($_POST['altcpf']);
+      $altemail = ($_POST['altemail']);
+      $altnumero = ($_POST['altnumero']);
+      $altdata = ($_POST['altdata']);
+      $altprofissao = ($_POST['altprofissao']);
+      $altcidade = ($_POST['altcidade']);
       
+      $sql = " UPDATE cliente SET nome_cliente = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', data_nasc =  '$altdata', profissao= '$altprofissao', cidade = '$altcidade' WHERE id = '$id' ";
+      echo $sql;
+      $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
+
+      echo $resultado;
+
       break;
 }
 

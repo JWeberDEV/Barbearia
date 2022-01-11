@@ -216,7 +216,7 @@ function deletarcliente(id) {
     $.ajax({
         url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
-        data:{acao:'DELETAR CLIENTE',id: id},
+        data:{acao:'DELETA CLIENTE',id: id},
         dataType: "text",
         success: function (data) {
             
@@ -236,15 +236,15 @@ function exibircliente(id) {
         data:{acao: 'EXIBIR CLIENTE', id: id},
         dataType: "text",
         success: function (data) {
-            alert (data);
             data = JSON.parse(data);
             console.log(data)
             $("#clientname").val(data[0].nome_cliente);
             $("#clientcpf").val(data[0].cpf);
             $("#clientnumber").val(data[0].telefone);
             $("#clientmail").val(data[0].email);
-            $("#clientdateborn").val(data[0].perfil);
-            $("#altstatus").val(data[0].status);
+            $("#clientdateborn").val(data[0].data_nasc);
+            $("#clientprofi").val(data[0].profissao);
+            $("#clientcity").val(data[0].cidade);
             
             clientid = (data[0].cpf);
             return clientid;
@@ -267,10 +267,11 @@ function editarcliente() {
         data: {acao:'IDCLIENTE' ,id: clientid },
         dataType: "text",
         success: function (data) {
+            alert(data);
             $.ajax({
                 url: "http://localhost/barbearia/php/metodos.php",
                 type: "post",
-                data:{acao: 'EDITAR CLIENTE', id: data, altnome: altnome, altcpf: altcpf, altnumero: altnumero, altemail: altemail, altdata: altdata, altprofissao: altprofissao, altcidade: altcidade},
+                data:{acao: 'EDITA CLIENTE', id: data, altnome: altnome, altcpf: altcpf, altnumero: altnumero, altemail: altemail, altdata: altdata, altprofissao: altprofissao, altcidade: altcidade},
                 dataType: "text",
                 success: function (data) {
                     if(data == 1){
