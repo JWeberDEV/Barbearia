@@ -36,7 +36,7 @@ function login() {
                 alert("Os Dados Preenchidos, estão incorretos.");
             }
         }
-      });
+    });
 }
 
 function newuser() {
