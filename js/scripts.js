@@ -63,6 +63,7 @@ function newuser() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
+                window.location.href = "http://localhost/barbearia/html/users.html"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -187,6 +188,7 @@ function newclient() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
+                window.location.href = "http://localhost/barbearia/html/clients.html"
             }else{
                 alert("Erro ao criar o usuario");
             }

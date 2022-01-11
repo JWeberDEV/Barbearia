@@ -107,7 +107,6 @@ switch ($acao) {
       $altnumero = ($_POST['altnumero']);
       $altprofissao = ($_POST['altprofissao']);
       $altstatus = ($_POST['altstatus']);
-
       
       $sql = "UPDATE usuario SET nome = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', perfil= '$altprofissao', user_status = '$altstatus' WHERE id = '$id' ";
       
@@ -127,18 +126,19 @@ switch ($acao) {
       $cidade = ($_POST['cidade']);
   
       $sql = "INSERT INTO cliente (nome_cliente,cpf,email,telefone,data_nasc,profissao,cidade) VALUES ('$nome','$cpf','$email','$numero','$datanasc','$profissao','$cidade')";
+      
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de criacao esta incorreta");
       
-      $linha = mysqli_num_rows($resultado);
   
-      $valida = 0;
-      if($linha == 0){
-        $valida = 0;
-      }else{
-        $valida = 1;
+      $valida = 1;
+    
+      if ($resultado != 1) {
+        $valida = o;
       }
+      
       echo ($valida);
       
+
     break;
 
     case 'RELATORIO CLIENTE':
