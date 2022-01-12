@@ -10,26 +10,19 @@ switch ($acao) {
     $login = addslashes($_POST['usuario']);
     $senha = addslashes($_POST['senha']);
     
-    $sql = "SELECT nome_usuario,senha,user_status FROM usuario WHERE nome_usuario = '$login' and senha = '$senha'";
-    
+    $sql = "SELECT nome_usuario,senha,user_status FROM usuario WHERE BINARY nome_usuario = '$login' AND senha = '$senha' AND user_status = 'Ativo'";
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de consulta esta incorreta");
     
-    $valida;
+    $linha = mysqli_num_rows($resultado);
 
-    if ($resultado->num_rows > 0){
-      while($row = $resultado->fetch_assoc()){
-        $user = $row["nome_usuario"];
-        $password = $row["senha"];
-        $status = $row["user_status"];
-        if ($user == $login && $password == $senha && $status == "Ativo") {
-          $valida = 1;
-          echo $valida;
-        }
-      }
-    }else {
+    $valida = 0;
+    if($linha == 0){
       $valida = 0;
-      echo $valida;
+    }else{
+      $valida = 1;
     }
+
+    echo ($valida);
 
 
   break;
@@ -52,7 +45,7 @@ switch ($acao) {
       $valida = o;
     }
 
-    echo ($valida);
+    // echo ($valida);
 
   break;
   
