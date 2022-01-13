@@ -289,6 +289,25 @@ function editarcliente() {
 
 }
 
+function listarServicos(){
+    var pesquisa = document.getElementById("servico").value;
+    var preco = document.getElementById("preco").value;
+
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'RELATORIO SERVICO', conteudo: pesquisa, preco },
+        dataType: "text",
+        success: function (data) {
+            $("#tabela-servicos").html(data)
+        }
+
+        
+    });
+
+}
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation

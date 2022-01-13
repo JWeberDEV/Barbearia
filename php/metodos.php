@@ -148,7 +148,7 @@ switch ($acao) {
 
     $sql = "SELECT id,nome_cliente,email,telefone,total_agendados FROM cliente WHERE nome_cliente LIKE '%$cliente%'"; 
     if($cpf !=""){
-    $sql .= " AND cpf = '$cpf'"; 
+    $sql .= " AND cpf LIKE '%$cpf%'"; 
     }
     $sql .= " ORDER BY nome_cliente ";
 
@@ -208,7 +208,36 @@ switch ($acao) {
       echo $resultado;
 
       break;
+      case 'RELATORIO SERVICO':
+        $busca =($_POST['conteudo']);
+        $valor =($_POST['preco']);
+
+        $sql = "SELECT * FROM servicos WHERE nome like '%$busca%' ";
+        if($valor !=""){
+          $sql .= " AND valor LIKE '%$valor%'"; 
+        }
+        $sql .= " ORDER BY nome ";
+        echo $sql;
+        $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorioesta incorreta");
+
+        if  ($resultado->num_rows > 0){
+          while($servico = $resultado->fetch_assoc()) {
+            echo "<tr>
+              <td>".$servico["nome"]."</td>
+              <td>".$servico["valor"]." </td> 
+              <td>
+                  <div class='divfunc'>
+                      <a onclick='exibircliente(".$servico["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editarcliente' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                      <a onclick='deletarcliente(".$servico["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
+                  </div>
+                </div>
+              </td>
+            </tr>";
+          }
+        }
+        break;
 }
 
 ?>
+
 
