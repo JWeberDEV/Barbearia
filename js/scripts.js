@@ -328,6 +328,21 @@ function listarServicos(){
 
 }
 
+function deletaservico(id) {
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data: {acao: 'DELETA SERVICO', id},
+        dataType: "text",
+        success: function (data) {
+            $("#tabela-servicos").html(data)
+            listarServicos();
+        }
+    })
+}
+
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation

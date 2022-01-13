@@ -245,13 +245,18 @@ switch ($acao) {
               <td>
                   <div class='divfunc'>
                       <a onclick='exibircliente(".$servico["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editarcliente' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
-                      <a onclick='deletarcliente(".$servico["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
+                      <a onclick='deletaservico(".$servico["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
                   </div>
                 </div>
               </td>
             </tr>";
           }
         }
+        break;
+        case 'DELETA SERVICO':
+          $id = ($_POST['id']);
+
+          $mysqli->query("DELETE FROM servicos WHERE id = '$id'");
         break;
 }
 
