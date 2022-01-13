@@ -208,6 +208,23 @@ switch ($acao) {
       echo $resultado;
 
       break;
+
+      case 'CRIA SERVICO':
+        $nomeservico = ($_POST['servico']);
+        $precoservico = ($_POST['preco']);
+
+        $sql = "INSERT INTO servicos (nome,valor) VALUES ('$nomeservico','$precoservico')";
+        $result = $mysqli->query($sql) or die ("ERRO: A querry de inserção esta incorreta");
+
+        $valida = 1;
+
+        if ($result != 1) {
+          $valida = o;
+        }
+        
+        echo ($valida);
+      break;
+
       case 'RELATORIO SERVICO':
         $busca =($_POST['conteudo']);
         $valor =($_POST['preco']);

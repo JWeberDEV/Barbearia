@@ -289,6 +289,26 @@ function editarcliente() {
 
 }
 
+function criaservico() {
+    var nomeservico = document.getElementById("servico").value;
+    var precoservico = document.getElementById("preco").value;
+
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data: {acao: 'CRIA SERVICO', servico: nomeservico, preco: precoservico },
+        dataType: "text",
+        success: function (data) {
+            if(data == 1){
+                alert("Usuário criado com sucesso");
+                window.location.href = "http://localhost/barbearia/html/services.html"
+            }else{
+                alert("Erro ao criar o usuario");
+            }
+        }
+    })
+}
+
 function listarServicos(){
     var pesquisa = document.getElementById("servico").value;
     var preco = document.getElementById("preco").value;

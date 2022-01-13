@@ -33,6 +33,9 @@ switch ($acao) {
       }
     }
     break;
+    case 'IDSERVICO':
+      
+    break;
 }
 
 ?>

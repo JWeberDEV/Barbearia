@@ -44,16 +44,16 @@
                 <form class="formulario container2 tabela">
                     <div class="item2">
                         <label class="required">Serviço</label>
-                        <input id="name" class="itens" type="text" name="nome" autocomplete="off" placeholder=" Nome do Serviço" required>
+                        <input id="servico" class="itens" type="text" name="nome" autocomplete="off" placeholder=" Nome do Serviço" required>
                     </div>
                     <div class="item2">
                         <label class="required">Preço</label>
-                        <input id="cpf" class="itens" type="text" name="nome" autocomplete="off" placeholder="R$ 00.00" required>
+                        <input id="preco" class="itens" type="text" name="nome" autocomplete="off" placeholder="R$ 00.00" required>
                     </div>
                     <div class="btnfull">
                         <div class="submit">
                             <br>
-                            <button class="salvar" type="submit" onclick="newclient()">Salvar</button>
+                            <button class="salvar" type="submit" onclick="criaservico()">Salvar</button>
                         </div>
                     </div>
                 </form>
@@ -61,6 +61,7 @@
 
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
