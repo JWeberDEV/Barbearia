@@ -244,7 +244,7 @@ switch ($acao) {
               <td>".$servico["valor"]." </td> 
               <td>
                   <div class='divfunc'>
-                      <a onclick='exibircliente(".$servico["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editarcliente' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
+                      <a onclick='exibirservico(".$servico["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editar-servico' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
                       <a onclick='deletaservico(".$servico["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
                   </div>
                 </div>
@@ -257,6 +257,17 @@ switch ($acao) {
           $id = ($_POST['id']);
 
           $mysqli->query("DELETE FROM servicos WHERE id = '$id'");
+        break;
+        case 'EXIBIR SERVICO':
+          $id = ($_POST['id']);
+
+          $sql = "SELECT nome,valor FROM servicos WHERE id = $id";
+          
+          $resultado = $mysqli->query($sql) or die ("ERRO: A query de exibção esta incorreta");
+          $retorno = $resultado->fetch_all(MYSQLI_ASSOC);
+          $retorno = json_encode($retorno);
+          echo $retorno;
+
         break;
 }
 

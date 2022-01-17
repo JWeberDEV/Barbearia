@@ -238,8 +238,9 @@ function exibircliente(id) {
         data:{acao: 'EXIBIR CLIENTE', id: id},
         dataType: "text",
         success: function (data) {
+            console.log(data);
             data = JSON.parse(data);
-            console.log(data)
+            console.log(data);
             $("#clientname").val(data[0].nome_cliente);
             $("#clientcpf").val(data[0].cpf);
             $("#clientnumber").val(data[0].telefone);
@@ -341,6 +342,34 @@ function deletaservico(id) {
         }
     })
 }
+
+var servicoid;
+
+function exibirservico(id) {
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data:{acao: 'EXIBIR SERVICO', id: id},
+        dataType: "text",
+        success: function (data) {
+            data = JSON.parse(data);
+            console.log(data)
+            
+            $("#altname").val(data[0].nome);
+            $("#altpreco").val(data[0].valor);
+            
+            servicoid = (data[0].id);
+            return servicoid;
+            
+        }
+        
+    });
+}
+
+function editarservico(id = servicoid) {
+    alert(id);
+}
+
 
 
 window.addEventListener('DOMContentLoaded', event => {
