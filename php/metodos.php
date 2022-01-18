@@ -243,7 +243,7 @@ switch ($acao) {
               <td>".$servico["nome"]."</td>
               <td>".$servico["valor"]." </td> 
               <td>
-                  <div class='divfunc'>
+                  <div class='btnfunc'>
                       <a onclick='exibirservico(".$servico["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editar-servico' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
                       <a onclick='deletaservico(".$servico["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
                   </div>
@@ -253,23 +253,39 @@ switch ($acao) {
           }
         }
         break;
+
         case 'DELETA SERVICO':
           $id = ($_POST['id']);
 
           $mysqli->query("DELETE FROM servicos WHERE id = '$id'");
         break;
+
         case 'EXIBIR SERVICO':
           $id = ($_POST['id']);
 
-          $sql = "SELECT nome,valor FROM servicos WHERE id = $id";
-          
+          $sql = "SELECT id,nome,valor FROM servicos WHERE id = $id";
+
           $resultado = $mysqli->query($sql) or die ("ERRO: A query de exibção esta incorreta");
           $retorno = $resultado->fetch_all(MYSQLI_ASSOC);
           $retorno = json_encode($retorno);
           echo $retorno;
 
         break;
+
+        case 'EDITAR SERVICO':
+          $id = ($_POST['id']);
+          $altnome = ($_POST['nome']);
+          $altvalor = ($_POST['preco']);
+
+          $sql = " UPDATE servicos SET nome = '$altnome', valor = '$altvalor' WHERE id = '$id' ";
+          
+          $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
+
+          echo $resultado;
+
+        break;
 }
+
 
 ?>
 

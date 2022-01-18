@@ -367,10 +367,24 @@ function exibirservico(id) {
 }
 
 function editarservico(id = servicoid) {
-    alert(id);
+    var nome = document.getElementById("altname").value;
+    var preco = document.getElementById("altpreco").value;
+    
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data: {acao: 'EDITAR SERVICO', nome, preco, id},
+        dataType: "text",
+        success: function (retorno) {
+            if(retorno == 1){
+                alert("Serviço alterado com sucesso");
+                listarServicos();
+            }else{
+                alert("Erro ao criar o usuario");
+            }
+        }
+    });
 }
-
-
 
 window.addEventListener('DOMContentLoaded', event => {
 
