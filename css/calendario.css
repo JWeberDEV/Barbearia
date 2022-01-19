@@ -5,3 +5,13 @@
   margin: auto;
   height: 70vh;
 }
+
+.tabela-sch{
+  background-color: rgb(255, 255, 255);
+  padding: 10px;
+  padding-right: 30px;
+  padding-left: 30px;
+  border: 2px solid grey;
+  border-radius: 10px;
+
+}
