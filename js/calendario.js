@@ -16,8 +16,50 @@
       week: 'Semana',
       day: 'Dia'
     },
+    navLinks: true, // can click day/week names to navigate views
+      selectable: true,
+      selectMirror: true,
+    select: function(arg) {
+      agendar()
+      // var title = prompt('Titulo do evento:');
+      // if (title) {
+      //   calendar.addEvent({
+      //     title: title,
+      //     start: arg.start,
+      //     end: arg.end,
+      //     allDay: arg.allDay
+      //   })
+      // }
+      // calendar.unselect()
+    },
+    eventClick: function(arg) {
+      if (confirm('Are you sure you want to delete this event?')) {
+        arg.event.remove()
+      }
+    },
+    editable: true,
+    dayMaxEvents: true,
     
   });
   calendar.render();
 
 })(window,document)
+
+function agendar() {
+
+  var myModal = new bootstrap.Modal(document.getElementById('Novo'), {
+      keyboard: false
+  })
+  myModal.show();
+}
+
+// function name(params) {
+//   // console.log(document.getElementsByClassName("teste1"))
+//   //    document.getElementsByClassName("teste1")[2].innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
+//   //     Agendamento
+//   // </button>`;
+
+//   // el.innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
+//   //     Agendamento
+//   // </button>`;
+// }
