@@ -53,6 +53,24 @@ function agendar() {
   myModal.show();
 }
 
+function professionals() {
+    $.ajax({
+      url:"http://localhost/barbearia/php/agendamentos.php",
+      type: "post",
+      data:{acao: 'PROFISSIONAIS'},
+      dataType: "json",
+      success:function name(retorno) {
+        console.log(retorno)
+        let option = "";
+        retorno.forEach(element => {
+          option += `<option value='${element.id}'> ${element.nome_usuario} </option>`;
+        });
+
+        $("#profissional").html(option);
+      }
+    })
+}
+
 // function name(params) {
 //   // console.log(document.getElementsByClassName("teste1"))
 //   //    document.getElementsByClassName("teste1")[2].innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">

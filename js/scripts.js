@@ -386,6 +386,7 @@ function editarservico(id = servicoid) {
     });
 }
 
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation
