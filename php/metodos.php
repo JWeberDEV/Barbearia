@@ -45,7 +45,7 @@ switch ($acao) {
       $valida = o;
     }
 
-    // echo ($valida);
+    echo ($valida);
 
   break;
   

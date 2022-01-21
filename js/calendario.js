@@ -80,6 +80,7 @@ function professionals() {
           option += `<option value='${element.id}'> ${element.nome_usuario} </option>`;
         });
 
+        $("#filtro-profissional").html(option);
         $("#profissional").html(option);
       }
     })
