@@ -99,6 +99,10 @@
     </div>
 </div>
 
+<!--------------------------------------------------------->
+<!----------------------Finalizar-------------------------->
+<!--------------------------------------------------------->
+
 <div class="modal" id="finalizar">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -120,6 +124,10 @@
         </div>
     </div>
 </div>
+
+<!--------------------------------------------------------->
+<!-----------------------Cancelar-------------------------->
+<!--------------------------------------------------------->
 
 <div class="modal" id="cancelar">
     <div class="modal-dialog">
@@ -144,6 +152,10 @@
     </div>
 </div>
 
+<!--------------------------------------------------------->
+<!------------------------Editar--------------------------->
+<!--------------------------------------------------------->
+
 <div class="modal" id="editar">
     <div class="modal-dialog">
         <div class="modal-content">
@@ -159,15 +171,15 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label>Cliente:</label>
-                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" Nome Cliente">
+                            <input class="campos2" type="text" autocomplete="off" placeholder=" Nome Cliente">
                         </div>
                         <div class="col-md-6">
                             <label>Data:</label>
-                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" __/__/____">
+                            <input class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
                         </div>
                         <div class="col-md-6">
                             <label>Horario:</label>
-                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" 00:00 - 00:00">
+                            <input class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
                         </div>
                         <div class="col-md-12">
                             <label>Perfil:</label>
@@ -208,15 +220,17 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label>Cliente</label>
-                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" Nome Cliente">
+                            <select class="campos2" id="cliente">
+
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label>Data</label>
-                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" __/__/____">
+                            <input class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
                         </div>
                         <div class="col-md-6">
                             <label>Horario</label>
-                            <input class="campos2" type="text" name="nome" autocomplete="off" placeholder=" 00:00 - 00:00">
+                            <input id="" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
                         </div>
                         <div class="col-md-12">
                             <label>Atendente</label>
@@ -256,7 +270,9 @@
 <script>
 
     professionals()
+    clients()
     initCalendar()
+    
     // agendamentos()
 
 </script>

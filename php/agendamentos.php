@@ -6,7 +6,7 @@ $acao = $_POST['acao'];
 
 switch ($acao) {
   case 'PROFISSIONAIS':
-    $sql = "SELECT id,nome_usuario FROM usuario";
+    $sql = "SELECT id,nome FROM usuario ORDER BY nome ASC";
 
     $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a lista de proffisionais");
 
@@ -19,6 +19,16 @@ switch ($acao) {
     //     echo $profissional["nome_usuario"];
     //   }
     // }
+  break;
+
+  case 'CLIENTES':
+    $sql = "SELECT id,nome_cliente FROM cliente ORDER BY nome_cliente ASC";
+
+    $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a lista de clientes");
+
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    echo($result);
+    echo json_encode($result);
   break;
   
   case 'AGENDAMENTOS':

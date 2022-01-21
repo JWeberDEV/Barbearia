@@ -35,11 +35,11 @@ function initCalendar(){
       // }
       // calendar.unselect()
     },
-    dateClick:function (info) {
-      alert('Clicked on: ' + info.dateStr);
-      alert('Coordinates: ' + info.jsEvent.pagex);
-      alert('Current view: ' + info.view.type);
-    },
+    // dateClick:function (info) {
+    //   alert('Clicked on: ' + info.dateStr);
+    //   alert('Coordinates: ' + info.jsEvent.pagex);
+    //   alert('Current view: ' + info.view.type);
+    // },
     editable: true,
     dayMaxEvents: true,
     // events: 'http://localhost/barbearia/libs/fullcalendar-5.10.1/examples/json/events.json',
@@ -77,13 +77,32 @@ function professionals() {
         console.log(retorno)
         let option = "";
         retorno.forEach(element => {
-          option += `<option value='${element.id}'> ${element.nome_usuario} </option>`;
+          option += `<option value='${element.id}'> ${element.nome} </option>`;
         });
 
         $("#filtro-profissional").html(option);
         $("#profissional").html(option);
       }
     })
+}
+
+function clients() {
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php?",
+    type: "post",
+    data:{acao: 'CILENTES'},
+    dataType: "json",
+    success:function(retorno) {
+      
+      console.log(retorno)
+      let option = "";
+      retorno.forEach(element => {
+        option += `<option value='${element.id}'> ${element.nome_cliente} </option>`;
+      });
+      
+      $("#cliente").html(option);
+    }
+  })
 }
 
 function agendamentos(callback) {
