@@ -1,7 +1,10 @@
-(function(win,doc) {
+var  calendar = null;
+
+function initCalendar(){   
   
-  let calendarEl = doc.querySelector('.calendar');
-  let calendar = new FullCalendar.Calendar(calendarEl, {
+
+  var calendarEl = document.querySelector('.calendar');
+  calendar = new FullCalendar.Calendar(calendarEl, {
     initialView: 'dayGridMonth',
     selectable: true,
     headerToolbar:{
@@ -32,18 +35,29 @@
       // }
       // calendar.unselect()
     },
-    eventClick: function(arg) {
-      if (confirm('Are you sure you want to delete this event?')) {
-        arg.event.remove()
-      }
+    dateClick:function (info) {
+      alert('Clicked on: ' + info.dateStr);
+      alert('Coordinates: ' + info.jsEvent.pagex);
+      alert('Current view: ' + info.view.type);
     },
     editable: true,
     dayMaxEvents: true,
+    // events: 'http://localhost/barbearia/libs/fullcalendar-5.10.1/examples/json/events.json',
+    events: function(fetchInfo, successCallback, failureCallback) {   
+      agendamentos(function(data) {
+        successCallback(data);
+    });
+    },
+        eventClick: function(arg) {
+      alert('Event: ' + info.event.title);
+      alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
+      alert('View: ' + info.view.type);
+    },
     
   });
   calendar.render();
 
-})(window,document)
+}
 
 function agendar() {
 
@@ -55,11 +69,11 @@ function agendar() {
 
 function professionals() {
     $.ajax({
-      url:"http://localhost/barbearia/php/agendamentos.php",
+      url:"http://localhost/barbearia/php/agendamentos.php?",
       type: "post",
       data:{acao: 'PROFISSIONAIS'},
       dataType: "json",
-      success:function name(retorno) {
+      success:function(retorno) {
         console.log(retorno)
         let option = "";
         retorno.forEach(element => {
@@ -70,6 +84,37 @@ function professionals() {
       }
     })
 }
+
+function agendamentos(callback) {
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data:{acao: 'AGENDAMENTOS'},
+    dataType: "json",
+    success: function(agendados) {
+      let events = [];
+      agendados.forEach(element => {
+        events.push({
+          title: element.nome_cliente, 
+          start: element.data_atendimento + ' ' + element.hora_inicial,
+          end: element.data_atendimento + ' ' + element.hora_final,
+          // end: `${element.data_atendimento} ${element.hora_final}`,
+          
+        })
+        
+      }); 
+      return callback(events);
+    }
+  });
+}
+
+function novoAgendamento(params) {
+  
+}
+
+// $('button').click(function(){
+//   $('#Novo').modal('show');
+// });
 
 // function name(params) {
 //   // console.log(document.getElementsByClassName("teste1"))
