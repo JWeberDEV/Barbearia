@@ -23,17 +23,7 @@ function initCalendar(){
       selectable: true,
       selectMirror: true,
     select: function(arg) {
-      agendar()
-      // var title = prompt('Titulo do evento:');
-      // if (title) {
-      //   calendar.addEvent({
-      //     title: title,
-      //     start: arg.start,
-      //     end: arg.end,
-      //     allDay: arg.allDay
-      //   })
-      // }
-      // calendar.unselect()
+      $('#Novo').modal('show');
     },
     // dateClick:function (info) {
     //   alert('Clicked on: ' + info.dateStr);
@@ -69,7 +59,7 @@ function agendar() {
 
 function professionals() {
     $.ajax({
-      url:"http://localhost/barbearia/php/agendamentos.php?",
+      url:"http://localhost/barbearia/php/agendamentos.php",
       type: "post",
       data:{acao: 'PROFISSIONAIS'},
       dataType: "json",
@@ -87,13 +77,13 @@ function professionals() {
 }
 
 function clients() {
+  let teste = "teste"
   $.ajax({
-    url:"http://localhost/barbearia/php/agendamentos.php?",
+    url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data:{acao: 'CILENTES'},
+    data:{acao: 'CLIENTES', teste},
     dataType: "json",
     success:function(retorno) {
-      
       console.log(retorno)
       let option = "";
       retorno.forEach(element => {
@@ -128,21 +118,14 @@ function agendamentos(callback) {
   });
 }
 
-function novoAgendamento(params) {
-  
+async function novoAgendamento(info = false) {
+  let dataAgenda = $("input[name=dateCalendar]").val();
+
+  reset_form(".form-event");
+
+  let data = info ? moment (info.start).format('DD/MM/YYYY') : dataAgenda;
+  let hora_inicial = info ? moment (info.start).format('HH:mm') : '';
+  let hora_final = info ? moement (info.end).format('HH:mm') : '';
+
+  $()
 }
-
-// $('button').click(function(){
-//   $('#Novo').modal('show');
-// });
-
-// function name(params) {
-//   // console.log(document.getElementsByClassName("teste1"))
-//   //    document.getElementsByClassName("teste1")[2].innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
-//   //     Agendamento
-//   // </button>`;
-
-//   // el.innerHTML = `<button type="button" class="hmodal" data-bs-toggle="modal" data-bs-target="#menu">
-//   //     Agendamento
-//   // </button>`;
-// }

@@ -1,4 +1,5 @@
 <?php 
+// print_r($result); ou var_dump para mostrar um array em PHP.
 
 include 'conexao.php';
 
@@ -22,12 +23,13 @@ switch ($acao) {
   break;
 
   case 'CLIENTES':
+    $teste = $_POST["teste"];
     $sql = "SELECT id,nome_cliente FROM cliente ORDER BY nome_cliente ASC";
 
     $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a lista de clientes");
 
     $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
-    echo($result);
+    
     echo json_encode($result);
   break;
   
