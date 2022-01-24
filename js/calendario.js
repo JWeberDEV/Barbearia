@@ -23,13 +23,9 @@ function initCalendar(){
       selectable: true,
       selectMirror: true,
     select: function(arg) {
+      console.log(arg)
       $('#Novo').modal('show');
     },
-    // dateClick:function (info) {
-    //   alert('Clicked on: ' + info.dateStr);
-    //   alert('Coordinates: ' + info.jsEvent.pagex);
-    //   alert('Current view: ' + info.view.type);
-    // },
     editable: true,
     dayMaxEvents: true,
     // events: 'http://localhost/barbearia/libs/fullcalendar-5.10.1/examples/json/events.json',
@@ -38,10 +34,8 @@ function initCalendar(){
         successCallback(data);
     });
     },
-        eventClick: function(arg) {
-      alert('Event: ' + info.event.title);
-      alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-      alert('View: ' + info.view.type);
+    eventClick: function(arg) {
+      $('#editar').modal('show');
     },
     
   });
@@ -72,6 +66,7 @@ function professionals() {
 
         $("#filtro-profissional").html(option);
         $("#profissional").html(option);
+        $("#profi").html(option);
       }
     })
 }
@@ -91,6 +86,7 @@ function clients() {
       });
       
       $("#cliente").html(option);
+      $("#client").html(option);
     }
   })
 }
@@ -126,6 +122,8 @@ async function novoAgendamento(info = false) {
   let data = info ? moment (info.start).format('DD/MM/YYYY') : dataAgenda;
   let hora_inicial = info ? moment (info.start).format('HH:mm') : '';
   let hora_final = info ? moement (info.end).format('HH:mm') : '';
+
+
 
   $()
 }

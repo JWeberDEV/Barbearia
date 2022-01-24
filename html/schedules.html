@@ -171,7 +171,9 @@
                     <div class="row">
                         <div class="col-md-12">
                             <label>Cliente:</label>
-                            <input class="campos2" type="text" autocomplete="off" placeholder=" Nome Cliente">
+                            <select class="campos2" id="client">
+
+                            </select>
                         </div>
                         <div class="col-md-6">
                             <label>Data:</label>
@@ -184,14 +186,12 @@
                         <div class="col-md-12">
                             <label>Perfil:</label>
                             <br>
-                            <select class="campotexto" name="Perfil">
-                                <option value="Tio Zé">Tio Zé</option>
-                                <option value="Henrique">Henrique</option>
-                                <option value="Gustavo">Gustavo</option>
+                            <select id="profi" class="campos2" name="Perfil">
+                                
                             </select>
                         </div>
                         <div style="padding-top: 3%;">
-                            <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal">Finalizar</button>
+                            <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
                         </div>
                     </div>
                 </div>
@@ -235,11 +235,12 @@
                         <div class="col-md-12">
                             <label>Atendente</label>
                             <br>
-                            <select id="profissional" class="campotexto" name="Perfil">
+                            <select id="profissional" class="campos2" name="Perfil">
                                 
                             </select>
                         </div>
                         <div style="padding-top: 3%;">
+                            <button type="button" class="btn-primary btnmodal " data-bs-dismiss="modal" onclick="novoAgendamento()">Cadastrar</button>
                             <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
                         </div>
                     </div>
