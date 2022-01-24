@@ -23,8 +23,8 @@ function initCalendar(){
       selectable: true,
       selectMirror: true,
     select: function(arg) {
-      console.log(arg)
-      $('#Novo').modal('show');
+      novoAgendamento(arg);
+      
     },
     editable: true,
     dayMaxEvents: true,
@@ -43,13 +43,13 @@ function initCalendar(){
 
 }
 
-function agendar() {
+// function agendar() {
 
-  var myModal = new bootstrap.Modal(document.getElementById('Novo'), {
-      keyboard: false
-  })
-  myModal.show();
-}
+//   var myModal = new bootstrap.Modal(document.getElementById('Novo'), {
+//       keyboard: false
+//   })
+//   myModal.show();
+// }
 
 function professionals() {
     $.ajax({
@@ -114,16 +114,20 @@ function agendamentos(callback) {
   });
 }
 
-async function novoAgendamento(info = false) {
-  let dataAgenda = $("input[name=dateCalendar]").val();
-
+async function novoAgendamento(arg = false) {
+  let dataAgenda = arg;
+  
   reset_form(".form-event");
 
-  let data = info ? moment (info.start).format('DD/MM/YYYY') : dataAgenda;
-  let hora_inicial = info ? moment (info.start).format('HH:mm') : '';
-  let hora_final = info ? moement (info.end).format('HH:mm') : '';
+  let data = arg ? moment(arg.start).format('DD/MM/YYYY') : dataAgenda;
+  let hora_inicial = arg ? moment(arg.start).format('HH:mm') : '';
+  let hora_final = arg ? moment(arg.end).format('HH:mm') : '';
 
+  $("input[name=data-at]").val(data);
+  $("input[name=hora-ini]").val(hora_inicial);
+  $("input[name=hora-fin]").val(hora_final);
 
+  await 
 
-  $()
+  $('#Novo').modal('show');
 }

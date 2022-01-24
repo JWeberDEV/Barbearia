@@ -218,31 +218,38 @@
             <div class="modal-body">
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
+                        <form class="form-event" autocomplete="off">
+                            <div class="col-md-12">
                             <label>Cliente</label>
                             <select class="campos2" id="cliente">
-
                             </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Data</label>
-                            <input class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
-                        </div>
-                        <div class="col-md-6">
-                            <label>Horario</label>
-                            <input id="" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
-                        </div>
-                        <div class="col-md-12">
-                            <label>Atendente</label>
-                            <br>
-                            <select id="profissional" class="campos2" name="Perfil">
-                                
-                            </select>
-                        </div>
-                        <div style="padding-top: 3%;">
-                            <button type="button" class="btn-primary btnmodal " data-bs-dismiss="modal" onclick="novoAgendamento()">Cadastrar</button>
-                            <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
-                        </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <label>Data</label>
+                                    <input name="data-at" class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
+                                </div>
+                                <div class="col-md-6">
+                                    <label>Hora Inicial</label>
+                                    <input name="hora-ini" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
+                                </div>
+                                <div class="col-md-6 align-center">
+                                    <label>Hora Final</label>
+                                    <input name="hora-fin" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Atendente</label>
+                                <br>
+                                <select id="profissional" class="campos2" name="Perfil">
+                            
+                                </select>
+                            </div>
+                            <div style="padding-top: 3%;">
+                                <button type="button" class="btn-primary btnmodal " data-bs-dismiss="modal" onclick="novoAgendamento()">Cadastrar</button>
+                                <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -264,6 +271,8 @@
 <script src="../js/calendario.js"></script>
 <!--Ajax-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!--Moment.js-->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 </body>
 </html>
