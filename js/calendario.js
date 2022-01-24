@@ -117,7 +117,7 @@ function agendamentos(callback) {
 async function novoAgendamento(arg = false) {
   let dataAgenda = arg;
   
-  reset_form(".form-event");
+  // reset_form(".form-event");
 
   let data = arg ? moment(arg.start).format('DD/MM/YYYY') : dataAgenda;
   let hora_inicial = arg ? moment(arg.start).format('HH:mm') : '';
