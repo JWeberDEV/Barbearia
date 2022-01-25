@@ -23,7 +23,7 @@ switch ($acao) {
   break;
 
   case 'CLIENTES':
-    $teste = $_POST["teste"];
+    
     $sql = "SELECT id,nome_cliente FROM cliente ORDER BY nome_cliente ASC";
 
     $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a lista de clientes");
@@ -43,6 +43,32 @@ switch ($acao) {
     $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     echo json_encode($result);
+  break;
+
+  case 'SERVICOS':
+    $sql = "SELECT id,nome FROM servicos ORDER BY nome ASC";
+
+    $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a lista de servicos");
+
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+    echo json_encode($result);
+  break;
+
+  case 'NOVO_AGENDAMENTO':
+    $cliente = $_POST["cliente"];
+    $profissional = $_POST["profissional"];
+    $servico = $_POST["servico"];
+    $criaData = $_POST["data"];
+    $criaHoraIni = $_POST["inicial"];
+    $criaHoraFin = $_POST["final"];
+
+    $sql = "INSERT INTO agenda (id_cliente,id_atendente,data_atendimento,hora_inicial,hora_final,id_servico) 
+    VALUES ($cliente,$profissional,'$criaData','$criaHoraIni','$criaHoraFin',$servico)";
+    
+    $result = $mysqli->query($sql) or die ("ERRO: Falha criar agendamento");
+
+    echo $result;
   break;
 }
 

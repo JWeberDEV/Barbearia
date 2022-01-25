@@ -23,7 +23,7 @@ function initCalendar(){
       selectable: true,
       selectMirror: true,
     select: function(arg) {
-      novoAgendamento(arg);
+      showEvent(arg);
       
     },
     editable: true,
@@ -35,7 +35,7 @@ function initCalendar(){
     });
     },
     eventClick: function(arg) {
-      $('#editar').modal('show');
+      showEdit(arg);
     },
     
   });
@@ -50,6 +50,11 @@ function initCalendar(){
 //   })
 //   myModal.show();
 // }
+
+async function atualizaCalendario() {
+  // calendar.refetchResources();
+  calendar.refetchEvents();
+}
 
 function professionals() {
     $.ajax({
@@ -72,11 +77,11 @@ function professionals() {
 }
 
 function clients() {
-  let teste = "teste"
+  
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data:{acao: 'CLIENTES', teste},
+    data:{acao: 'CLIENTES'},
     dataType: "json",
     success:function(retorno) {
       console.log(retorno)
@@ -87,6 +92,24 @@ function clients() {
       
       $("#cliente").html(option);
       $("#client").html(option);
+    }
+  })
+}
+
+function services() {
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data:{acao: 'SERVICOS'},
+    dataType: "json",
+    success:function(retorno) {
+      console.log(retorno)
+      let option = "";
+      retorno.forEach(element => {
+        option += `<option value='${element.id}'> ${element.nome} </option>`;
+      });
+      
+      $("#servico").html(option);
     }
   })
 }
@@ -114,20 +137,59 @@ function agendamentos(callback) {
   });
 }
 
-async function novoAgendamento(arg = false) {
+async function showEvent(arg = false) {
   let dataAgenda = arg;
   
   // reset_form(".form-event");
 
-  let data = arg ? moment(arg.start).format('DD/MM/YYYY') : dataAgenda;
+  let data = arg ? moment(arg.start).format('YYYY-MM-DD') : dataAgenda;
   let hora_inicial = arg ? moment(arg.start).format('HH:mm') : '';
   let hora_final = arg ? moment(arg.end).format('HH:mm') : '';
 
-  $("input[name=data-at]").val(data);
-  $("input[name=hora-ini]").val(hora_inicial);
-  $("input[name=hora-fin]").val(hora_final);
-
-  await 
+  $("input[id=data-at]").val(data);
+  $("input[id=hora-ini]").val(hora_inicial);
+  $("input[id=hora-fin]").val(hora_final);
 
   $('#Novo').modal('show');
 }
+
+function newEvent() {
+  let data = document.getElementById("data-at").value;
+  let inicial = document.getElementById("hora-ini").value;
+  let final = document.getElementById("hora-fin").value;
+  let cliente = document.getElementById("cliente").value;
+  let profissional = document.getElementById("profissional").value;
+  let servico = document.getElementById("servico").value;
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'NOVO_AGENDAMENTO', data, inicial, final, cliente, profissional, servico},
+    dataType: "json",
+    success: function (retornoAgendamento) {
+      console.log(retornoAgendamento);
+      if (retornoAgendamento == 1) {
+        alert ("O agendamento foi criado com sucesso");
+        atualizaCalendario();
+      }else{
+        alert ("Erro ao criar agendamento");
+      }
+      
+    }
+  });
+  
+}
+
+function showEdit(arg) {
+  let info = arg;
+
+  let data = arg ? moment(arg.start).format('DD/MM/YYYY') : info;
+  let hora_inicial = arg ? moment(arg.start).format('HH:mm') : '';
+  let hora_final = arg ? moment(arg.end).format('HH:mm') : '';
+
+  $("input[id=data-edit]").val(data);
+  $("input[id=edit-ini]").val(hora_inicial);
+  $("input[id=edit-fin]").val(hora_final);
+
+  $('#editar').modal('show');
+}
+

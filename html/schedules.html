@@ -161,38 +161,43 @@
         <div class="modal-content">
 
             <div class="modal-header" style="background-color: #aea7f8;">
-                <h4 class="modal-title">Finalizar agendamento</h4>
+                <h4 class="modal-title">Editar agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
-    
             <div class="modal-body">
-                <h1>Editar agendamento</h1>
                 <div class="container">
                     <div class="row">
-                        <div class="col-md-12">
-                            <label>Cliente:</label>
-                            <select class="campos2" id="client">
+                        <form autocomplete="off">
+                            <div class="col-md-12">
+                                <label>Cliente:</label>
+                                <select class="campos2" id="client">
 
-                            </select>
-                        </div>
-                        <div class="col-md-6">
-                            <label>Data:</label>
-                            <input class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
-                        </div>
-                        <div class="col-md-6">
-                            <label>Horario:</label>
-                            <input class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
-                        </div>
-                        <div class="col-md-12">
-                            <label>Perfil:</label>
-                            <br>
-                            <select id="profi" class="campos2" name="Perfil">
-                                
-                            </select>
-                        </div>
-                        <div style="padding-top: 3%;">
-                            <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
-                        </div>
+                                </select>
+                            </div>
+                            <div class="row justify-content-center">
+                                <div class="col-md-6" style="padding-top: 1%;">
+                                    <label>Data:</label>
+                                    <input id="data-edit" class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
+                                </div>
+                                <div class="col-md-6" style="padding-top: 1%;">
+                                    <label>Horario:</label>
+                                    <input id="edit-ini" class="campos2" type="text" autocomplete="off" placeholder="00:00 - 00:00">
+                                </div>
+                                <div class="col-md-6" style="padding-top: 1%;">
+                                    <label>Horario:</label>
+                                    <input id="edit-fin" class="campos2" type="text" autocomplete="off" placeholder="00:00 - 00:00">
+                                </div>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Perfil:</label>
+                                <select id="profi" class="campos2" name="Perfil">
+                            
+                                </select>
+                            </div>
+                            <div style="padding-top: 3%;">
+                                <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -221,21 +226,28 @@
                         <form class="form-event" autocomplete="off">
                             <div class="col-md-12">
                             <label>Cliente</label>
-                            <select class="campos2" id="cliente">
-                            </select>
+                                <select class="campos2" id="cliente">
+                                    
+                                </select>
                             </div>
+                            <div class="col-md-12" style="padding-top: 1%;">
+                                <label>Servicos</label>
+                                    <select class="campos2" id="servico">
+                                        
+                                    </select>
+                                </div>
                             <div class="row justify-content-center">
                                 <div class="col-md-6" style="padding-top: 1%;">
                                     <label>Data</label>
-                                    <input name="data-at" class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
+                                    <input id="data-at" class="campos2" type="date" autocomplete="off" placeholder=" __/__/____">
                                 </div>
                                 <div class="col-md-6" style="padding-top: 1%;">
                                     <label>Hora Inicial</label>
-                                    <input name="hora-ini" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
+                                    <input id="hora-ini" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 ">
                                 </div>
                                 <div class="col-md-6" style="padding-top: 1%;">
                                     <label>Hora Final</label>
-                                    <input name="hora-fin" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 - 00:00">
+                                    <input id="hora-fin" class="campos2" type="text" autocomplete="off" placeholder=" 00:00 ">
                                 </div>
                             </div>
                             <div class="col-md-12">
@@ -246,7 +258,7 @@
                                 </select>
                             </div>
                             <div style="padding-top: 3%;">
-                                <button type="button" class="btn-primary btnmodal " data-bs-dismiss="modal" onclick="novoAgendamento()">Cadastrar</button>
+                                <button type="button" class="btn-primary btnmodal " data-bs-dismiss="modal" onclick="newEvent()">Cadastrar</button>
                                 <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
                             </div>
                         </form>
@@ -281,6 +293,7 @@
 
     professionals()
     clients()
+    services()
     initCalendar()
     
     // agendamentos()
