@@ -82,9 +82,9 @@
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
     
-            <div class="modal-body corpomodal">
+            <div class="modal-body corpomodal" >
                 <div>
-                    <button type="button" class="btn-warning btnmodal" data-bs-toggle="modal" data-bs-target="#editar">Editar<i class="fa fa-pencil pull-right" aria-hidden="true"></i></button>
+                    <button type="button" class="btn-warning btnmodal" onclick="edit()">Editar<i class="fa fa-pencil pull-right" aria-hidden="false"></i></button>
                 </div>
                 <div>
                     <button type="button" class="btn-danger btnmodal" data-bs-toggle="modal" data-bs-target="#cancelar">Cancelar<i class="fa fa-ban pull-right" aria-hidden="true"></i></button>
@@ -174,18 +174,24 @@
 
                                 </select>
                             </div>
+                            <div class="col-md-12">
+                                <label>Cliente:</label>
+                                <select class="campos2" id="edit-servico">
+
+                                </select>
+                            </div>
                             <div class="row justify-content-center">
                                 <div class="col-md-6" style="padding-top: 1%;">
                                     <label>Data:</label>
-                                    <input id="data-edit" class="campos2" type="text" autocomplete="off" placeholder=" __/__/____">
+                                    <input id="data-edit" class="campos2" type="date" autocomplete="off" placeholder=" __/__/____">
                                 </div>
                                 <div class="col-md-6" style="padding-top: 1%;">
-                                    <label>Horario:</label>
-                                    <input id="edit-ini" class="campos2" type="text" autocomplete="off" placeholder="00:00 - 00:00">
+                                    <label>Horario Inicial:</label>
+                                    <input id="edit-ini" class="campos2" type="text" autocomplete="off" placeholder="00:00">
                                 </div>
                                 <div class="col-md-6" style="padding-top: 1%;">
-                                    <label>Horario:</label>
-                                    <input id="edit-fin" class="campos2" type="text" autocomplete="off" placeholder="00:00 - 00:00">
+                                    <label>Horario Final:</label>
+                                    <input id="edit-fin" class="campos2" type="text" autocomplete="off" placeholder="00:00">
                                 </div>
                             </div>
                             <div class="col-md-12">

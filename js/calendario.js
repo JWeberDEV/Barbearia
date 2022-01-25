@@ -28,20 +28,34 @@ function initCalendar(){
     },
     editable: true,
     dayMaxEvents: true,
-    // events: 'http://localhost/barbearia/libs/fullcalendar-5.10.1/examples/json/events.json',
     events: function(fetchInfo, successCallback, failureCallback) {   
       agendamentos(function(data) {
         successCallback(data);
     });
     },
     eventClick: function(arg) {
-      showEdit(arg);
+      // openClose();
+      $('#menu').modal('show');
+      SendInfoEdit(arg);
+      
     },
     
   });
   calendar.render();
 
 }
+
+function edit() {
+  $('#editar').modal('show')
+  $('#menu').modal('hide')
+}
+
+// function openClose() {
+//   $('#menu').modal('show');
+//   setTimeout(function () {
+//       $('#menu').modal('hide')
+//   }, 2000);
+// }
 
 // function agendar() {
 
@@ -110,6 +124,7 @@ function services() {
       });
       
       $("#servico").html(option);
+      $("#edit-servico").html(option);
     }
   })
 }
@@ -179,17 +194,20 @@ function newEvent() {
   
 }
 
-function showEdit(arg) {
+
+
+function SendInfoEdit(arg) {
   let info = arg;
 
-  let data = arg ? moment(arg.start).format('DD/MM/YYYY') : info;
-  let hora_inicial = arg ? moment(arg.start).format('HH:mm') : '';
-  let hora_final = arg ? moment(arg.end).format('HH:mm') : '';
+  let data = info ? moment(info.event.start).format('YYYY-MM-DD') : info;
+  let hora_inicial = info ? moment(info.event.start).format('HH:mm') : ' ';
+  let hora_final = info ? moment(info.event.end).format('HH:mm') : ' ';
 
+  $("select[id=editar]").val(info.event.title);
   $("input[id=data-edit]").val(data);
   $("input[id=edit-ini]").val(hora_inicial);
   $("input[id=edit-fin]").val(hora_final);
 
-  $('#editar').modal('show');
+  
 }
 
