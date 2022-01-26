@@ -142,6 +142,7 @@ function agendamentos(callback) {
           title: element.nome_cliente, 
           start: element.data_atendimento + ' ' + element.hora_inicial,
           end: element.data_atendimento + ' ' + element.hora_final,
+          id: element.id
           // end: `${element.data_atendimento} ${element.hora_final}`,
           
         })
@@ -195,19 +196,37 @@ function newEvent() {
 }
 
 
-
+// função qu serve para enviar as informações para o modal vindas do calendario e do banco
 function SendInfoEdit(arg) {
   let info = arg;
+
+  let id = info.event.id
+  // let nome = info.event.title;
+  $.ajax({
+    url: "http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'BUSCA_AGENDAMENTO', id},
+    dataType: "text",
+    success:function(agendamento) {
+      agendamento = JSON.parse(agendamento);
+
+      $("#client").val(agendamento[0].id_cliente);
+      $("#edit-servico").val(agendamento[0].id_servico);
+      $("#profi").val(agendamento[0].id_atendente);
+
+    }
+  });
 
   let data = info ? moment(info.event.start).format('YYYY-MM-DD') : info;
   let hora_inicial = info ? moment(info.event.start).format('HH:mm') : ' ';
   let hora_final = info ? moment(info.event.end).format('HH:mm') : ' ';
 
-  $("select[id=editar]").val(info.event.title);
   $("input[id=data-edit]").val(data);
   $("input[id=edit-ini]").val(hora_inicial);
   $("input[id=edit-fin]").val(hora_final);
 
   
 }
+
+
 

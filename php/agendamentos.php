@@ -70,6 +70,19 @@ switch ($acao) {
 
     echo $result;
   break;
+
+  case 'BUSCA_AGENDAMENTO':
+    $idAgendamento =$_POST["id"];
+
+    $sql = " SELECT id_cliente,id_atendente,id_servico FROM agenda WHERE id = '$idAgendamento'  ";
+    
+    $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer o agendamento");
+
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+    echo json_encode($result);
+
+  break;
 }
 
 ?>
