@@ -58,13 +58,13 @@ function initCalendar(){
 //   }, 2000);
 // }
 
-// function agendar() {
+function fechar() {
 
-//   var myModal = new bootstrap.Modal(document.getElementById('Novo'), {
-//       keyboard: false
-//   })
-//   myModal.show();
-// }
+  var myModal = new bootstrap.Modal(document.getElementById('cancelar'), {
+      keyboard: false
+  })
+  myModal.hide();
+}
 
 async function atualizaCalendario() {
   // calendar.refetchResources();
@@ -276,23 +276,64 @@ function editaAgendamento() {
       if (retorno != 1) {
         alert("Erro ao editar o agendamento");
         atualizaCalendario()
+        
       }
       else{
         alert("Agendamento alterado com sucesso.")
-        atualizaCalendario()
+        atualizaCalendario();
+        
       }
     }
   });
   // atualizaCalendario()
 }
 
-function deletaAgendamento() {
+function CancelaAgendamento() {
   const id = $("input[name=id_agenda]").val();
   let justificativa = document.getElementById("story").value;
-  console.log(id);
+  
+  if(!justificativa){
+    return alert('Prencha o campo');
+    
+  }
 
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'CANCELA_EVENTO', id, justificativa},
+    dataType: "text",
+    success:function (retorna) {
+      if (retorna != 1) {
+        alert("Erro ao editar o agendamento");
+        atualizaCalendario()
+      }
+      else{
+        alert("Agendamento alterado com sucesso.")
+        atualizaCalendario()
+        $('#cancelar').modal('hide');
+      }
+    }
+  });
 
 }
+
+function ExibeMotivo() {
+  const id = $("input[name=id_agenda]").val();
+
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'EXIBE_JUSTIFICATIVA',id},
+    dataType: "text",
+    success:function (justify) {
+      justify = JSON.parse(justify);
+      $("#story").val(justify[0].justificativa);
+      
+    }
+  });
+}
+
+
 
 function cancelEvent(){
   const justify = prompt("Informe a justificativa");

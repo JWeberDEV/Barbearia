@@ -112,6 +112,29 @@ switch ($acao) {
 
     echo $resultado;
   break;
+
+  case 'CANCELA_EVENTO':
+    $id = $_POST["id"];
+    $justificativa = $_POST["justificativa"];
+
+    $sql = "UPDATE agenda SET justificativa = '$justificativa', id_status = 4 WHERE id = '$id'";
+
+    $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
+
+    echo $resultado;
+  break;
+
+  case 'EXIBE_JUSTIFICATIVA':
+    $id = $_POST["id"];
+
+    $sql = "SELECT justificativa FROM agenda WHERE id = $id";
+
+    $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a justificativa");
+
+    $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+    echo json_encode($result);
+  break;
 }
 
 ?>

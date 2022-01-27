@@ -87,7 +87,7 @@
                     <button type="button" class="btn-warning btnmodal" onclick="ShowInfoEvent()">Editar<i class="fa fa-pencil pull-right" aria-hidden="false"></i></button>
                 </div>
                 <div>
-                    <button type="button" class="btn-danger btnmodal" data-bs-toggle="modal" data-bs-target="#cancelar">Cancelar<i class="fa fa-ban pull-right" aria-hidden="true"></i></button>
+                    <button type="button" class="btn-danger btnmodal" data-bs-toggle="modal" data-bs-target="#cancelar" onclick="ExibeMotivo()">Cancelar<i class="fa fa-ban pull-right" aria-hidden="true"></i></button>
                 </div>
                 <div>
                     <button type="button" class="btn-success btnmodal" data-bs-toggle="modal" data-bs-target="#finalizar">Finalizar<i class="fa fa-check-circle pull-right" aria-hidden="true"></i></button>
@@ -140,10 +140,10 @@
     
             <div class="modal-body">
                 <div class="">
-                    <textarea class="campotexto" id="story" name="story" rows="5" cols="33"></textarea>
+                    <textarea class="campotexto" id="story" name="story" rows="5" cols="33" required></textarea>
                 </div>
                 <div>
-                    <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal" onclick="deletaAgendamento()">Finalizar</button>
+                    <button type="button" class="btn-success btnmodal " onclick="CancelaAgendamento()">Confirmar</button>
                 </div>
             </div>
     
