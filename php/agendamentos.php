@@ -135,6 +135,16 @@ switch ($acao) {
     
     echo json_encode($result);
   break;
+
+  case 'FINALIZA_ATENDIMENTO':
+    $id = $_POST["id"];
+    
+    $sql = "UPDATE agenda SET id_status = 2 WHERE id = $id";
+
+    $resultado = $mysqli->query($sql) or die ("ERRO: Ao finalizar agendamento");
+
+    echo $resultado;
+  break;
 }
 
 ?>

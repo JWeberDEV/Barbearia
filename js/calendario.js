@@ -333,7 +333,35 @@ function ExibeMotivo() {
   });
 }
 
+function contaAgendamentos() {
+  const id = $("input[name=id_agenda]").val();
 
+  $.ajax({
+    url:""
+  });
+}
+
+function finalizaAgendamento() {
+  const id = $("input[name=id_agenda]").val();
+
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'FINALIZA_ATENDIMENTO',id},
+    dataType: "text",
+    success:function (retorno) {
+      if (retorno != 1) {
+        alert("Erro ao finalizar o agendamento");
+        atualizaCalendario();
+      }
+      else{
+        alert("Agendamento encerrado com sucesso.");
+        atualizaCalendario();
+      }
+    }  
+  });
+
+}
 
 function cancelEvent(){
   const justify = prompt("Informe a justificativa");
