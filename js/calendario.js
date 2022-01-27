@@ -265,11 +265,12 @@ function editaAgendamento() {
   let horaInicial = document.getElementById("edit-ini").value;
   let horaFinal = document.getElementById("edit-fin").value;
   let atendente = document.getElementById("profi").value; 
-
+  let status = document.getElementById("status").value;
+  
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data: {acao: 'EDITA_AGENDAMENTO', id,cliente, servico, data, horaInicial, horaFinal, atendente},
+    data: {acao: 'EDITA_AGENDAMENTO', id,cliente, servico, data, horaInicial, horaFinal, atendente,status},
     dataType: "text",
     success:function (retorno) {
       if (retorno != 1) {
