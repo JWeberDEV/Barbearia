@@ -76,7 +76,7 @@
 <div class="modal" id="menu">
     <div class="modal-dialog">
         <div class="modal-content">
-
+            <input type="hidden" name="id_agenda">
             <div class="modal-header" style="background-color: #aea7f8;">
                 <h4 class="modal-title">Opções Agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
@@ -84,7 +84,7 @@
     
             <div class="modal-body corpomodal" >
                 <div>
-                    <button type="button" class="btn-warning btnmodal" onclick="edit()">Editar<i class="fa fa-pencil pull-right" aria-hidden="false"></i></button>
+                    <button type="button" class="btn-warning btnmodal" onclick="ShowInfoEvent()">Editar<i class="fa fa-pencil pull-right" aria-hidden="false"></i></button>
                 </div>
                 <div>
                     <button type="button" class="btn-danger btnmodal" data-bs-toggle="modal" data-bs-target="#cancelar">Cancelar<i class="fa fa-ban pull-right" aria-hidden="true"></i></button>
@@ -143,7 +143,7 @@
                     <textarea class="campotexto" id="story" name="story" rows="5" cols="33"></textarea>
                 </div>
                 <div>
-                    <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal">Finalizar</button>
+                    <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal" onclick="deletaAgendamento()">Finalizar</button>
                 </div>
             </div>
     
@@ -168,6 +168,7 @@
                 <div class="container">
                     <div class="row">
                         <form autocomplete="off">
+                            <input id="idAgendamento" type="hidden">
                             <div class="col-md-12">
                                 <label>Cliente:</label>
                                 <select class="campos2" id="client">
@@ -178,6 +179,18 @@
                                 <label>Servico:</label>
                                 <select class="campos2" id="edit-servico">
 
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Atendente:</label>
+                                <select id="profi" class="campos2" name="Perfil">
+                            
+                                </select>
+                            </div>
+                            <div class="col-md-12">
+                                <label>Status:</label>
+                                <select id="status" class="campos2" >
+                            
                                 </select>
                             </div>
                             <div class="row justify-content-center">
@@ -194,14 +207,9 @@
                                     <input id="edit-fin" class="campos2" type="text" autocomplete="off" placeholder="00:00">
                                 </div>
                             </div>
-                            <div class="col-md-12">
-                                <label>Atendente:</label>
-                                <select id="profi" class="campos2" name="Perfil">
                             
-                                </select>
-                            </div>
                             <div style="padding-top: 3%;">
-                                <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal">Finalizar</button>
+                                <button type="button" class="btn-success btnmodal " data-bs-dismiss="modal" onclick="editaAgendamento()">Finalizar</button>
                             </div>
                         </form>
                     </div>
@@ -299,8 +307,9 @@
     professionals()
     clients()
     services()
+    status()
     initCalendar()
-    
+
     // agendamentos()
 
 </script>

@@ -35,8 +35,9 @@ function initCalendar(){
     },
     eventClick: function(arg) {
       // openClose();
+      $("input[name=id_agenda]").val(arg.event.id);
       $('#menu').modal('show');
-      SendInfoEdit(arg);
+      // SendInfoEdit(arg);
       
     },
     
@@ -45,10 +46,10 @@ function initCalendar(){
 
 }
 
-function edit() {
-  $('#editar').modal('show')
-  $('#menu').modal('hide')
-}
+// function edit() {
+//   $('#editar').modal('show')
+//   $('#menu').modal('hide')
+// }
 
 // function openClose() {
 //   $('#menu').modal('show');
@@ -70,6 +71,7 @@ async function atualizaCalendario() {
   calendar.refetchEvents();
 }
 
+// função que lista os atendentes cadastrados no banco e exibe num select
 function professionals() {
     $.ajax({
       url:"http://localhost/barbearia/php/agendamentos.php",
@@ -89,6 +91,8 @@ function professionals() {
       }
     })
 }
+
+// função que lista os clientes cadastrados no banco e exibe num select
 
 function clients() {
   
@@ -110,6 +114,7 @@ function clients() {
   })
 }
 
+// função que lista os serviços cadastrados no banco e exibe num select
 function services() {
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
@@ -129,6 +134,26 @@ function services() {
   })
 }
 
+// função que lista os status cadastrados no banco e exibe num select
+function status() {
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data:{acao: 'STATUS'},
+    dataType: "json",
+    success:function(retorno) {
+      console.log(retorno)
+      let option = "";
+      retorno.forEach(element => {
+        option += `<option value='${element.id}'> ${element.nome} </option>`;
+      });
+      
+      $("#status").html(option);
+    }
+  })
+}
+
+// função  que traz os agendamentos do banco e exibe na tela
 function agendamentos(callback) {
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
@@ -142,7 +167,9 @@ function agendamentos(callback) {
           title: element.nome_cliente, 
           start: element.data_atendimento + ' ' + element.hora_inicial,
           end: element.data_atendimento + ' ' + element.hora_final,
-          id: element.id
+          id: element.id,
+          color: element.cor_status
+
           // end: `${element.data_atendimento} ${element.hora_final}`,
           
         })
@@ -153,7 +180,10 @@ function agendamentos(callback) {
   });
 }
 
-async function showEvent(arg = false) {
+
+
+// função que envia as infrormações de data e hora para o modal que cria eventos
+function showEvent(arg = false) {
   let dataAgenda = arg;
   
   // reset_form(".form-event");
@@ -169,6 +199,7 @@ async function showEvent(arg = false) {
   $('#Novo').modal('show');
 }
 
+// função que cria um novo agendamento
 function newEvent() {
   let data = document.getElementById("data-at").value;
   let inicial = document.getElementById("hora-ini").value;
@@ -196,12 +227,14 @@ function newEvent() {
 }
 
 
-// função qu serve para enviar as informações para o modal vindas do calendario e do banco
-function SendInfoEdit(arg) {
-  let info = arg;
+// função que serve para enviar as informações para o modal vindas do calendario e do banco
+function ShowInfoEvent() {
 
-  let id = info.event.id
-  // let nome = info.event.title;
+  const id = $("input[name=id_agenda]").val();
+      
+  $('#editar').modal('show'); 
+  $('#menu').modal('hide');
+
   $.ajax({
     url: "http://localhost/barbearia/php/agendamentos.php",
     type: "post",
@@ -209,24 +242,77 @@ function SendInfoEdit(arg) {
     dataType: "text",
     success:function(agendamento) {
       agendamento = JSON.parse(agendamento);
-
+      $("#idAgendamento").val(agendamento[0].id);
       $("#client").val(agendamento[0].id_cliente);
       $("#edit-servico").val(agendamento[0].id_servico);
       $("#profi").val(agendamento[0].id_atendente);
-
+      $("#data-edit").val(agendamento[0].data_atendimento);
+      $("#edit-ini").val(agendamento[0].hora_inicial);
+      $("#edit-fin").val(agendamento[0].hora_final);
+      $("#status").val(agendamento[0].id_status);
     }
   });
 
-  let data = info ? moment(info.event.start).format('YYYY-MM-DD') : info;
-  let hora_inicial = info ? moment(info.event.start).format('HH:mm') : ' ';
-  let hora_final = info ? moment(info.event.end).format('HH:mm') : ' ';
 
-  $("input[id=data-edit]").val(data);
-  $("input[id=edit-ini]").val(hora_inicial);
-  $("input[id=edit-fin]").val(hora_final);
-
-  
 }
 
 
+function editaAgendamento() {
+  let id = document.getElementById("idAgendamento").value;
+  let cliente = document.getElementById("client").value;
+  let servico = document.getElementById("edit-servico").value;
+  let data = document.getElementById("data-edit").value;
+  let horaInicial = document.getElementById("edit-ini").value;
+  let horaFinal = document.getElementById("edit-fin").value;
+  let atendente = document.getElementById("profi").value; 
 
+  $.ajax({
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'EDITA_AGENDAMENTO', id,cliente, servico, data, horaInicial, horaFinal, atendente},
+    dataType: "text",
+    success:function (retorno) {
+      if (retorno != 1) {
+        alert("Erro ao editar o agendamento");
+        atualizaCalendario()
+      }
+      else{
+        alert("Agendamento alterado com sucesso.")
+        atualizaCalendario()
+      }
+    }
+  });
+  // atualizaCalendario()
+}
+
+function deletaAgendamento() {
+  const id = $("input[name=id_agenda]").val();
+  let justificativa = document.getElementById("story").value;
+  console.log(id);
+
+
+}
+
+function cancelEvent(){
+  const justify = prompt("Informe a justificativa");
+
+  if(!justify){
+    return alert('Prencha o campo');
+  }
+
+  console.log(justify);
+
+  const id = $("input[name=id_agenda]").val();
+
+
+}
+
+// função que cria mascara para textos
+// $(function(){
+//   $('.date').mask("00/00/0000", { placeholder: "__/__/____" });
+//   $('.hour').mask("00:00", { placeholder: "__:__" });
+//   $('.cpf').mask('000.000.000-00', { clearIfNotMatch: true, reverse: true, placeholder: "000.000.000-00"});
+//   $('.phone').mask(validate, { clearIfNotMatch: true, placeholder: "(00) 00000-0000"});
+
+//   load();
+// })

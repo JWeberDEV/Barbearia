@@ -202,7 +202,7 @@ switch ($acao) {
       $altcidade = ($_POST['altcidade']);
       
       $sql = " UPDATE cliente SET nome_cliente = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', data_nasc =  '$altdata', profissao= '$altprofissao', cidade = '$altcidade' WHERE id = '$id' ";
-      echo $sql;
+      
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
 
       echo $resultado;
