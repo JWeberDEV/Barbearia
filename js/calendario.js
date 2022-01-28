@@ -256,7 +256,6 @@ function ShowInfoEvent() {
 
 }
 
-
 function editaAgendamento() {
   let id = document.getElementById("idAgendamento").value;
   let cliente = document.getElementById("client").value;
@@ -337,7 +336,24 @@ function contaAgendamentos() {
   const id = $("input[name=id_agenda]").val();
 
   $.ajax({
-    url:""
+    url:"http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao:'CONTA_AGENDAMENTOS', id},
+    dataType: "text",
+    success:function (qtd) {
+      qtd = JSON.parse(qtd);
+      $("input[name=qtd]").val(qtd[0].total_agendamentos);
+      const quantidade = $("input[name=qtd]").val();
+      
+      if (quantidade >= 10) {
+        $("div.quantidade-qtd").html(`<h1 style='text-align: center;'> Yuppp!!! </h1>
+        <br>
+        <p style='text-align: center;'> Este cliente ja tem mais de 10 agendamentos, que tal um deconto? </p>`);
+      }else{
+        $("div.quantidade-qtd").html(`<h1 style='text-align: center;'> Cliqeu em finalizar, para encerrar o agendamento </h1>`);
+        
+      }
+    }
   });
 }
 
@@ -357,6 +373,7 @@ function finalizaAgendamento() {
       else{
         alert("Agendamento encerrado com sucesso.");
         atualizaCalendario();
+        
       }
     }  
   });

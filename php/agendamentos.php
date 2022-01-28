@@ -145,6 +145,27 @@ switch ($acao) {
 
     echo $resultado;
   break;
+
+  case 'CONTA_AGENDAMENTOS':
+    $id = $_POST["id"];
+
+    $sql = " SELECT a.id_cliente FROM agenda a WHERE id = $id";
+    $agenda = $mysqli->query($sql) or die ("ERRO: trazer o id do cliente");
+
+    if($agenda->num_rows > 0){
+      $objectClient = mysqli_fetch_object($agenda);
+      $idCliente = $objectClient->id_cliente;
+      
+      $sql2 = " SELECT COUNT(a.id_cliente) AS 'total_agendamentos' FROM agenda a WHERE id_cliente = $idCliente";
+      
+      $result = $mysqli->query($sql2) or die ("ERRO: ao trazer a quantidade de agendamentos");
+      $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    
+      echo json_encode($result);
+
+    }
+
+  break;
 }
 
 ?>

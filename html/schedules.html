@@ -90,11 +90,10 @@
                     <button type="button" class="btn-danger btnmodal" data-bs-toggle="modal" data-bs-target="#cancelar" onclick="ExibeMotivo()">Cancelar<i class="fa fa-ban pull-right" aria-hidden="true"></i></button>
                 </div>
                 <div>
-                    <button type="button" class="btn-success btnmodal" data-bs-toggle="modal" data-bs-target="#finalizar">Finalizar<i class="fa fa-check-circle pull-right" aria-hidden="true"></i></button>
+                    <button type="button" class="btn-success btnmodal" data-bs-toggle="modal" data-bs-target="#finalizar" onclick="contaAgendamentos()">Finalizar<i class="fa fa-check-circle pull-right" aria-hidden="true"></i></button>
                 </div>
             </div>
     
-            
         </div>
     </div>
 </div>
@@ -113,10 +112,12 @@
             </div>
     
             <div class="modal-body corpomodal">
-                <h1 style="text-align: center;">Yuppp!!!</h1>
-                <p>Este já é o décimo atendimento deste cliente!!! que tal conceder um desconto!</p>
+                <input type="hidden" name="qtd">
+                <div class="quantidade-qtd">
+                
+                </div>
                 <div>
-                    <button type="button" class="btn-success btnmodal close" data-bs-dismiss="modal" value="Cancel">Finalizar</button>
+                    <button type="button" class="btn-success btnmodal" data-bs-dismiss="modal" value="Cancel" onclick="finalizaAgendamento()">Finalizar</button>
                 </div>
             </div>
     
