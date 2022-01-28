@@ -45,16 +45,37 @@ switch ($acao) {
   break;
   
   case 'AGENDAMENTOS':
-    $sql = " SELECT a.id, c.nome_cliente, a.data_atendimento, a.hora_inicial, a.hora_final,s.chave,s.cor_status FROM agenda a 
+    $idProfissional = $_POST["idProfissional"];
+
+    $sql = 
+      "SELECT 
+        a.id, 
+        c.nome_cliente, 
+        a.data_atendimento, 
+        a.hora_inicial, 
+        a.hora_final,
+        s.chave,
+        s.cor_status
+    FROM agenda a 
     INNER JOIN usuario u ON u.id = a.id_atendente 
     INNER JOIN cliente c ON c.id = a.id_cliente 
-    INNER JOIN status_agenda s ON s.id = a.id_status ";
+    INNER JOIN status_agenda s ON s.id = a.id_status
+    WHERE 1 = 1";
+
+    if($idProfissional){
+      $sql .= " AND a.id_atendente = $idProfissional";
+    }
+
+    // if($idCliente){
+    //   sql.= " AND a.id_cliente = $idCliente";
+    // }
 
     $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer os agendamentos");
 
     $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
     echo json_encode($result);
+
   break;
 
   case 'SERVICOS':

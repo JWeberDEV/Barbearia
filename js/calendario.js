@@ -155,10 +155,12 @@ function status() {
 
 // função  que traz os agendamentos do banco e exibe na tela
 function agendamentos(callback) {
+  let idProfissional = $("select[id=filtro-profissional]").val();
+
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data:{acao: 'AGENDAMENTOS'},
+    data:{acao: 'AGENDAMENTOS', idProfissional},
     dataType: "json",
     success: function(agendados) {
       let events = [];
@@ -174,10 +176,13 @@ function agendamentos(callback) {
           
         })
         
-      }); 
+      });
+       
       return callback(events);
+      
     }
   });
+  
 }
 
 
