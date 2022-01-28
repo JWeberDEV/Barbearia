@@ -80,7 +80,7 @@ function professionals() {
       dataType: "json",
       success:function(retorno) {
         console.log(retorno)
-        let option = "";
+        let option = "<option value=''> Todos </option>";
         retorno.forEach(element => {
           option += `<option value='${element.id}'> ${element.nome} </option>`;
         });
@@ -350,7 +350,7 @@ function contaAgendamentos() {
         <br>
         <p style='text-align: center;'> Este cliente ja tem mais de 10 agendamentos, que tal um deconto? </p>`);
       }else{
-        $("div.quantidade-qtd").html(`<h1 style='text-align: center;'> Cliqeu em finalizar, para encerrar o agendamento </h1>`);
+        $("div.quantidade-qtd").html(`<h1 style='text-align: center;'> Clique em finalizar, para encerrar o agendamento </h1>`);
         
       }
     }
@@ -380,19 +380,44 @@ function finalizaAgendamento() {
 
 }
 
-function cancelEvent(){
-  const justify = prompt("Informe a justificativa");
-
-  if(!justify){
-    return alert('Prencha o campo');
-  }
-
-  console.log(justify);
-
+function deletaEvento() {
   const id = $("input[name=id_agenda]").val();
 
+  var dialog = confirm("Este registro será removido totalemnte do sistema. Tem certeza que deseja continuar?");
+  
+  if (dialog) {
+    console.log('Data Saved');
 
+    $.ajax({
+      url:"http://localhost/barbearia/php/agendamentos.php",
+      type: "post",
+      data: {acao: 'DELETA_AGENDAMENTO',id},
+      dataType: "text",
+      success:function () {
+        $('#menu').modal('hide');
+        atualizaCalendario();
+      }
+    });
+  }
+  else {
+    console.log('Data Not Saved');
+    $('#menu').modal('hide');
+  }
 }
+
+// function cancelEvent(){
+//   const justify = prompt("Informe a justificativa");
+
+//   if(!justify){
+//     return alert('Prencha o campo');
+//   }
+
+//   console.log(justify);
+
+//   const id = $("input[name=id_agenda]").val();
+
+
+// }
 
 // função que cria mascara para textos
 // $(function(){

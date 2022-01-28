@@ -166,6 +166,13 @@ switch ($acao) {
     }
 
   break;
+
+  case 'DELETA_AGENDAMENTO':
+    $id = $_POST["id"];
+
+    $mysqli->query(" DELETE FROM agenda WHERE id = $id ");
+
+  break;
 }
 
 ?>
