@@ -41,10 +41,10 @@ function initCalendar(){
       
     },
     eventResize: function(arg) {
-      
+      arrastavel(arg)
     },
     eventDrop: function(arg) {
-      
+      arrastavel(arg)
     },
     
   });
@@ -64,16 +64,8 @@ function initCalendar(){
 //   }, 2000);
 // }
 
-function fechar() {
-
-  var myModal = new bootstrap.Modal(document.getElementById('cancelar'), {
-      keyboard: false
-  })
-  myModal.hide();
-}
 
 async function atualizaCalendario() {
-  // calendar.refetchResources();
   calendar.refetchEvents();
 }
 
@@ -225,7 +217,6 @@ function newEvent() {
     data: {acao: 'NOVO_AGENDAMENTO', data, inicial, final, cliente, profissional, servico},
     dataType: "json",
     success: function (retornoAgendamento) {
-      console.log(retornoAgendamento);
       if (retornoAgendamento == 1) {
         alert ("O agendamento foi criado com sucesso");
         atualizaCalendario();
@@ -237,7 +228,6 @@ function newEvent() {
   });
   
 }
-
 
 // função que serve para enviar as informações para o modal vindas do calendario e do banco
 function ShowInfoEvent() {
@@ -296,7 +286,44 @@ function editaAgendamento() {
       }
     }
   });
-  // atualizaCalendario()
+  
+}
+
+function arrastavel(info) {
+
+  var dialog = confirm("Este registro será modificado deseja continuar?");
+
+  if (dialog) {
+    let id = info.event.id;
+    let cliente = info.event.title;
+    let data = moment(info.event.start).format('YYYY/MM/DD');
+    let horaInicial = moment(info.event.start).format('HH:mm');
+    let horaFinal = moment(info.event.end).format('HH:mm');
+    
+    
+
+    $.ajax({
+      url:"http://localhost/barbearia/php/agendamentos.php",
+      type: "post",
+      data: {acao: 'REDIMENCIONA_AGENDAMENTO', id, data, horaInicial, horaFinal},
+      dataType: "text",
+      success:function (retorno) {
+        if (retorno != 1) {
+          alert("Erro ao editar o agendamento");
+          atualizaCalendario()
+          
+        }
+        else{
+          alert("Agendamento alterado com sucesso.")
+          atualizaCalendario();
+          
+        }
+      }
+    });
+  }else{
+    atualizaCalendario();
+  }
+  
 }
 
 function CancelaAgendamento() {
@@ -328,6 +355,7 @@ function CancelaAgendamento() {
 
 }
 
+// função que traz do banco o motivo pelo qual foi cancelado o agendamento
 function ExibeMotivo() {
   const id = $("input[name=id_agenda]").val();
 
@@ -344,6 +372,7 @@ function ExibeMotivo() {
   });
 }
 
+// função que traz a quantidade de vezes que um cliente foi ao estabelecimento
 function contaAgendamentos() {
   const id = $("input[name=id_agenda]").val();
 
@@ -398,7 +427,7 @@ function deletaEvento() {
   var dialog = confirm("Este registro será removido totalemnte do sistema. Tem certeza que deseja continuar?");
   
   if (dialog) {
-    console.log('Data Saved');
+    
 
     $.ajax({
       url:"http://localhost/barbearia/php/agendamentos.php",
@@ -412,7 +441,7 @@ function deletaEvento() {
     });
   }
   else {
-    console.log('Data Not Saved');
+    
     $('#menu').modal('hide');
   }
 }

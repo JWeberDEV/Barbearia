@@ -182,8 +182,8 @@ switch ($acao) {
       $objectClient = mysqli_fetch_object($agenda);
       $idCliente = $objectClient->id_cliente;
       
-      $sql2 = " SELECT COUNT(a.id_cliente) AS 'total_agendamentos' FROM agenda a WHERE id_cliente = $idCliente";
-      
+      $sql2 = " SELECT COUNT(a.id_cliente) AS 'total_agendamentos' FROM agenda a WHERE id_cliente = $idCliente /*AND id_servico = 2*/";
+      echo $sql2;
       $result = $mysqli->query($sql2) or die ("ERRO: ao trazer a quantidade de agendamentos");
       $result = mysqli_fetch_all($result, MYSQLI_ASSOC);
     
@@ -198,6 +198,20 @@ switch ($acao) {
 
     $mysqli->query(" DELETE FROM agenda WHERE id = $id ");
 
+  break;
+
+  case 'REDIMENCIONA_AGENDAMENTO':
+    $id = $_POST["id"];
+    $data = $_POST["data"];
+    $horaInicial = $_POST["horaInicial"];
+    $horaFinal = $_POST["horaFinal"];
+    // echo "$id   $data   $horaInicial    $horaFinal";
+
+    $sql = " UPDATE agenda SET data_atendimento = '$data', hora_inicial = '$horaInicial', hora_final =  '$horaFinal' WHERE id = $id ";
+    // echo $sql;
+    $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
+
+    echo $resultado;
   break;
 }
 
