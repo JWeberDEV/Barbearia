@@ -40,6 +40,12 @@ function initCalendar(){
       // SendInfoEdit(arg);
       
     },
+    eventResize: function(arg) {
+      
+    },
+    eventDrop: function(arg) {
+      
+    },
     
   });
   calendar.render();
@@ -156,11 +162,12 @@ function status() {
 // função  que traz os agendamentos do banco e exibe na tela
 function agendamentos(callback) {
   let idProfissional = $("select[id=filtro-profissional]").val();
+  let searchClient = $("input[name=client]").val();
 
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data:{acao: 'AGENDAMENTOS', idProfissional},
+    data:{acao: 'AGENDAMENTOS', idProfissional, cliente: searchClient},
     dataType: "json",
     success: function(agendados) {
       let events = [];

@@ -46,7 +46,8 @@ switch ($acao) {
   
   case 'AGENDAMENTOS':
     $idProfissional = $_POST["idProfissional"];
-
+    $buscaCliente = $_POST["cliente"];
+    
     $sql = 
       "SELECT 
         a.id, 
@@ -65,6 +66,10 @@ switch ($acao) {
     if($idProfissional){
       $sql .= " AND a.id_atendente = $idProfissional";
     }
+    if ($buscaCliente) {
+      $sql .= " AND c.nome_cliente LIKE '%$buscaCliente%' ";
+    }
+    
 
     // if($idCliente){
     //   sql.= " AND a.id_cliente = $idCliente";
