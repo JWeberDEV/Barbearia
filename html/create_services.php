@@ -44,3 +44,13 @@
 
 </body>
 </html>
+
+<script>
+    function mascara(){
+        $('#preco').mask('R$ 000-00', {reverse: true});
+        
+    };
+
+    mascara()
+
+</script>

@@ -271,6 +271,12 @@
 
 <script>
 
+    function mascara(){
+        $('#edit-ini').mask('00:00',);
+
+        };
+
+    mascara()
     professionals()
     clients()
     services()

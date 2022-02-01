@@ -387,15 +387,13 @@ function editarservico(id = servicoid) {
 }
 
 // função que cria mascara para textos
-$(function(){
-  $('.date').mask("00/00/0000", { placeholder: "__/__/____" });
-  $('.hour').mask("00:00", { placeholder: "__:__" });
-  $('#altcpf').mask('000.000.000-00', { clearIfNotMatch: true, reverse: true, placeholder: "000.000.000-00"});
-  $('.phone').mask(validate, { clearIfNotMatch: true, placeholder: "(00) 00000-0000"});
+// $(function(){
+//   $('.date').mask("00/00/0000", { placeholder: "__/__/____" });
+//   $('.hour').mask("00:00", { placeholder: "__:__" });
+//   $('#cpf').mask('000.000.000-00', { reverse: true});
+//   $('.phone').mask(validate, { clearIfNotMatch: true, placeholder: "(00) 00000-0000"});
 
-  load();
-
-})
+// })
 
 
 window.addEventListener('DOMContentLoaded', event => {
