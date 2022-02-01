@@ -8,7 +8,6 @@
     <title>CRIA USUÁRIO</title>
     <?php require_once "../includes/inportacoes _css.php"; ?>
 
-
 </head>
 <body>
     <div class="d-flex" id="wrapper">
@@ -65,6 +64,6 @@
 
     <?php require_once "../includes/inportacoes _scripts.php"; ?>
     
-    </script>
+    
 </body>
 </html>
