@@ -31,7 +31,7 @@ function login() {
         dataType: "text",
         success: function(data){
             if(data == 1){
-                window.location.href = "html/home.html";
+                window.location.href = "html/home.php";
             }else{
                 alert("Os Dados Preenchidos, estão incorretos.");
             }
@@ -63,7 +63,7 @@ function newuser() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/users.html"
+                window.location.href = "http://localhost/barbearia/html/users.php"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -188,7 +188,7 @@ function newclient() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/clients.html"
+                window.location.href = "http://localhost/barbearia/html/clients.php"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -302,7 +302,7 @@ function criaservico() {
         success: function (data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/services.html"
+                window.location.href = "http://localhost/barbearia/html/services.php"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -385,6 +385,17 @@ function editarservico(id = servicoid) {
         }
     });
 }
+
+// função que cria mascara para textos
+$(function(){
+  $('.date').mask("00/00/0000", { placeholder: "__/__/____" });
+  $('.hour').mask("00:00", { placeholder: "__:__" });
+  $('#altcpf').mask('000.000.000-00', { clearIfNotMatch: true, reverse: true, placeholder: "000.000.000-00"});
+  $('.phone').mask(validate, { clearIfNotMatch: true, placeholder: "(00) 00000-0000"});
+
+  load();
+
+})
 
 
 window.addEventListener('DOMContentLoaded', event => {

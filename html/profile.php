@@ -6,39 +6,16 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>CLIENTES</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../img/logo_barber.png" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/styles 2.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../libs/font-awesome-4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="../libs/bootstrap-5.1.3-dist/css/bootstrap-grid.min.css">
+    <?php require_once "../includes/inportacoes _css.php"; ?>
 </head>
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
-        <div class="border-end bg-white" id="sidebar-wrapper" style="background-color: #5c50e0;">
-            <div class="sidebar-heading border-bottom" style="background-color: #5c50e0;">Barbearia </div>
-            <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="users.html">Usuários <i class="fa fa-user" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Clients.html">Clientes  <i class="fa fa-users" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 flut" href="services.html">Serviços <i class="fa fa-scissors" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="schedules.html">Agenda <i class="fa fa-calendar" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="profile.html">Meu Perfil <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="../index.html">Nome do usuário logado <i class="fa fa-sign-out" aria-hidden="true"></i></a>
-            </div>
-        </div>
+        <?php require_once "../includes/menu.php"?>
+
         <div id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <div class="container-fluid">
-                    <button class="btn" style="background-color: #5c50e0;" id="sidebarToggle"><strong>Menu</strong></button>
-                </div>
-            </nav>
-            <!-- Page content-->
-            <div class="fundo">
-                <img class="fundo" src="../img/Fundo.png" alt="Plano de fundo">
-            </div>
+            <?php require_once "../includes/navbar.php"?>
 
             <div style="padding-top: 7%;">
                 <div class="container2 tabela">
@@ -86,11 +63,8 @@
             </div>
         </div>
     </div>
-    <!-- Bootstrap core JS-->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/js/bootstrap.bundle.min.js"></script>
-    <!-- Core theme JS-->
-    <script src="../js/scripts.js"></script>
-        <!--Ajax-->
-        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script
+
+    <?php require_once "../includes/inportacoes _scripts.php"; ?>
+    
 </body>
 </html>

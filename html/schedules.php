@@ -6,41 +6,17 @@
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>AGENDA</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../img/logo_barber.png" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/styles 2.css" rel="stylesheet" />
-    <link rel="stylesheet" href="../css/calendario.css">
-    <link rel="stylesheet" href="../libs/font-awesome-4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="../libs/bootstrap-5.1.3-dist/css/bootstrap-grid.min.css">
-    <link rel="stylesheet" href="../libs/fullcalendar-5.10.1/lib/main.css">
+    <?php require_once "../includes/inportacoes _css.php"; ?>
+    
 </head>
 <body>
     <div class="d-flex" id="wrapper">
         <!-- Sidebar-->
-        <div class="border-end bg-white" id="sidebar-wrapper" style="background-color: #5c50e0;">
-            <div class="sidebar-heading border-bottom" style="background-color: #5c50e0;">Barbearia </div>
-            <div class="list-group list-group-flush">
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="users.html">Usuários <i class="fa fa-user" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="Clients.html">Clientes  <i class="fa fa-users" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3 flut" href="services.html">Serviços <i class="fa fa-scissors" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="schedules.html">Agenda <i class="fa fa-calendar" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="profile.html">Meu Perfil <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
-                <a class="list-group-item list-group-item-action list-group-item-light p-3" href="../index.html">Nome do usuário logado <i class="fa fa-sign-out" aria-hidden="true"></i></a>
-            </div>
-        </div>
+        <?php require_once "../includes/menu.php"?>
+        
         <div id="page-content-wrapper">
             <!-- Top navigation-->
-            <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
-                <div class="container-fluid">
-                    <button class="btn" style="background-color: #5c50e0;" id="sidebarToggle"><strong>Menu</strong></button>
-                </div>
-            </nav>
-            <!-- Page content-->
-            <div class="fundo">
-                <img class="fundo" src="../img/Fundo.png" alt="Plano de fundo">
-            </div>
+            <?php require_once "../includes/navbar.php"?>
 
             <div class="container nome_status">
                 <div class="row">
@@ -288,20 +264,7 @@
     </div>
 </div>
 
-<!-- Bootstrap core JS-->
-<script src="../libs/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js.map"></script>
-<!-- Core theme JS-->
-<script src="../js/scripts.js"></script>
-<!-- full calendar -->
-<script src="../libs/fullcalendar-5.10.1/lib/main.js"></script>
-<!--bootstap-->
-<script src="../libs/bootstrap-5.1.3-dist/js/bootstrap.js"></script>
-<!--script personalização calendario-->
-<script src="../js/calendario.js"></script>
-<!--Ajax-->
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-<!--Moment.js-->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <?php require_once "../includes/inportacoes _scripts.php"; ?>
 
 </body>
 </html>
