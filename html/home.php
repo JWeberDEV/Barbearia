@@ -17,6 +17,10 @@
         <div id="page-content-wrapper">
             <!-- Top navigation-->
             <?php require_once "../includes/navbar.php"?>
+
+            <div class="bem-vindo">
+                <h1>Bem vindo <?php print($_SESSION['nome']);?></h1>
+            </div>
         </div>
     </div>
 

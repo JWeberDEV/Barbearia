@@ -147,6 +147,7 @@ function status() {
       });
       
       $("#status").html(option);
+      $("#status-profile").html(option);
     }
   })
 }

@@ -21,37 +21,31 @@
                 <div class="container2 tabela">
                     <div class="item2">
                         <label>Seu Nome</label>
-                        <input class="campos2" type="text" name="nome" autocomplete="off" placeholder="Henrique">
+                        <input id="id-login" type="hidden" >
+                        <input class="campos2" type="text" name="nome" autocomplete="off" value="<?php print($_SESSION['nome']);?>">
                     </div>
                     <div class="item2">
                         <label>CPF</label>
-                        <input class="campos2" type="text" name="nome" autocomplete="off" placeholder="101.000.899-60">
+                        <input class="campos2" type="text" name="nome" autocomplete="off" value="<?php print($_SESSION['cpf']);?>">
                     </div>
                     <div class="item2">
                         <label>Email</label>
-                        <input class="campos2" type="text" name="nome" autocomplete="off" placeholder="henrique@gmail.com">
+                        <input class="campos2" type="text" name="nome" autocomplete="off" value="<?php print($_SESSION['email']);?>">
                     </div>
                     <div class="item2">
                         <label>Perfil</label>
                         <select class="status" name="Perfil">
-                            <option value="todos">Gerência</option>
-                            <option value="Profissional">Profissional</option>
+                            <option value="<?php print($_SESSION['email']);?>"><?php print($_SESSION['perfil']);?></option>
+                            
                         </select>
                     </div>
                     <div class="item2">
-                        <label>Usuário</label>
-                        <input class="campos2" type="text" name="nome" autocomplete="off" placeholder="">
-                    </div>
-                    <div class="item2">
-                        <label>Senha</label>
+                        <label>Nova Senha</label>
                         <input class="campos2" type="password" name="nome" autocomplete="off" placeholder="">
                     </div>
                     <div class="item2">
-                        <label for="status">Status</label>
-                        <select class="status" name="status">
-                            <option value="volvo">Ativo</option>
-                            <option value="saab">Inativo</option>
-                        </select>
+                        <label>Confirma Senha</label>
+                        <input class="campos2" type="password" name="nome" autocomplete="off" placeholder="">
                     </div>
                     <div class="item2">
                         <div class="submit">
@@ -70,6 +64,5 @@
 </html>
 
 <script>
-
-    
+    dadosProfile()
 </script>
