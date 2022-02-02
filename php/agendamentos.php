@@ -205,10 +205,9 @@ switch ($acao) {
     $data = $_POST["data"];
     $horaInicial = $_POST["horaInicial"];
     $horaFinal = $_POST["horaFinal"];
-    // echo "$id   $data   $horaInicial    $horaFinal";
 
     $sql = " UPDATE agenda SET data_atendimento = '$data', hora_inicial = '$horaInicial', hora_final =  '$horaFinal' WHERE id = $id ";
-    // echo $sql;
+    
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
 
     echo $resultado;

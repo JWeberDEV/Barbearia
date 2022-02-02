@@ -17,7 +17,8 @@ switch ($acao) {
     $linha = mysqli_num_rows($resultado);
     $dados = 
 
-    $valida = 0;
+    $valida = " ";
+    
     if($linha == 0){
       $valida = 0;
     }else{
@@ -250,6 +251,10 @@ switch ($acao) {
               <td>".$servico["valor"]." </td> 
               <td>
                   <div class='btnfunc'>
+                      <div></div>
+                      <div></div>
+                      <div></div>
+                      <div></div>
                       <a onclick='exibirservico(".$servico["id"].")' href='#'><button data-bs-toggle='modal' data-bs-target='#editar-servico' class='funcoes'><i class='fa fa-pencil pencil' aria-hidden='true'></i></button></a>
                       <a onclick='deletaservico(".$servico["id"].")' href='#'><button class='funcoes'><i class='fa fa-times cross' aria-hidden='true'></i></button></a>
                   </div>
