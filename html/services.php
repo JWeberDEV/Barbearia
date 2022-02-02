@@ -58,6 +58,10 @@
                 </div>
             </div>
 
+            <!--------------------------------------------------------->
+            <!------------------------ modal -------------------------->
+            <!--------------------------------------------------------->
+
             <div class="modal" id="editar-servico">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -102,7 +106,12 @@
 
 
 <script>
+   function mascara(){
+        $('#preco').mask('R$ 000-00', {reverse: true});
+        
+    };
 
-    listarServicos()
+    mascara();
+    listarServicos();
 
 </script>

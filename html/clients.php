@@ -63,6 +63,10 @@
         </div>
     </div>
 
+            <!--------------------------------------------------------->
+            <!------------------------ modal -------------------------->
+            <!--------------------------------------------------------->
+
     <div class="modal" id="editarcliente">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -76,31 +80,31 @@
                     <form class="formulario2">
                         <div class="item3">
                             <label>Nome Cliente</label>
-                            <input id="clientname" class="itens" type="text" name="nome" autocomplete="off" >
+                            <input id="clientname" class="itens" type="text" autocomplete="off" placeholder="Nome Completo">
                         </div>
                         <div class="item3">
                             <label>CPF Cliente</label>
-                            <input id="clientcpf" class="itens" type="text" name="nome" autocomplete="off" >
+                            <input id="clientcpf" class="itens" type="text" autocomplete="off" placeholder="___.___.___-__">
                         </div>
                         <div class="item3">
                             <label>Numero Cliente</label>
-                            <input id="clientnumber" class="itens" type="text" name="nome" autocomplete="off" >
+                            <input id="clientnumber" class="itens" type="text" autocomplete="off" placeholder="(__) _____-____">
                         </div>
                         <div class="item3">
                             <label>Email Usuário</label>
-                            <input id="clientmail" class="itens" type="text" name="nome" autocomplete="off" >
+                            <input id="clientmail" class="itens" type="text" autocomplete="off" placeholder="E-mail">
                         </div>
                         <div class="item3">
                             <label>Data de Nascimento</label>
-                            <input id="clientdateborn" class="itens" type="date" name="nome" autocomplete="off" >
+                            <input id="clientdateborn" class="itens" type="date" autocomplete="off" >
                         </div>
                         <div class="item3">
                             <label>Profissão</label>
-                            <input id="clientprofi" class="itens" type="text" name="nome" autocomplete="off">
+                            <input id="clientprofi" class="itens" type="text" autocomplete="off" placeholder="TI">
                         </div>
                         <div class="item3">
                             <label>Cidade</label>
-                            <input id="clientcity" class="itens" type="text" name="nome" autocomplete="off" >
+                            <input id="clientcity" class="itens" type="text" autocomplete="off" placeholder="Novo Hamburgo">
                         </div>
                     </form>
                         <div style="padding-top: 1%;">
@@ -123,7 +127,13 @@
 <?php require_once "../includes/inportacoes _scripts.php"; ?>
 
 <script>
+    function mascara(){
+        $('#clientcpf').mask('000.000.000-00', {reverse: true});
+        $('#clientnumber').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
+        
+    };
 
+    mascara();
     listarclientes();
 
 </script>

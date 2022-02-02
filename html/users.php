@@ -64,6 +64,10 @@
                 </div>
             </div>
             
+            <!--------------------------------------------------------->
+            <!------------------------ modal -------------------------->
+            <!--------------------------------------------------------->
+
             <div class="modal" id="editar">
                 <div class="modal-dialog">
                     <div class="modal-content">
@@ -138,7 +142,12 @@
 
 
 <script>
+    function mascara(){
+        $('#altcpf').mask('000.000.000-00', {reverse: true});
+        $('#altnumberclient').mask('(00) 00000-0000');
+    };
 
+    mascara();
     listarUsuarios();
     
 </script>

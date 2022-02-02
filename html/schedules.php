@@ -276,12 +276,12 @@
 
         };
 
-    mascara()
-    professionals()
-    clients()
-    services()
-    status()
-    initCalendar()
+    mascara();
+    professionals();
+    clients();
+    services();
+    status();
+    initCalendar();
 
     // agendamentos()
 
