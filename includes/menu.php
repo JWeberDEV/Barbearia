@@ -1,4 +1,8 @@
 <!-- Sidebar-->
+<?php
+session_start();
+?>
+
 <div class="border-end bg-white" id="sidebar-wrapper" style="background-color: #5c50e0;">
     <div class="sidebar-heading border-bottom" style="background-color: #5c50e0;">Barbearia </div>
     <div class="list-group list-group-flush">
@@ -8,6 +12,15 @@
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="schedules.php">Agenda <i class="fa fa-calendar" aria-hidden="true"></i></a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="profile.php">Meu Perfil <i class="fa fa-user-circle-o" aria-hidden="true"></i></a>
         <a class="list-group-item list-group-item-action list-group-item-light p-3" href="../index.html" onclick="logOut()"><?php 
-        session_start(); print($_SESSION['nome']);?> <i class="fa fa-sign-out" aria-hidden="true"></i></a>
+        print($_SESSION['nome']);?> <i class="fa fa-sign-out" aria-hidden="true"></i></a>
     </div>
 </div>
+
+<?php
+    
+    if (!$_SESSION['login']) {
+        session_destroy();
+        header('location: http://localhost/barbearia/index.html');
+        
+    }
+?>

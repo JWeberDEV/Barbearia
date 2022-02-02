@@ -93,7 +93,47 @@ button > a:hover {
 .required:after {
     content:"*"; 
     color: red;
-  }
+    
+}
+
+.home{
+    box-shadow: 1px 1px 1px #999;
+    padding: 7px;   
+    background-color: #6558f5;
+    font-size: 16px;
+    font-weight: bold;
+    margin-top: 10px;
+    border: 2px solid #5c50e0;
+    border-radius: 5px;
+    
+}
+
+.home:hover {
+    background-color: #4f44be;
+    border: 2px solid #483eaf;
+    color: white   ;
+}
+
+.home > a:hover {
+    color: white   ;
+}
+
+/*------------------------------------*\
+	            Tabelas
+\*------------------------------------*/
+
+.bem-vindo{
+    background-color: rgba(255, 255, 255, 0.664);
+    padding: 10px;
+    padding-right: 30px;
+    padding-left: 30px;
+    border: 2px solid grey;
+    border-radius: 10px;
+}
+
+.bem-vindo > h1{
+    text-align: center;
+}
 
 /*------------------------------------*\
 	            Tabelas

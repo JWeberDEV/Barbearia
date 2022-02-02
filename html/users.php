@@ -21,7 +21,7 @@
             <div class="btns">
                 <div>
                     <a href="create_users.php">
-                        <button type="button" class="btn" style="background-color: #5c50e0;"><strong>Novo</strong></button>
+                        <button type="button" class="salvar" style="background-color: #5c50e0;">Novo</button>
                     </a>
                 </div>
             </div>

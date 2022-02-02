@@ -25,12 +25,16 @@ function login() {
         dataType: "text",
         success: function(data){
             if(data == 1){
-                window.location.href = "html/home.php";
+                window.location.href = "../html/home.php";
             }else{
                 alert("Os Dados Preenchidos, estão incorretos.");
             }
         }
     });
+}
+
+function home() {
+    window.location.href = "../html/home.php";
 }
 
 function logOut() {
@@ -39,7 +43,7 @@ function logOut() {
         type: "post",
         data: {acao: 'FINALIZA'},
         success:function () {
-            window.location.href = "html/index.html";
+            window.location.href = "../index.html";
         }
     });
 }

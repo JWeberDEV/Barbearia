@@ -20,7 +20,7 @@
             <div class="btns">
                 <div>
                     <a href="create_services.php">
-                        <button type="button" class="btn" style="background-color: #5c50e0;"><strong>Novo</strong></button>
+                        <button type="button" class="salvar" style="background-color: #5c50e0;">Novo</button>
                     </a>
                 </div>
             </div>
@@ -36,7 +36,7 @@
                         <input id="preco" class="campos" type="text" name="nome" autocomplete="off" placeholder="Preços">
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
-                        <button class="btn" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarServicos();"></i></button>
+                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarServicos();"></i></button>
                     </div>
                 </div >
             </div>

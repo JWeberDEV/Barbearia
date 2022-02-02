@@ -1,17 +1,11 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
     <div class="container-fluid">
-        <button class="btn" style="background-color: #5c50e0;" id="sidebarToggle"><strong>Menu</strong></button>
-        <?php
-            
-            
-            
-
-            if (!$_SESSION['login']) {
-                session_destroy();
-                header('location: http://localhost/barbearia/index.html');
-                
-            }
-        ?>
+        <div class="row">
+            <div class="col"></div>
+            <button class="col salvar" style="background-color: #5c50e0;" id="sidebarToggle">Menu</button>
+            <div class="col"></div>
+            <button class="col home" style="background-color: #5c50e0;" id="sidebarToggle" onclick="home()"><i class="fa fa-home" aria-hidden="true"></i></button>
+        </div>
     </div>
 </nav>
 <!-- Page content-->

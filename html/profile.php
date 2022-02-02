@@ -50,7 +50,7 @@
                     <div class="item2">
                         <div class="submit">
                             <br>
-                            <button class="salvar" type="submit">Salvar</button>
+                            <button class="salvar" type="button">Salvar</button>
                         </div>
                     </div>
                 </div>

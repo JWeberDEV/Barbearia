@@ -21,7 +21,7 @@
             <div class="btns">
                 <div>
                     <a href="create_clients.php">
-                        <button type="button" class="btn" style="background-color: #5c50e0;"><strong>Novo</strong></button>
+                        <button type="button" class="salvar" style="background-color: #5c50e0;">Novo</button>
                     </a>
                 </div>
             </div>
@@ -37,7 +37,7 @@
                         <input id="cpf" class="campos" type="text" name="nome" autocomplete="off" placeholder="CPF do cliente">
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
-                        <button class="btn" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarclientes();"></i></button>
+                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarclientes();"></i></button>
                     </div>
                 </div >
             </div>
