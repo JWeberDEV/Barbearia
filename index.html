@@ -14,7 +14,7 @@
 <body>
 
     <main class="form">
-            <form class="formulario">
+        <form class="formulario">
             <div class="itens">
                 <legend class="legenda">
                     <h1>Barbearia Login</h1>
@@ -27,10 +27,10 @@
                     </div>
                 <br/>
                 <div class="submit">
-                    <input class="salvar" type="submit" id="entrar" onclick="login()"></input>
+                    <input class="salvar" type="button" id="entrar" onclick="login()" value="Entrar"></input>
                 </div>
                 <div style="padding-top: 4%;">
-                    <a href="html/recupera.html" target="_self" rel="next">Esqueci minha senha </a>
+                    <a href="html/recupera.php" target="_self" rel="next">Esqueci minha senha </a>
                 </div>
             </div>
         </form>  
@@ -46,14 +46,14 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    // // função criada para ativar o botão com o enter
-    // document.addEventListener("keypress", function(e) {
+    // função criada para ativar o botão com o enter
+    document.addEventListener("keypress", function(e) {
 
-    // const btn = document.querySelector("#send");
+    const btn = document.querySelector("#send");
 
-    // btn.click();
+    btn.click();
 
-    // });
+    });
 
 </script>
 

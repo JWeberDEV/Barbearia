@@ -1,7 +1,7 @@
 <?php 
 
 include 'conexao.php';
-include 'secao.php';
+
 
 $acao = $_POST['acao'];
 
@@ -11,27 +11,35 @@ switch ($acao) {
     $usuario = addslashes($_POST['usuario']);
     $senha = addslashes($_POST['senha']);
     
-    $sql = "SELECT nome_usuario,senha,user_status FROM usuario WHERE BINARY nome_usuario = '$usuario' AND senha = '$senha' AND user_status = 'Ativo'";
+    $sql = "SELECT nome_usuario,senha,user_status,perfil FROM usuario WHERE BINARY nome_usuario = '$usuario' AND senha = '$senha' AND user_status = 'Ativo'";
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de consulta esta incorreta");
     
     $linha = mysqli_num_rows($resultado);
-    $dados = 
-
+    $dados = mysqli_fetch_object($resultado);
+    
     $valida = " ";
+    $_SESSION['login'] =  FALSE;
     
     if($linha == 0){
       $valida = 0;
     }else{
       $valida = 1;
+      session_start();
       $_SESSION['login'] =  TRUE;
-      $_SESSION['usuario'] = "$usuario";
-      $_SESSION['senha'] = " ";
-      $_SESSION['perfil'] = " ";
+      $_SESSION['usuario'] = $dados->nome_usuario;
+      $_SESSION['senha'] = $dados->senha;
+      $_SESSION['perfil'] = $dados->perfil;
+      
     }
 
     echo ($valida);
 
 
+  break;
+
+  case 'FINALIZA':
+    session_start();
+    session_destroy();
   break;
 
   case 'NEW_USER':

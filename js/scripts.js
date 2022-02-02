@@ -7,13 +7,7 @@
 // Scripts
 // 
 // --------------------------------------------------------------------------------------------
-// document.addEventListener("keypress", function(e) {
 
-//     const btn = document.querySelector("#send");
-
-//     btn.click();
-
-//     });
 
 function login() {
     var usuario = document.getElementById("usuario").value;
@@ -25,7 +19,7 @@ function login() {
     }
 
     $.ajax({
-        url: "php/metodos.php",
+        url: "http://localhost/barbearia/php/metodos.php",
         type: "post",
         data: {acao: 'LOGIN', usuario, senha},
         dataType: "text",
@@ -35,6 +29,17 @@ function login() {
             }else{
                 alert("Os Dados Preenchidos, estão incorretos.");
             }
+        }
+    });
+}
+
+function finalizaSecao() {
+    $.ajax({
+        url: "http://localhost/barbearia/php/metodos.php",
+        type: "post",
+        data: {acao: 'FINALIZA'},
+        success:function (params) {
+            window.location.href = "html/index.html";
         }
     });
 }
