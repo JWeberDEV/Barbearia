@@ -226,10 +226,15 @@
                             </div>
                             <div class="col-md-12" style="padding-top: 1%;">
                                 <label>Servicos</label>
-                                    <select class="campos2" id="servico">
+                                    <select class="campos2" id="servico" onchange="valorServico(this)">
                                         
                                     </select>
                                 </div>
+                            </div>
+                            <div class="col-md-12" style="padding-top: 1%;">
+                                <label>Valor</label>
+                                <input class="campos2" type="text" id="valor">
+                            </div>
                             <div class="row justify-content-center">
                                 <div class="col-md-6" style="padding-top: 1%;">
                                     <label>Data</label>
@@ -283,6 +288,5 @@
     status();
     initCalendar();
 
-    // agendamentos()
 
 </script>

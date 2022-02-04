@@ -56,7 +56,8 @@ switch ($acao) {
         a.hora_inicial, 
         a.hora_final,
         s.chave,
-        s.cor_status
+        s.cor_status,
+        a.id_servico
     FROM agenda a 
     INNER JOIN usuario u ON u.id = a.id_atendente 
     INNER JOIN cliente c ON c.id = a.id_cliente 
@@ -93,6 +94,17 @@ switch ($acao) {
     echo json_encode($result);
   break;
 
+  case 'VALOR_AGENDAMENTO':
+    $servico = $_POST['servico'];
+
+    $sql = "SELECT valor FROM servicos WHERE id = '$servico' ";
+    $query = $mysqli->query($sql) or die ("ERRO: ao trazer o valor");
+    $result =  mysqli_fetch_object($query);
+    $valor = $result->valor;
+    echo $valor;
+
+  break;
+
   case 'NOVO_AGENDAMENTO':
     $cliente = $_POST["cliente"];
     $profissional = $_POST["profissional"];
@@ -100,9 +112,10 @@ switch ($acao) {
     $criaData = $_POST["data"];
     $criaHoraIni = $_POST["inicial"];
     $criaHoraFin = $_POST["final"];
+    $preco = $_POST["preco"];
 
-    $sql = "INSERT INTO agenda (id_cliente,id_atendente,data_atendimento,hora_inicial,hora_final,id_servico,id_status) 
-    VALUES ($cliente,$profissional,'$criaData','$criaHoraIni','$criaHoraFin',$servico,1)";
+    $sql = "INSERT INTO agenda (id_cliente,id_atendente,data_atendimento,hora_inicial,hora_final,id_servico,valor_servico,id_status) 
+    VALUES ($cliente, $profissional, '$criaData', '$criaHoraIni', '$criaHoraFin', $servico, $preco, 1)";
     
     $result = $mysqli->query($sql) or die ("ERRO: Falha criar agendamento");
 
@@ -164,11 +177,15 @@ switch ($acao) {
 
   case 'FINALIZA_ATENDIMENTO':
     $id = $_POST["id"];
-    
-    $sql = "UPDATE agenda SET id_status = 2 WHERE id = $id";
+    $consulta = " SELECT s.valor FROM agenda a
+    INNER JOIN servicos s ON s.id = a.id_servico
+    WHERE a.id = $id ";
+    $query = $mysqli->query($consulta) or die ("ERRO: Falha ao trazer o valor do servico");
+    $result =  mysqli_fetch_object($query);
+    $valor = $result->valor;
 
+    $sql = "UPDATE agenda SET id_status = 2, valor_servico = '$valor'  WHERE id = $id";
     $resultado = $mysqli->query($sql) or die ("ERRO: Ao finalizar agendamento");
-
     echo $resultado;
   break;
 

@@ -77,7 +77,6 @@ function professionals() {
       data:{acao: 'PROFISSIONAIS'},
       dataType: "json",
       success:function(retorno) {
-        console.log(retorno)
         let option = "<option value=''> Todos </option>";
         retorno.forEach(element => {
           option += `<option value='${element.id}'> ${element.nome} </option>`;
@@ -100,7 +99,6 @@ function clients() {
     data:{acao: 'CLIENTES'},
     dataType: "json",
     success:function(retorno) {
-      console.log(retorno)
       let option = "";
       retorno.forEach(element => {
         option += `<option value='${element.id}'> ${element.nome_cliente} </option>`;
@@ -120,7 +118,6 @@ function services() {
     data:{acao: 'SERVICOS'},
     dataType: "json",
     success:function(retorno) {
-      console.log(retorno)
       let option = "";
       retorno.forEach(element => {
         option += `<option value='${element.id}'> ${element.nome} </option>`;
@@ -140,14 +137,12 @@ function status() {
     data:{acao: 'STATUS'},
     dataType: "json",
     success:function(retorno) {
-      console.log(retorno)
       let option = "";
       retorno.forEach(element => {
         option += `<option value='${element.id}'> ${element.nome} </option>`;
       });
       
       $("#status").html(option);
-      $("#status-profile").html(option);
     }
   })
 }
@@ -212,10 +207,12 @@ function newEvent() {
   let cliente = document.getElementById("cliente").value;
   let profissional = document.getElementById("profissional").value;
   let servico = document.getElementById("servico").value;
+  let preco = document.getElementById("valor").value;
+
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data: {acao: 'NOVO_AGENDAMENTO', data, inicial, final, cliente, profissional, servico},
+    data: {acao: 'NOVO_AGENDAMENTO', data, inicial, final, cliente, profissional, servico, preco},
     dataType: "json",
     success: function (retornoAgendamento) {
       if (retornoAgendamento == 1) {
@@ -228,6 +225,21 @@ function newEvent() {
     }
   });
   
+}
+
+function valorServico() {
+  let servico = document.getElementById("servico").value;
+
+  $.ajax({
+    url: "http://localhost/barbearia/php/agendamentos.php",
+    type: "post",
+    data: {acao: 'VALOR_AGENDAMENTO', servico},
+    dataType: 'text',
+    success:function (retorno) {
+      $("#valor").val(retorno);
+    }
+  });
+
 }
 
 // função que serve para enviar as informações para o modal vindas do calendario e do banco
@@ -447,17 +459,4 @@ function deletaEvento() {
   }
 }
 
-// function cancelEvent(){
-//   const justify = prompt("Informe a justificativa");
-
-//   if(!justify){
-//     return alert('Prencha o campo');
-//   }
-
-//   console.log(justify);
-
-//   const id = $("input[name=id_agenda]").val();
-
-
-// }
 
