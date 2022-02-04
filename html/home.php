@@ -21,9 +21,43 @@
             <div class="container bem-vindo">
                 <h1>Bem vindo <?php print($_SESSION['nome']);?></h1>
             </div>
+
+            <div class="container" style="padding-top: 3%;">
+                <div class="tabela">
+                    <figure class="highcharts-figure">
+                        <div id="agendamentos-por-cliente"></div>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="container" style="padding-top: 3%;">
+                <div class="tabela">
+                    <figure class="highcharts-figure">
+                        <div id="agendamentos-encerrados"></div>
+                    </figure>
+                </div>
+            </div>
+
+            <div class="container" style="padding-top: 3%;">
+                <div class="tabela">
+                    <figure class="highcharts-figure">
+                        <div id="faturamentos"></div>
+                    </figure>
+                </div>
+            </div>
+
         </div>
     </div>
 
     <?php require_once "../includes/inportacoes _scripts.php"; ?>
+    
 </body>
 </html>
+
+<script>
+    
+    frequenciaClientes(); 
+    finalizadosAtendentes(); 
+    faturmanetoMensal();
+
+</script>
