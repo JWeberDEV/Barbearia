@@ -282,6 +282,8 @@
 
     function mascara(){
         $('#edit-ini').mask('00:00',);
+        $('#valor').mask('R$ 000.00', {reverse: true});
+        $('#editaValorvalor').mask('R$ 000.00', {reverse: true});
 
         };
 
