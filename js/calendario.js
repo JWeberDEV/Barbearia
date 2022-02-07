@@ -265,6 +265,7 @@ function ShowInfoEvent() {
       $("#edit-ini").val(agendamento[0].hora_inicial);
       $("#edit-fin").val(agendamento[0].hora_final);
       $("#status").val(agendamento[0].id_status);
+      $("#editaValorvalor").val(agendamento[0].valor_servico);
     }
   });
 
@@ -280,11 +281,12 @@ function editaAgendamento() {
   let horaFinal = document.getElementById("edit-fin").value;
   let atendente = document.getElementById("profi").value; 
   let status = document.getElementById("status").value;
-  
+  let valor = document.getElementById("editaValorvalor").value;
+
   $.ajax({
     url:"http://localhost/barbearia/php/agendamentos.php",
     type: "post",
-    data: {acao: 'EDITA_AGENDAMENTO', id,cliente, servico, data, horaInicial, horaFinal, atendente,status},
+    data: {acao: 'EDITA_AGENDAMENTO', id,cliente, servico, data, horaInicial, horaFinal, atendente,status,valor},
     dataType: "text",
     success:function (retorno) {
       if (retorno != 1) {

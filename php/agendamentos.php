@@ -125,7 +125,7 @@ switch ($acao) {
   case 'BUSCA_AGENDAMENTO':
     $idAgendamento =$_POST["id"];
 
-    $sql = " SELECT id,id_cliente,id_atendente,id_servico,data_atendimento,hora_inicial,hora_final,id_status FROM agenda WHERE id = '$idAgendamento'  ";
+    $sql = " SELECT id,id_cliente,id_atendente,id_servico,data_atendimento,hora_inicial,hora_final,id_status,valor_servico FROM agenda WHERE id = '$idAgendamento'  ";
     
     $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer o agendamento");
 
@@ -144,8 +144,9 @@ switch ($acao) {
     $horaFinal = $_POST["horaFinal"];
     $atendente = $_POST["atendente"];
     $status = $_POST["status"];
+    $valor = $_POST["valor"];
 
-    $sql = " UPDATE agenda SET id_cliente = $cliente, id_servico = $servico, data_atendimento = '$data', hora_inicial = '$horaInicial', hora_final =  '$horaFinal', id_atendente = $atendente, id_status = $status WHERE id = $id ";
+    $sql = " UPDATE agenda SET id_cliente = $cliente, id_servico = $servico, data_atendimento = '$data', hora_inicial = '$horaInicial', hora_final =  '$horaFinal', id_atendente = $atendente, id_status = $status, valor_servico = '$valor' WHERE id = $id ";
 
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
 

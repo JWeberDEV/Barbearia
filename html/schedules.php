@@ -161,6 +161,10 @@
 
                                 </select>
                             </div>
+                            <div class="col-md-12" style="padding-top: 1%;">
+                                <label>Valor</label>
+                                <input class="campos2" type="text" id="editaValorvalor">
+                            </div>
                             <div class="col-md-12">
                                 <label>Atendente:</label>
                                 <select id="profi" class="campos2" name="Perfil">
