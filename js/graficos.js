@@ -84,7 +84,6 @@ function finalizadosAtendentes(){
     data: {relatorio: 'QUANTIDADE_AGENDAMENTOS_ATENDENTE'},
     dataType: "json",
     success: function (relatorio) {
-      console.log(relatorio);
       let category = [];
       let series = [{
         name: 'Atendimentos Finalizados',
@@ -199,7 +198,6 @@ function faturmanetoMensal(){
     data: {relatorio: 'FATURAMENTO_MENSAL'},
     dataType: "json",
     success: function (relatorio) {
-      console.log(relatorio);
       let category = [];
       let series = [{
         name: 'Mensal',
@@ -259,21 +257,66 @@ function faturmanetoProfissioanis(){
     data: {relatorio: 'FATURAMENTO_PROFI'},
     dataType: "json",
     success: function (relatorio) {
-      console.log(relatorio);
       let category = [];
-      let series = [
-        {
-        name: 'Faturmento por Profissional',
-        data: [0],
-        color: '#f7da85'
-        },
-        
-      ];
+      let series = [];
 
+      // primeiro foreach, monta as series trazendo os nomes e preenchendo o name dentro de cada serie
       relatorio.forEach(element => {
-        console.log(element);
-        category.push(element.nome_usuario);
-        series[0].data.push(parseInt(element.faturamento_funcionario));
+        if (!category.includes(element.mensal)) { //se category estiver vazio incliu um novo mes 
+          category.push(element.mensal); // envia o mes
+          
+        }
+        //tenta en
+        const findSerie = series.find(serie => serie.name === element.nome_usuario);
+
+        if(!findSerie){
+          series.push({
+            name: element.nome_usuario,
+            data:[]
+          });
+        }
+      });
+
+      series.forEach((serieName, index) => {
+
+        category.forEach(categoryName => {
+
+          const filterSerie = relatorio.find(serie => serie.mensal === categoryName && serie.nome_usuario === serieName.name);
+
+          if(filterSerie){
+            series[index].data.push(parseFloat(filterSerie.faturamento_funcionario));
+          }else{
+            series[index].data.push(null);
+          }
+        })
+      })
+
+
+      let totalMes = [];
+
+      category.forEach(categoryName => {
+
+        const filterSerie = relatorio.find(serie => serie.faturamento_funcionario === categoryName);
+
+        console.log(filterSerie)
+        if(filterSerie.lenght > 0){
+          let valor = 0;
+          filterSerie.forEach(result => {
+            valor += parseFloat(result.faturamento_funcionario);
+          })
+          totalMes.push(valor);
+        }else{
+          totalMes.push(null);
+        }
+      })
+
+
+
+      console.log(totalMes);
+      series.push({
+        name:'total',
+        type:'spline',
+        data: totalMes
       });
 
       options.xAxis.categories = category;
@@ -285,3 +328,4 @@ function faturmanetoProfissioanis(){
   });
 
 }
+
