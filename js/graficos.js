@@ -1,4 +1,3 @@
-
 function frequenciaClientes(){
 
   let chart, options = {
@@ -165,6 +164,7 @@ function finalizadosAtendentes(){
 }
 
 function faturmanetoMensal(){
+    
 
   let chart, options = {
     chart: {
@@ -173,7 +173,6 @@ function faturmanetoMensal(){
     },
     title: {
         text: 'Fatoramento Mensal'
-        
     },
     subtitle: {
         text: ''
@@ -185,10 +184,13 @@ function faturmanetoMensal(){
         categories: [],
         crosshair: true
     },
-    series: []
+    series: [],
+    
   };
-
+  
   chart = new Highcharts.Chart(options);
+
+
 
 
   $.ajax({
@@ -219,4 +221,5 @@ function faturmanetoMensal(){
   });
 
 }
+
 

@@ -25,7 +25,7 @@ function login() {
         dataType: "text",
         success: function(data){
             if(data == 1){
-                window.location.href = "../html/home.php";
+                window.location.href = "../Barbearia/html/home.php";
             }else{
                 alert("Os Dados Preenchidos, estão incorretos.");
             }

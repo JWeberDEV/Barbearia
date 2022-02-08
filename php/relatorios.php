@@ -33,7 +33,7 @@ switch ($relatorio) {
   break;
 
   case 'FATURAMENTO_MENSAL':
-    $sql = " SELECT MONTHNAME(data_atendimento) as mes, SUM(valor_servico) AS 'fatoramento_Mensal'  FROM agenda
+    $sql = "SELECT MONTHNAME(data_atendimento) as mes, SUM(valor_servico) AS 'fatoramento_Mensal'  FROM agenda
     GROUP BY MONTH (data_atendimento)
     ORDER BY data_atendimento; ";
 
