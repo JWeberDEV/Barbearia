@@ -46,6 +46,13 @@
                 </div>
             </div>
 
+            <div class="container" style="padding-top: 3%;">
+                <div class="tabela">
+                    <figure class="highcharts-figure">
+                        <div id="faturamento-profi"></div>
+                    </figure>
+                </div>
+            </div>
         </div>
     </div>
 
@@ -59,5 +66,6 @@
     frequenciaClientes(); 
     finalizadosAtendentes(); 
     faturmanetoMensal();
+    faturmanetoProfissioanis();
 
 </script>

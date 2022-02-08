@@ -32,14 +32,36 @@ switch ($relatorio) {
 
   break;
 
+  // SET GLOBAL lc_time_names = 'pt_PT'; <- para resolver o problema da linguagem é preciso mudar a variável global do banco executando essa query;
   case 'FATURAMENTO_MENSAL':
-    $sql = "SELECT MONTHNAME(data_atendimento) as mes, SUM(valor_servico) AS 'fatoramento_Mensal'  FROM agenda
+
+    $sql = "SET lc_time_names = 'pt_PT'; SELECT MONTHNAME(data_atendimento) as mes, SUM(valor_servico) AS 'fatoramento_Mensal'  FROM agenda
     GROUP BY MONTH (data_atendimento)
     ORDER BY data_atendimento; ";
 
-    $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer faturamento mensal");
-    $fatoramento = $result->fetch_all(MYSQLI_ASSOC);
-    echo(json_encode($fatoramento));
+    $result = $mysqli->multi_query($sql) or die ("ERRO: Falha ao trazer faturamento mensal");
+    do { 
+      if ($result = $mysqli->store_result()) { 
+          echo(json_encode($result->fetch_all(MYSQLI_ASSOC)));
+          $result->free(); 
+      } 
+    } while ($mysqli->more_results() && $mysqli->next_result());
+    
+    // while ($mysqli->next_result()) {;}
+
+  break;
+
+  case 'FATURAMENTO_PROFI':
+    $sql = "SELECT MONTHNAME(a.data_atendimento) AS 'mensal' ,u.nome_usuario, SUM(a.valor_servico) AS 'faturamento_funcionario' 
+    FROM agenda a
+    INNER JOIN usuario u ON u.id = a.id_atendente
+    WHERE a.id_status = 2
+    GROUP BY MONTH(a.data_atendimento), u.nome_usuario
+    ORDER BY MONTH(a.data_atendimento), faturamento_funcionario,u.nome_usuario DESC;";
+
+    $result = $mysqli->query($sql) or die ("ERRO: Falha ao trazer a contagem de agendamentos encerrados por atendente");
+    $quantidade = $result->fetch_all(MYSQLI_ASSOC);
+    echo(json_encode($quantidade));
 
   break;
 }

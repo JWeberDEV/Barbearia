@@ -223,3 +223,65 @@ function faturmanetoMensal(){
 }
 
 
+function faturmanetoProfissioanis(){
+    
+
+  let chart, options = {
+    chart: {
+        type: 'column',
+        renderTo: 'faturamento-profi',
+    },
+    title: {
+        text: 'Faturamento'
+    },
+    subtitle: {
+        text: 'Total'
+    },
+    credits: {
+        enabled: false
+    },
+    xAxis: {
+        categories: [],
+        crosshair: true
+    },
+    series: [],
+    
+  };
+  
+  chart = new Highcharts.Chart(options);
+
+
+
+
+  $.ajax({
+    url: "../php/relatorios.php",
+    type: "post",
+    data: {relatorio: 'FATURAMENTO_PROFI'},
+    dataType: "json",
+    success: function (relatorio) {
+      console.log(relatorio);
+      let category = [];
+      let series = [
+        {
+        name: 'Faturmento por Profissional',
+        data: [0],
+        color: '#f7da85'
+        },
+        
+      ];
+
+      relatorio.forEach(element => {
+        console.log(element);
+        category.push(element.nome_usuario);
+        series[0].data.push(parseInt(element.faturamento_funcionario));
+      });
+
+      options.xAxis.categories = category;
+      options.series = series;
+
+      chart = new Highcharts.Chart(options);
+      
+    }
+  });
+
+}
