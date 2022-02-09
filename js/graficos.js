@@ -162,65 +162,6 @@ function finalizadosAtendentes(){
 
 }
 
-function faturmanetoMensal(){
-    
-
-  let chart, options = {
-    chart: {
-        type: 'column',
-        renderTo: 'faturamentos',
-    },
-    title: {
-        text: 'Fatoramento Mensal'
-    },
-    subtitle: {
-        text: ''
-    },
-    credits: {
-        enabled: false
-    },
-    xAxis: {
-        categories: [],
-        crosshair: true
-    },
-    series: [],
-    
-  };
-  
-  chart = new Highcharts.Chart(options);
-
-
-
-
-  $.ajax({
-    url: "../php/relatorios.php",
-    type: "post",
-    data: {relatorio: 'FATURAMENTO_MENSAL'},
-    dataType: "json",
-    success: function (relatorio) {
-      let category = [];
-      let series = [{
-        name: 'Mensal',
-        data: [],
-        color: '#f2969d'
-      }];
-
-      relatorio.forEach(element => {
-        category.push(element.mes);
-        series[0].data.push(parseInt(element.fatoramento_Mensal));
-      });
-
-      options.xAxis.categories = category;
-      options.series = series;
-
-      chart = new Highcharts.Chart(options);
-      
-    }
-  });
-
-}
-
-
 function faturmanetoProfissioanis(){
     
 
@@ -233,15 +174,28 @@ function faturmanetoProfissioanis(){
         text: 'Faturamento'
     },
     subtitle: {
-        text: 'Total'
+        text: 'Mensal'
     },
     credits: {
         enabled: false
     },
-    xAxis: {
-        categories: [],
-        crosshair: true
+    xAxis: { 
+      categories: [], 
+      crosshair: true, 
+    }, 
+    tooltip: {
+      shared: true
     },
+    yAxis: [ 
+      { 
+        visible: false, 
+      }, 
+      { 
+        title: { 
+          text: 'Faturamento', 
+        }, 
+      }, 
+    ],
     series: [],
     
   };
@@ -272,7 +226,8 @@ function faturmanetoProfissioanis(){
         if(!findSerie){
           series.push({
             name: element.nome_usuario,
-            data:[]
+            data:[],
+            yAxis: 1
           });
         }
       });
@@ -293,30 +248,40 @@ function faturmanetoProfissioanis(){
 
 
       let totalMes = [];
+      let mediaMensal = [];
 
       category.forEach(categoryName => {
 
-        const filterSerie = relatorio.find(serie => serie.faturamento_funcionario === categoryName);
-
-        console.log(filterSerie)
-        if(filterSerie.lenght > 0){
+        const filterSerie = relatorio.filter(serie => serie.mensal === categoryName);
+        if(filterSerie.length > 0){
           let valor = 0;
           filterSerie.forEach(result => {
             valor += parseFloat(result.faturamento_funcionario);
+            
           })
           totalMes.push(valor);
+          const media = valor / filterSerie.length;
+          mediaMensal.push(media);
         }else{
           totalMes.push(null);
+          mediaMensal.push(null);
         }
       })
-
-
-
-      console.log(totalMes);
+      
       series.push({
         name:'total',
         type:'spline',
-        data: totalMes
+        data: totalMes,
+        yAxis: 0
+      });
+
+      
+      series.push({
+        name:'media',
+        type:'spline',
+        data: mediaMensal,
+        yAxis: 0,
+        color: '#e24ff2'
       });
 
       options.xAxis.categories = category;
