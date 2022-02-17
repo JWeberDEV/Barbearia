@@ -42,8 +42,8 @@ switch ($relatorio) {
     $result = $mysqli->multi_query($sql) or die ("ERRO: Falha ao trazer faturamento mensal");
     do { 
       if ($result = $mysqli->store_result()) { 
-          echo(json_encode($result->fetch_all(MYSQLI_ASSOC)));
-          $result->free(); 
+        echo(json_encode($result->fetch_all(MYSQLI_ASSOC)));
+        $result->free(); 
       } 
     } while ($mysqli->more_results() && $mysqli->next_result());
     

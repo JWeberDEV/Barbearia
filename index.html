@@ -27,7 +27,7 @@
                     </div>
                 <br/>
                 <div class="submit">
-                    <input class="salvar" type="button" id="entrar" onclick="login()" value="Entrar"></input>
+                    <input class="salvar" type="button" id="entrar" value="Entrar"></input>
                 </div>
                 <div style="padding-top: 4%;">
                     <a href="html/recupera.php" target="_self" rel="next">Esqueci minha senha </a>
@@ -35,7 +35,6 @@
             </div>
         </form>  
     </main>
-
 
 </body>
 </html>
@@ -46,14 +45,15 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
-    // função criada para ativar o botão com o enter
-    document.addEventListener("keypress", function(e) {
+$("#senha").keyup(function(event) {
+  if (event.keyCode === 13) {
+    $("#entrar").click();
+  }
+});
 
-    const btn = document.querySelector("#send");
-
-    btn.click();
-
-    });
+$("#entrar").click(function() {
+    login();
+});
 
 </script>
 
