@@ -45,6 +45,12 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 
 <script>
+$("#usuario").keyup(function(event) {
+  if (event.keyCode === 13) {
+    $("#entrar").click();
+  }
+});
+
 $("#senha").keyup(function(event) {
   if (event.keyCode === 13) {
     $("#entrar").click();
