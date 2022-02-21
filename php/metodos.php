@@ -11,7 +11,7 @@ switch ($acao) {
     $usuario = addslashes($_POST['usuario']);
     $senha = addslashes($_POST['senha']);
     
-    $sql = "SELECT nome_usuario,senha,user_status,perfil,cpf,email,nome FROM usuario WHERE BINARY nome_usuario = '$usuario' AND senha = '$senha' AND user_status = 'Ativo'";
+    $sql = "SELECT id,nome_usuario,senha,user_status,perfil,cpf,email,nome FROM usuario WHERE BINARY nome_usuario = '$usuario' AND senha = '$senha' AND user_status = 'Ativo'";
     $resultado = $mysqli->query($sql) or die ("ERRO: A query de consulta esta incorreta");
     
     $linha = mysqli_num_rows($resultado);
@@ -20,13 +20,13 @@ switch ($acao) {
 
     $valida = " ";
     $_SESSION['login'] =  FALSE;
-    
     if($linha == 0){
       $valida = 0;
     }else{
       $valida = 1;
       session_start();
       $_SESSION['login'] =  TRUE;
+      $_SESSION['id'] = $dados->id;
       $_SESSION['nome'] = $dados->nome;
       $_SESSION['perfil'] = $dados->perfil;
       $_SESSION['status'] = $dados->user_status ;
@@ -37,6 +37,15 @@ switch ($acao) {
     echo ($valida);
 
 
+  break;
+
+  case 'TROCA SENHA':
+    $id = $_POST['id'];
+    $newPass = $_POST['newPass'];
+
+    $sql = "UPDATE usuario SET senha = '$newPass' WHERE id = '$id' ";
+    $resultado = $mysqli->query($sql) or die ("ERRO: Não foi possível alterar a senha");
+    echo $resultado;
   break;
 
   case 'FINALIZA':

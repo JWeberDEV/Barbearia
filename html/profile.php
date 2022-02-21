@@ -20,17 +20,18 @@
             <div style="padding-top: 7%;">
                 <div class="container2 tabela">
                     <div class="item2">
+                        <input type="hidden" id="id" value="<?php print($_SESSION['id']);?>">
                         <label>Seu Nome</label>
                         <input id="id-login" type="hidden" >
-                        <input class="campos2" type="text" name="nome" autocomplete="off" value="<?php print($_SESSION['nome']);?>">
+                        <input class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['nome']);?>">
                     </div>
                     <div class="item2">
                         <label>CPF</label>
-                        <input class="campos2" type="text" name="nome" autocomplete="off" value="<?php print($_SESSION['cpf']);?>">
+                        <input class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['cpf']);?>">
                     </div>
                     <div class="item2">
                         <label>Email</label>
-                        <input class="campos2" type="text" name="nome" autocomplete="off" value="<?php print($_SESSION['email']);?>">
+                        <input class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['email']);?>">
                     </div>
                     <div class="item2">
                         <label>Perfil</label>
@@ -41,16 +42,16 @@
                     </div>
                     <div class="item2">
                         <label>Nova Senha</label>
-                        <input class="campos2" type="password" name="nome" autocomplete="off" placeholder="">
+                        <input id="newPD1" class="campos2" type="password" autocomplete="off" placeholder="">
                     </div>
                     <div class="item2">
                         <label>Confirma Senha</label>
-                        <input class="campos2" type="password" name="nome" autocomplete="off" placeholder="">
+                        <input id="newPD2" class="campos2" type="password" autocomplete="off" placeholder="">
                     </div>
-                    <div class="item2">
+                    <div class="item2 d-flex justify-content-center">
                         <div class="submit">
                             <br>
-                            <button class="salvar" type="button">Salvar</button>
+                            <button id="changePD" class="salvar" type="button">Salvar</button>
                         </div>
                     </div>
                 </div>
@@ -64,5 +65,21 @@
 </html>
 
 <script>
-    dadosProfile()
+    dadosProfile();
+
+$("#newPD1").keyup(function(event) {
+  if (event.keyCode === 13) {
+    $("#changePD").click();
+  }
+});
+
+$("#newPD2").keyup(function(event) {
+  if (event.keyCode === 13) {
+    $("#changePD").click();
+  }
+});
+
+$("#changePD").click(function() {
+  changePassWord()
+});
 </script>

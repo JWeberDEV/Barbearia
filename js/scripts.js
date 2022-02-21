@@ -19,7 +19,7 @@ function login() {
     }
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../barbearia/php/metodos.php",
         type: "post",
         data: {acao: 'LOGIN', usuario, senha},
         dataType: "text",
@@ -33,13 +33,37 @@ function login() {
     });
 }
 
+function changePassWord() {
+  var newPD1 = $("#newPD1").val();
+  var newPD2 = $("#newPD2").val();
+  var id = $("#id").val();
+
+  if (newPD1.trim() === newPD2.trim()) {
+    $.ajax({
+        url: "../php/metodos.php",
+        type: "post",
+        data: {acao: 'TROCA SENHA', id, newPass: newPD1 },
+        success:function(retorno) {
+          if (retorno != 1) {
+            alert("Não foi possível alterar a senha");
+          }
+          else{
+            alert("Senha alterada com sucesso");
+          }
+        }
+    });
+  }else{
+    alert("As senhas não são iguais");
+  }
+}
+
 function home() {
     window.location.href = "../html/home.php";
 }
 
 function logOut() {
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data: {acao: 'FINALIZA'},
         success:function () {
@@ -65,7 +89,7 @@ function newuser() {
     }
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, password, status: status_user },
         datatype: "text",
@@ -87,7 +111,7 @@ function listarUsuarios(){
 
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'RELATORIO', conteudo: pesquisa, status },
         dataType: "text",
@@ -103,7 +127,7 @@ function listarUsuarios(){
 function deletar(id) {
     
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'DELETAR', id: id},
         dataType: "text",
@@ -120,7 +144,7 @@ var exibeid;
 
 function exibir(id) {
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'EXIBIR', id: id},
         dataType: "text",
@@ -156,7 +180,7 @@ function editar() {
         dataType: "text",
         success: function (data) {
             $.ajax({
-                url: "http://localhost/barbearia/php/metodos.php",
+                url: "../php/metodos.php",
                 type: "post",
                 data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus},
                 dataType: "text",
@@ -190,7 +214,7 @@ function newclient() {
     }
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data: {acao: 'NEW_CLIENT', nome, cpf, email, numero, datanasc, profissao, cidade },
         datatype: "text",
@@ -210,7 +234,7 @@ function listarclientes() {
     var cpf= document.getElementById("cpf").value;
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'RELATORIO CLIENTE', cliente, cpf },
         dataType: "text",
@@ -225,7 +249,7 @@ function listarclientes() {
 function deletarcliente(id) {
     
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao:'DELETA CLIENTE',id: id},
         dataType: "text",
@@ -242,7 +266,7 @@ var clientid;
 
 function exibircliente(id) {
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'EXIBIR CLIENTE', id: id},
         dataType: "text",
@@ -281,7 +305,7 @@ function editarcliente() {
         success: function (data) {
             alert(data);
             $.ajax({
-                url: "http://localhost/barbearia/php/metodos.php",
+                url: "../php/metodos.php",
                 type: "post",
                 data:{acao: 'EDITA CLIENTE', id: data, altnome: altnome, altcpf: altcpf, altnumero: altnumero, altemail: altemail, altdata: altdata, altprofissao: altprofissao, altcidade: altcidade},
                 dataType: "text",
@@ -304,7 +328,7 @@ function criaservico() {
     var precoservico = document.getElementById("preco").value;
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data: {acao: 'CRIA SERVICO', servico: nomeservico, preco: precoservico },
         dataType: "text",
@@ -325,7 +349,7 @@ function listarServicos(){
 
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'RELATORIO SERVICO', conteudo: pesquisa, preco },
         dataType: "text",
@@ -341,7 +365,7 @@ function listarServicos(){
 function deletaservico(id) {
 
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data: {acao: 'DELETA SERVICO', id},
         dataType: "text",
@@ -356,7 +380,7 @@ var servicoid;
 
 function exibirservico(id) {
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data:{acao: 'EXIBIR SERVICO', id: id},
         dataType: "text",
@@ -380,7 +404,7 @@ function editarservico(id = servicoid) {
     var preco = document.getElementById("altpreco").value;
     
     $.ajax({
-        url: "http://localhost/barbearia/php/metodos.php",
+        url: "../php/metodos.php",
         type: "post",
         data: {acao: 'EDITAR SERVICO', nome, preco, id},
         dataType: "text",
