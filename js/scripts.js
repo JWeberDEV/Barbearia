@@ -61,6 +61,27 @@ function home() {
     window.location.href = "../html/home.php";
 }
 
+function sendEmail(){
+    var email = $("#email").val();
+    if(email.trim() == ""){
+    alert("Preencha o Campo");
+    return;
+    }else{
+    alert("Será enviado um e-mail para:" + email);
+    $.ajax({
+        url: '../php/mail.php',
+        type: 'post',
+        data: {acao: 'ENVIA EMEAIL', email },
+        success:function (retorno) {
+            console.log(retorno);
+        }
+        
+    });
+    // window.location.href = "../index.html";
+    }
+
+    }
+
 function logOut() {
     $.ajax({
         url: "../php/metodos.php",
