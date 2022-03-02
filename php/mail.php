@@ -5,7 +5,18 @@ use PHPMailer\PHPMailer\Exception;
 require '../libs/PHPMailer/src/Exception.php';
 require '../libs/PHPMailer/src/PHPMailer.php';
 require '../libs/PHPMailer/src/SMTP.php';
+include 'conexao.php';
 
+function encrypt_decrypt($text, $method = 'encrypt'){ 
+      
+  if($method == 'encrypt'){ 
+      $text = base64_encode(openssl_encrypt($text, 'AES-256-CBC', '457jk9@','0', '1234567891011121')); 
+  }elseif($method == 'decrypt'){ 
+      $text = openssl_decrypt(base64_decode($text), 'AES-256-CBC', '457jk9@','0', '1234567891011121'); 
+  }                 
+
+  return $text; 
+}
 
 $acao = $_POST["acao"];
 
@@ -14,37 +25,47 @@ switch ($acao) {
   
   $email = $_POST["email"];
   
-  $mail = new PHPMailer(true);
-  // $mail->SMTPDebug = SMTP::DEBUG_SERVER;  
-  $mail->isSMTP();     
-  $mail->SMTPDebug = 4;                                 // Set mailer to use SMTP
-  $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-  $mail->SMTPAuth = true;                               // Enable SMTP authentication
-  $mail->Username = 'weberjosias1@gmail.com';                 // SMTP username
-  $mail->Password = '8653454513';                           // SMTP password
-  $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-  // $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;
-  $mail->Port = 587;                                    // TCP port to connect to
-
-  $mail->setFrom('weberjosias1@gmail.com ', 'Josias');
-  $mail->addAddress($email, 'Usuario');     // Add a recipient
-  // $mail->addAddress('ellen@example.com');               // Name is optional
-  // $mail->addReplyTo('weberjosias1@gmail.com, 'Retorno');
+  $sql = "SELECT id,nome_usuario FROM usuario WHERE email = '$email' ";
+  $retorno = $mysqli->query($sql) or die ("ERRO: falha ao executar a query");
   
+  if ($retorno->num_rows > 0) {
+    $resultado = $retorno->fetch_all(MYSQLI_ASSOC);  
+    
+    foreach ($resultado as $key => $value) {
+      $id = ($value ['id'] );
+      $nome = ($value ["nome_usuario"] );
+    }
 
-  // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-  // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-  $mail->isHTML(true);                                  // Set email format to HTML
-  $mail->CharSet = 'utf-8';
-  $mail->Subject = 'Recuperação de Senha';
-  $mail->Body    = 'Teste de mensagem pra ver se ta funcionando o PHPMail';
-  $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+    $resh = encrypt_decrypt($id,'encrypt');
 
-  if(!$mail->send()) {
-      echo 'Message could not be sent.';
-      echo 'Mailer Error: ' . $mail->ErrorInfo;
-  } else {
-      echo "Um e-mail foi enviado para $email";
+    $mail = new PHPMailer(true);
+    $mail->isSMTP();                                      // Set mailer to use SMTP
+    $mail->Host = 'smtp.gmail.com';                   // Specify main and backup SMTP servers
+    $mail->SMTPAuth = true;                               // Enable SMTP authentication
+    $mail->Username = 'weberjosias1@gmail.com';                 // SMTP username
+    $mail->Password = '8653454513';                           // SMTP password
+    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
+    $mail->Port = 587;                                    // TCP port to connect to
+    $mail->setFrom('weberjosias1@gmail.com', '');
+    $mail->addAddress($email, 'Usuario');     // Add a recipient
+    // $mail->addAddress('ellen@example.com');               // Name is optional
+    // $mail->addReplyTo('weberjosias1@hotmail.com, 'Retorno');
+    // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
+    // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
+    $mail->isHTML(true);                                  // Set email format to HTML
+    $mail->CharSet = 'utf-8';
+    $mail->Subject = 'Recuperação de Senha';
+    $mail->Body    = "<h1>Ola $nome !</h1> <br>  Para recuperar o acesso do seu usuário, é necessário clicar no link abaixo para o redirecionamento para a página onde sua senha será redefinida. <br><br> <a href='192.168.2.67/Barbearia/html/redefine.php?id=$resh'>Clique aqui para redefinir a senha</a>";
+    $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
+
+    if(!$mail->send()) {
+        echo 'Message could not be sent.';
+        echo 'Mailer Error: ' . $mail->ErrorInfo;
+    } else {
+        echo "Um e-mail foi enviado para $email";
+    }
+  }else {
+    echo("o e-mail digitado é inválido");
   }
 
   break;

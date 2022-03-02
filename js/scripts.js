@@ -67,7 +67,6 @@ function sendEmail(){
     alert("Preencha o Campo");
     return;
     }else{
-    alert("Será enviado um e-mail para:" + email);
     $.ajax({
         url: '../php/mail.php',
         type: 'post',
@@ -77,7 +76,7 @@ function sendEmail(){
         }
         
     });
-    // window.location.href = "../index.html";
+    //   window.location.href = "../index.html";
     }
 
     }
