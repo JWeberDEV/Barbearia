@@ -1,7 +1,7 @@
 <?php 
 
 include 'conexao.php';
-
+include 'funcoes.php';
 
 $acao = $_POST['acao'];
 
@@ -40,7 +40,10 @@ switch ($acao) {
   break;
 
   case 'TROCA SENHA':
-    $id = $_POST['id'];
+    $resh = $_POST['resh'];
+    $ID = encrypt_decrypt($resh, 'decrypt');
+
+    $id = isset($_POST['id']) ? $_POST['id'] : $ID;
     $newPass = $_POST['newPass'];
 
     $sql = "UPDATE usuario SET senha = '$newPass' WHERE id = '$id' ";

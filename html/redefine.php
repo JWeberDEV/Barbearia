@@ -13,21 +13,7 @@
 <body>
   <?php 
     $resh = $_GET["id"];
-
-    function encrypt_decrypt($text, $method = 'encrypt'){ 
-      
-      if($method == 'encrypt'){ 
-          $text = base64_encode(openssl_encrypt($text, 'AES-256-CBC', '457jk9@','0', '1234567891011121')); 
-      }elseif($method == 'decrypt'){ 
-          $text = openssl_decrypt(base64_decode($text), 'AES-256-CBC', '457jk9@','0', '1234567891011121'); 
-      }                 
-    
-      return $text; 
-    }
-
-    $id = encrypt_decrypt($resh,'decrypt');
-    
-    ?>
+  ?>
   
     <main class="form">
       <form class="formulario">
@@ -36,7 +22,7 @@
             <h1>Redefinição de Senha</h1>
           </legend>
           <div class="caixa">
-            <input type="hidden" id="id" value="<?=$id?>">
+            <input type="hidden" id="resh" value="<?=$resh?>">
             <span>Nova Senha</span>
             <input class="campos" type="text" id="newPD1" autocomplete="off" class="inputCustom" placeholder="Nova senha">
             <span>Confirme a nova Senha</span>
@@ -56,13 +42,13 @@
 
 
 <script>
-  $("newPass1").keyup(function(event) {
+  $("newPD1").keyup(function(event) {
   if (event.keyCode === 13) {
     $(".salvar").click();
   }
   });
 
-  $("newPass2").keyup(function(event) {
+  $("newPD2").keyup(function(event) {
   if (event.keyCode === 13) {
     $(".salvar").click();
   }

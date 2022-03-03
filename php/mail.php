@@ -6,17 +6,7 @@ require '../libs/PHPMailer/src/Exception.php';
 require '../libs/PHPMailer/src/PHPMailer.php';
 require '../libs/PHPMailer/src/SMTP.php';
 include 'conexao.php';
-
-function encrypt_decrypt($text, $method = 'encrypt'){ 
-      
-  if($method == 'encrypt'){ 
-      $text = base64_encode(openssl_encrypt($text, 'AES-256-CBC', '457jk9@','0', '1234567891011121')); 
-  }elseif($method == 'decrypt'){ 
-      $text = openssl_decrypt(base64_decode($text), 'AES-256-CBC', '457jk9@','0', '1234567891011121'); 
-  }                 
-
-  return $text; 
-}
+include 'funcoes.php';
 
 $acao = $_POST["acao"];
 

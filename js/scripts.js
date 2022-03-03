@@ -33,16 +33,19 @@ function login() {
     });
 }
 
+
+
 function changePassWord() {
   var newPD1 = $("#newPD1").val();
   var newPD2 = $("#newPD2").val();
   var id = $("#id").val();
+  var resh = $("#resh").val();
 
   if (newPD1.trim() === newPD2.trim()) {
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data: {acao: 'TROCA SENHA', id, newPass: newPD1 },
+        data: {acao: 'TROCA SENHA', id, resh,newPass: newPD1 },
         success:function(retorno) {
           if (retorno != 1) {
             alert("Não foi possível alterar a senha");
