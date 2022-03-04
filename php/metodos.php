@@ -40,7 +40,7 @@ switch ($acao) {
   break;
 
   case 'TROCA SENHA':
-    $resh = $_POST['resh'];
+    $resh = isset($_POST['resh']) ? $_POST['resh'] : "";
     $ID = encrypt_decrypt($resh, 'decrypt');
 
     $id = isset($_POST['id']) ? $_POST['id'] : $ID;

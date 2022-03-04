@@ -12,6 +12,9 @@
 </head>
 <body>
   <?php 
+    // if (!$_get["id"]) {
+    //   header('location: ../index.html')
+    // }
     $resh = $_GET["id"];
   ?>
   
@@ -23,13 +26,17 @@
           </legend>
           <div class="caixa">
             <input type="hidden" id="resh" value="<?=$resh?>">
-            <span>Nova Senha</span>
-            <input class="campos" type="text" id="newPD1" autocomplete="off" class="inputCustom" placeholder="Nova senha">
-            <span>Confirme a nova Senha</span>
-            <input class="campos" type="text" id="newPD2" autocomplete="off" class="inputCustom" placeholder="Confirmação">
+            <div style="padding-top:3%">
+              <span>Nova Senha</span>
+              <input class="campos" type="password" id="newPD1" autocomplete="off" class="inputCustom" placeholder="Nova senha">
+            </div>
+            <div style="padding-top:3%">
+              <span>Confirme a nova Senha</span>
+              <input class="campos" type="password" id="newPD2" autocomplete="off" class="inputCustom" placeholder="Confirmação">
+            </div>
           </div>
-          <br/>
-          <div class="submit">
+          
+          <div class="submit" style="padding-top: 3%">
             <button class="salvar" type="button"> Enviar </button>
         </div>
       </form>  
@@ -42,20 +49,20 @@
 
 
 <script>
-  $("newPD1").keyup(function(event) {
+  $("#newPD1").keyup(function(event) {
   if (event.keyCode === 13) {
     $(".salvar").click();
   }
   });
 
-  $("newPD2").keyup(function(event) {
+  $("#newPD2").keyup(function(event) {
   if (event.keyCode === 13) {
     $(".salvar").click();
   }
   });
 
   $(".salvar").click(function() {
-    changePassWord()
+    changePassWord();
   });
 
 

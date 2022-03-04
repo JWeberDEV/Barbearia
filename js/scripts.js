@@ -75,7 +75,7 @@ function sendEmail(){
         type: 'post',
         data: {acao: 'ENVIA EMEAIL', email },
         success:function (retorno) {
-            console.log(retorno);
+            alert(retorno);
         }
         
     });

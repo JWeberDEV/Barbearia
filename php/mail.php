@@ -17,8 +17,9 @@ switch ($acao) {
   
   $sql = "SELECT id,nome_usuario FROM usuario WHERE email = '$email' ";
   $retorno = $mysqli->query($sql) or die ("ERRO: falha ao executar a query");
-  
+
   if ($retorno->num_rows > 0) {
+    
     $resultado = $retorno->fetch_all(MYSQLI_ASSOC);  
     
     foreach ($resultado as $key => $value) {
@@ -33,7 +34,7 @@ switch ($acao) {
     $mail->Host = 'smtp.gmail.com';                   // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
     $mail->Username = 'weberjosias1@gmail.com';                 // SMTP username
-    $mail->Password = '8653454513';                           // SMTP password
+    $mail->Password = '81l4f2wy@';                           // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
     $mail->setFrom('weberjosias1@gmail.com', '');
@@ -45,14 +46,14 @@ switch ($acao) {
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->CharSet = 'utf-8';
     $mail->Subject = 'Recuperação de Senha';
-    $mail->Body    = "<h1>Ola $nome !</h1> <br>  Para recuperar o acesso do seu usuário, é necessário clicar no link abaixo para o redirecionamento para a página onde sua senha será redefinida. <br><br> <a href='192.168.2.67/Barbearia/html/redefine.php?id=$resh'>Clique aqui para redefinir a senha</a>";
+    $mail->Body    = "<h1>Ola $nome !</h1> <br>  Para recuperar o acesso do seu usuário, é necessário clicar no link abaixo para o redirecionamento para a página onde sua senha será redefinida. <br><br> <a href='localhost/Barbearia/html/redefine.php?id=$resh'>Clique aqui para redefinir a senha</a>";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     if(!$mail->send()) {
-        echo 'Message could not be sent.';
-        echo 'Mailer Error: ' . $mail->ErrorInfo;
+      echo 'Message could not be sent.';
+      echo 'Mailer Error: ' . $mail->ErrorInfo;
     } else {
-        echo "Um e-mail foi enviado para $email";
+      echo "Um e-mail foi enviado para $email";
     }
   }else {
     echo("o e-mail digitado é inválido");
