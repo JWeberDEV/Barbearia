@@ -30,14 +30,14 @@
                 <div class="row">
                     <div class="col-md-5">
                         <label>Seu Nome</label>
-                        <input id="nome" class="campos" type="text" name="nome" autocomplete="off" placeholder="Nome do cliente">
+                        <input id="nome" class="campos" type="text" autocomplete="off" placeholder="Nome do cliente">
                     </div>
                     <div class="col-md-5">
                         <label>CPF</label>
-                        <input id="cpf" class="campos" type="text" name="nome" autocomplete="off" placeholder="CPF do cliente">
+                        <input id="cpf" class="campos" type="text" autocomplete="off" placeholder="CPF do cliente">
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
-                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarclientes();"></i></button>
+                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarclientes()"></i></button>
                     </div>
                 </div >
             </div>
@@ -127,6 +127,22 @@
 <?php require_once "../includes/inportacoes _scripts.php"; ?>
 
 <script>
+    $("#nome").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $("#cpf").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $(".buscar").click(function() {
+      listarclientes();
+    });
+    
     function mascara(){
         $('#clientcpf').mask('000.000.000-00', {reverse: true});
         $('#clientnumber').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});

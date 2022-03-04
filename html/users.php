@@ -143,6 +143,22 @@
 
 
 <script>
+    $("#nome").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $("#cpf").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $(".buscar").click(function() {
+      listarclientes();
+    });
+
     function mascara(){
         $('#altcpf').mask('000.000.000-00', {reverse: true});
         $('#altnumberclient').mask('(00) 00000-0000');

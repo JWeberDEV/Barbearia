@@ -22,7 +22,7 @@
                 <div class="row">
                     <div class="col-md-4 status" style="align-items: flex-start;">
                         <label for="status">Proffissional</label>
-                        <select id="filtro-profissional">
+                        <select id="filtro-profissional" onchange="atualizaCalendario()">
                             
                         </select>
                     </div>
@@ -279,6 +279,15 @@
 </html>
 
 <script>
+    $(".campos").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $(".buscar").click(function() {
+        atualizaCalendario()
+    });
 
     function mascara(){
         $('#edit-ini').mask('00:00',);

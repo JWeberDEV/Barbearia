@@ -29,14 +29,14 @@
                 <div class="row">
                     <div class="col-md-5">
                         <label>Serviços</label>
-                        <input id="servico" class="campos" type="text" name="nome" autocomplete="off" placeholder="Nome do serviço">
+                        <input id="servico" class="campos" type="text" autocomplete="off" placeholder="Nome do serviço">
                     </div>
                     <div class="col-md-5">
                         <label>Preço</label>
-                        <input id="preco" class="campos" type="text" name="nome" autocomplete="off" placeholder="Preços">
+                        <input id="preco" class="campos" type="text" autocomplete="off" placeholder="Preços">
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
-                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarServicos();"></i></button>
+                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarServicos()"></i></button>
                     </div>
                 </div >
             </div>
@@ -106,8 +106,24 @@
 
 
 <script>
+    $("#servico").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $("#preco").keyup(function(event) {
+      if (event.keyCode === 13) {
+        $(".buscar").click();
+      }
+    });
+
+    $(".buscar").click(function() {
+        listarServicos();
+    });
+
    function mascara(){
-        $('#preco').mask('R$ 000-00', {reverse: true});
+        $('#preco').mask('R$ 000.00', {reverse: true});
         
     };
 
