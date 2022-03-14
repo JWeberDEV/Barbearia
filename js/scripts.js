@@ -70,15 +70,22 @@ function sendEmail(){
     alert("Preencha o Campo");
     return;
     }else{
+    $(".salvar").attr("disabled",true);
+    $(".salvar").addClass("loader");
+    $(".salvar").text("");
     $.ajax({
         url: '../php/mail.php',
         type: 'post',
         data: {acao: 'ENVIA EMEAIL', email },
         success:function (retorno) {
             alert(retorno);
+            $(".salvar").attr("disabled",false)
+            $(".salvar").removeClass("loader");
+            $(".salvar").text("Enviar");
         }
         
     });
+    
     //   window.location.href = "../index.html";
     }
 

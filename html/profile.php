@@ -51,7 +51,7 @@
                     <div class="item2 d-flex justify-content-center">
                         <div class="submit">
                             <br>
-                            <button id="changePD" class="salvar" type="button">Salvar</button>
+                            <button id="changePD" class="salvar" type="button" onclick="changePassWord()">Salvar</button>
                         </div>
                     </div>
                 </div>

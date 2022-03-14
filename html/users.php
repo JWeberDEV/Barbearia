@@ -34,7 +34,7 @@
                         </div>
                         <div class="col-md-5 status">
                             <label for="status">Status</label>
-                            <select name="cars" id="status">
+                            <select name="cars" id="status" onchange="listarUsuarios()">
                                 <option value="Todos">Todos</option>
                                 <option value="Ativo">Ativo</option>
                                 <option value="Inativo">Inativo</option>
@@ -143,20 +143,15 @@
 
 
 <script>
-    $("#nome").keyup(function(event) {
-      if (event.keyCode === 13) {
-        $(".buscar").click();
-      }
-    });
 
-    $("#cpf").keyup(function(event) {
+    $("#pesquisa").keyup(function(event) {
       if (event.keyCode === 13) {
         $(".buscar").click();
       }
     });
 
     $(".buscar").click(function() {
-      listarclientes();
+      listarUsuarios();
     });
 
     function mascara(){

@@ -140,7 +140,7 @@
     });
 
     $(".buscar").click(function() {
-      listarclientes();
+        listarclientes();
     });
     
     function mascara(){
