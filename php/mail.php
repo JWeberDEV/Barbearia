@@ -46,7 +46,7 @@ switch ($acao) {
     $mail->isHTML(true);                                  // Set email format to HTML
     $mail->CharSet = 'utf-8';
     $mail->Subject = 'Recuperação de Senha';
-    $mail->Body    = "<h1>Ola $nome !</h1> <br>  Para recuperar o acesso do seu usuário, é necessário clicar no link abaixo para o redirecionamento para a página onde sua senha será redefinida. <br><br> <a href='localhost/Barbearia/html/redefine.php?id=$resh'>Clique aqui para redefinir a senha</a>";
+    $mail->Body    = "<h1>Ola $nome !</h1> <br>  Para recuperar o acesso do seu usuário, é necessário clicar no link abaixo para o redirecionamento a página onde sua senha será redefinida. <br><br> <a href='localhost/Barbearia/html/redefine.php?id=$resh'>Clique aqui para redefinir a senha</a>";
     $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
     if(!$mail->send()) {

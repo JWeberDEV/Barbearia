@@ -19,7 +19,7 @@
           <h1>Recuperar senha</h1>
         </legend>
         <div class="caixa">
-          <input class="campos" type="text" id="email" autocomplete="off" class="inputCustom" placeholder="Informe seu e-mail">
+          <input class="campos" type="email" id="email" autocomplete="off" class="inputCustom" placeholder="Informe seu e-mail">
         </div>
         <br/>
         <div class="submit">
