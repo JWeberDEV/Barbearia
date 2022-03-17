@@ -180,7 +180,6 @@ function exibir(id) {
         dataType: "text",
         success: function (data) {
             data = JSON.parse(data);
-            console.log(data)
             $("#altname").val(data[0].nome);
             $("#altcpf").val(data[0].cpf);
             $("#altnumberclient").val(data[0].telefone);
@@ -301,9 +300,7 @@ function exibircliente(id) {
         data:{acao: 'EXIBIR CLIENTE', id: id},
         dataType: "text",
         success: function (data) {
-            console.log(data);
             data = JSON.parse(data);
-            console.log(data);
             $("#clientname").val(data[0].nome_cliente);
             $("#clientcpf").val(data[0].cpf);
             $("#clientnumber").val(data[0].telefone);
@@ -374,14 +371,15 @@ function criaservico() {
 }
 
 function listarServicos(){
-    var pesquisa = document.getElementById("servico").value;
-    var preco = document.getElementById("preco").value;
+    var pesquisa = $("#servico").val();
+    var preco = $("#preco").val();
+    var limit = $('#limit').val();
 
-
+    
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data:{acao: 'RELATORIO SERVICO', conteudo: pesquisa, preco },
+        data:{acao: 'RELATORIO SERVICO', conteudo: pesquisa, preco, limit},
         dataType: "text",
         success: function (data) {
             $("#tabela-servicos").html(data)
@@ -416,7 +414,6 @@ function exibirservico(id) {
         dataType: "text",
         success: function (data) {
             data = JSON.parse(data);
-            console.log(data)
             
             $("#altname").val(data[0].nome);
             $("#altpreco").val(data[0].valor);

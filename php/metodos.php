@@ -255,14 +255,21 @@ switch ($acao) {
       break;
 
       case 'RELATORIO SERVICO':
-        $busca =($_POST['conteudo']);
-        $valor =($_POST['preco']);
+        $busca = $_POST['conteudo'];
+        $valor = $_POST['preco'];
+        $limit = $_POST['limit'];
+        $page = 0;
+        if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+        $start_from = ($page-1) * $limit; 
 
         $sql = "SELECT * FROM servicos WHERE nome like '%$busca%' ";
         if($valor !=""){
           $sql .= " AND valor LIKE '%$valor%'"; 
         }
         $sql .= " ORDER BY nome ";
+        if($page !=""){
+          $sql .= " LIMIT $start_from, $limit "; 
+        }
         echo $sql;
         $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorioesta incorreta");
 
@@ -296,7 +303,7 @@ switch ($acao) {
         case 'EXIBIR SERVICO':
           $id = ($_POST['id']);
 
-          $sql = "SELECT id,nome,valor FROM servicos WHERE id = $id";
+          $sql = "SELECT * FROM servicos WHERE id = $id";
 
           $resultado = $mysqli->query($sql) or die ("ERRO: A query de exibção esta incorreta");
           $retorno = $resultado->fetch_all(MYSQLI_ASSOC);

@@ -27,13 +27,21 @@
 
             <div class="container nome_status" >
                 <div class="row">
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label>Serviços</label>
                         <input id="servico" class="campos" type="text" autocomplete="off" placeholder="Nome do serviço">
                     </div>
-                    <div class="col-md-5">
+                    <div class="col-md-4">
                         <label>Preço</label>
                         <input id="preco" class="campos" type="text" autocomplete="off" placeholder="Preços">
+                    </div>
+                    <div class="col-md-2">
+                        <label>Itens</label>
+                        <select class="campos" id="limit" onchange="listarServicos();">
+                            <option value="10">10</option>
+                            <option value="15">15</option>
+                            <option value="20">20</option>
+                        </select>
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
                         <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarServicos()"></i></button>
@@ -57,6 +65,31 @@
                     </table>
                 </div>
             </div>
+
+            <nav aria-label="Page navigation" class="d-flex justify-content-center pagination" >
+                <li class="page-item previous-next">
+                    <a class="page-link" href="#" aria-label="Previous">
+                        <span aria-hidden="true">&laquo;</span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                </li>
+                <ul class="pagination teste">
+                    
+                    <li class="page-item"><a class="page-link" href="#">1</a></li>
+                    <li class="page-item"><a class="page-link" href="#">2</a></li>
+                    <li class="page-item"><a class="page-link" href="#">3</a></li>
+                    <li class="page-item"></li>
+                    
+                </ul>
+                <li class="page-item previous-next">
+                    <a class="page-link" href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </li>
+            </nav>
+
+            <button class="buscar" style="background-color: #5c50e0;" onclick="addNewBtn();">asdsagrf\</button>
 
             <!--------------------------------------------------------->
             <!------------------------ modal -------------------------->
@@ -106,6 +139,9 @@
 
 
 <script>
+    mascara();
+    listarServicos();
+
     $("#servico").keyup(function(event) {
       if (event.keyCode === 13) {
         $(".buscar").click();
@@ -127,7 +163,8 @@
         
     };
 
-    mascara();
-    listarServicos();
+    function addNewBtn(){
+        $(".teste").append("<a class='page-link' href='#'>4</a>");
+    }
 
 </script>
