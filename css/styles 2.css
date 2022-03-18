@@ -524,3 +524,12 @@ select{
     
 }
 
+.pagination{
+    padding-top: 1rem;
+    
+}
+
+.previous-next{
+    padding-top: 1rem;
+}
+
