@@ -257,8 +257,9 @@ switch ($acao) {
       case 'RELATORIO SERVICO':
         $busca = $_POST['conteudo'];
         $valor = $_POST['preco'];
-        $limit = $_POST['limit'];
+        $limit = $_POST['limit'] == "T" ? 0 : $_POST['limit'];
         $page = 0;
+
         if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
         $start_from = ($page-1) * $limit; 
 
@@ -266,16 +267,24 @@ switch ($acao) {
         if($valor !=""){
           $sql .= " AND valor LIKE '%$valor%'"; 
         }
+
         $sql .= " ORDER BY nome ";
-        if($page !=""){
+
+        if($limit !="T"){
           $sql .= " LIMIT $start_from, $limit "; 
         }
-        echo $sql;
-        $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorioesta incorreta");
+
+        $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorio esta incorreta");
+
+        $execute = $mysqli->query($sql);
+			  $returned_rows 	= mysqli_num_rows($execute);
+
+        $exec_calc_rows 	= $mysqli->query("SELECT FOUND_ROWS() AS cad_rows_found;");
+			  $retorno_rows_found = mysqli_fetch_object($exec_calc_rows);
 
         if  ($resultado->num_rows > 0){
           while($servico = $resultado->fetch_assoc()) {
-            echo "<tr>
+            $resulServicos = "<tr>
               <td>".$servico["nome"]."</td>
               <td>".$servico["valor"]." </td> 
               <td>
@@ -290,6 +299,13 @@ switch ($acao) {
                 </div>
               </td>
             </tr>";
+
+            $resulServicos .= "<script>
+                  $('.returned_rows').html('[ <b>".$returned_rows."</b> ] de [ <b>".$retorno_rows_found->cad_rows_found."</b> ] registro(s) encontrado(s).');
+									$('.returned_rows_geral').val('".$retorno_rows_found->cad_rows_found."');
+            </script>";
+
+            echo $resulServicos;
           }
         }
         break;
