@@ -37,7 +37,7 @@
                     </div>
                     <div class="col-md-2">
                         <label>Itens</label>
-                        <select class="campos" id="limit" onchange="listarServicos();">
+                        <select class="campos" id="limit" name="qtdRegistros" onchange="listarServicos();">
                             <option value="T">Todos</option>
                             <option value="10">10</option>
                             <option value="15">15</option>
@@ -72,8 +72,8 @@
             </div>
 
             <nav aria-label="Page navigation" class="d-flex justify-content-center pagination" >
-                <input type="hidden" name="">
-                <input type="hidden">
+                <input type="hidden" name="cad_num_page" class="cad_numpage">
+                <input type="hidden" name="returned_rows_geral" class="returned_rows_geral" >
                 <ul class="pagination-demo" id="pagination-demo">
                 
                 </ul>
@@ -129,6 +129,7 @@
 <script>
     mascara();
     listarServicos();
+    pagination();
 
     $("#servico").keyup(function(event) {
       if (event.keyCode === 13) {
@@ -151,40 +152,6 @@
         
     };
 
-    function pagination(params) {
-            //DEFINE AS VARIAVEIS
-        var cad_page_atual = $("input[name=cad_num_page]").val();
-        var cad_qtde_rows_page = ($("select[name=cad_qtde_rows_page]")[0]) ? $("select[name=cad_qtde_rows_page]").val() : "10";
-        var cad_qtde_rows_geral = $("input[name=returned_rows_geral]").val();
 
-        //CALCULA QUAL A QUANTIDADE DE PAGINAS
-        var cad_total_page = Math.ceil(cad_qtde_rows_geral / cad_qtde_rows_page);
-
-        //FINALIZA O PLUGIN
-        $('#pagination-demo').twbsPagination('destroy');
-
-        if(!cad_total_page) return;
-
-        //INICIALIZA NOVAMENTE
-        $('#pagination-demo').twbsPagination({
-
-            //ATRIBUI A PAGINA ATUAL E TOTAL DE PAGINA
-            startPage: parseInt(cad_page_atual),
-            totalPages: cad_total_page,
-            visiblePages: 3,       
-            next: '<i style="font-size:25px;" class="fa fa-angle-right" data-tt="tooltip" data-placement="top" title="Próximo"></i>',
-            prev: '<i style="font-size:25px;" class="fa fa-angle-left" data-tt="tooltip" data-placement="top" title="Anterior"></i>',
-            first: '<i style="font-size:25px;" class="fa fa-angle-double-left" data-tt="tooltip" data-placement="top" title="Primeiro"></i>',
-            last: ($('input[name=cad_perfil_sessao]').val() == "Administrador" || $('input[name=cad_perfil_sessao]').val() == "Colaborador") ? '' : '<i style="font-size:25px;" class="fa fa-angle-double-right" data-tt="tooltip" data-placement="top" title="Último"></i>',
-            onPageClick: function (event, page) {            
-                //NO CLIQUE MANDA O VALOR PARA O CAMPO
-                $("input[name=cad_num_page]").val(page);
-
-                //EXECUTA A FUNCAO QUE FOI PASSADA POR PARAMETRO                        
-                cad_nome_funcao();
-            }        
-        });
-
-    }
 
 </script>

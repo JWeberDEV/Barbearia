@@ -263,7 +263,7 @@ switch ($acao) {
         if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
         $start_from = ($page-1) * $limit; 
 
-        $sql = "SELECT * FROM servicos WHERE nome like '%$busca%' ";
+        $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM servicos WHERE nome like '%$busca%' ";
         if($valor !=""){
           $sql .= " AND valor LIKE '%$valor%'"; 
         }
@@ -275,14 +275,12 @@ switch ($acao) {
         }
 
         $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorio esta incorreta");
-
-        $execute = $mysqli->query($sql);
-			  $returned_rows 	= mysqli_num_rows($execute);
+			  $returned_rows 	= mysqli_num_rows($resultado);
 
         $exec_calc_rows 	= $mysqli->query("SELECT FOUND_ROWS() AS cad_rows_found;");
 			  $retorno_rows_found = mysqli_fetch_object($exec_calc_rows);
 
-        if  ($resultado->num_rows > 0){
+        if ($resultado->num_rows > 0){
           while($servico = $resultado->fetch_assoc()) {
             $resulServicos = "<tr>
               <td>".$servico["nome"]."</td>
@@ -313,7 +311,8 @@ switch ($acao) {
         case 'DELETA SERVICO':
           $id = ($_POST['id']);
 
-          $mysqli->query("DELETE FROM servicos WHERE id = '$id'");
+          $mysqli->query("DELETE FROM servicos WHERE id = '$id'") or die ("ERRO: Não foi Possivel deletar o registro");
+          
         break;
 
         case 'EXIBIR SERVICO':

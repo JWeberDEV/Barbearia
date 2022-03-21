@@ -446,6 +446,53 @@ function editarservico(id = servicoid) {
     });
 }
 
+function pagination() {
+
+    //DEFINE AS VARIAVEIS
+var cad_page_atual = $("input[name=cad_num_page]").val();
+var cad_qtde_rows_page = ($("select[name=qtdRegistros]")[0]) ? $("select[name=qtdRegistros]").val() : "10";
+var cad_qtde_rows_geral = $("input[name=returned_rows_geral]").val();
+
+//CALCULA QUAL A QUANTIDADE DE PAGINAS
+var cad_total_page = Math.ceil(cad_qtde_rows_geral / cad_qtde_rows_page);
+
+//FINALIZA O PLUGIN
+$('#pagination-demo').twbsPagination('destroy');
+
+if(!cad_total_page) return;
+
+//INICIALIZA NOVAMENTE
+$('#pagination-demo').twbsPagination({
+
+    //ATRIBUI A PAGINA ATUAL E TOTAL DE PAGINA
+    startPage: parseInt(cad_page_atual),
+    totalPages: cad_total_page,
+    visiblePages: 3,       
+    next: '<i style="font-size:25px;" class="fa fa-angle-right" data-tt="tooltip" data-placement="top" title="Próximo"></i>',
+    prev: '<i style="font-size:25px;" class="fa fa-angle-left" data-tt="tooltip" data-placement="top" title="Anterior"></i>',
+    first: '<i style="font-size:25px;" class="fa fa-angle-double-left" data-tt="tooltip" data-placement="top" title="Primeiro"></i>',
+    last: ($('input[name=cad_perfil_sessao]').val() == "Administrador" || $('input[name=cad_perfil_sessao]').val() == "Colaborador") ? '' : '<i style="font-size:25px;" class="fa fa-angle-double-right" data-tt="tooltip" data-placement="top" title="Último"></i>',
+    onPageClick: function (event, page) {            
+        //NO CLIQUE MANDA O VALOR PARA O CAMPO
+        $("input[name=cad_num_page]").val(page);
+
+        //EXECUTA A FUNCAO QUE FOI PASSADA POR PARAMETRO                        
+        cad_nome_funcao();
+    }        
+});
+
+    //CRIA O CAMPO DE BUSCAR PAGINA
+    if($('input[name=cad_perfil_sessao]').val() == "Administrador Pro" || $('input[name=cad_perfil_sessao]').val() == "Colaborador Pro"){
+        $('#pagination-demo li:last-child').after("<input data-tt='tooltip' data-placement='top' title='Ir para:' style='height:30px;width:35px;border:1px solid #ddd;padding-left:5px;' type='text' onkeyup='func_page_go(this), somenteNumeros(this)'>");
+    }
+    $.material.init();
+    $.material.checkbox();
+
+    $("[data-toggle='tooltip']").tooltip();
+    $("[data-tt='tooltip']").tooltip();            
+    $("[data-toggle='popover']").popover({ trigger: "focus" });
+}
+
 
 window.addEventListener('DOMContentLoaded', event => {
 
