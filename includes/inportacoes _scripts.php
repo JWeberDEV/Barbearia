@@ -18,3 +18,5 @@
 <script src="../libs/jQuery-Mask-Plugin-master/src/jquery.mask.js"></script>
 <!-- highcharts (gráficos) -->
 <script src="../libs/Highcharts-9.3.3/code/highcharts.js"></script>
+<!-- Paginação -->
+<script src="../libs/paginacao/jquery.twbsPagination.min.js" type="text/javascript"></script>

@@ -37,11 +37,11 @@
                     </div>
                     <div class="col-md-2">
                         <label>Itens</label>
-                        <select class="campos" id="limit" name="qtdRegistros" onchange="listarServicos();">
-                            <option value="T">Todos</option>
+                        <select class="campos" id="limit" name="cad_qtde_rows_page" onchange="listarServicos();">
                             <option value="10">10</option>
                             <option value="15">15</option>
                             <option value="20">20</option>
+                            <option value="T">Todos</option>
                         </select>
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
@@ -68,12 +68,12 @@
             </div>
 
             <div class="col-md-12" style="margin: 0px; padding-top: 1rem; text-align: center;">
-                <span class="returned_rows "></span>
+                <span class="returned_rows"></span>
             </div>
 
             <nav aria-label="Page navigation" class="d-flex justify-content-center pagination" >
-                <input type="hidden" name="cad_num_page" class="cad_numpage">
-                <input type="hidden" name="returned_rows_geral" class="returned_rows_geral" >
+                <input type="hidden" name="returned_rows_geral" class="returned_rows_geral" id="returned_rows_geral">
+                <input type="hidden" name="cad_num_page" class="cad_num_page" value="1">
                 <ul class="pagination-demo" id="pagination-demo">
                 
                 </ul>
@@ -122,14 +122,14 @@
 
     <?php require_once "../includes/inportacoes _scripts.php"; ?>
     <script src="../libs/pagination/jquery.twbsPagination.min.js" type="text/javascript"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 </body>
 </html>
-
 
 <script>
     mascara();
     listarServicos();
-    pagination();
+   
 
     $("#servico").keyup(function(event) {
       if (event.keyCode === 13) {

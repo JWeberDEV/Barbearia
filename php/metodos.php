@@ -258,11 +258,10 @@ switch ($acao) {
         $busca = $_POST['conteudo'];
         $valor = $_POST['preco'];
         $limit = $_POST['limit'] == "T" ? 0 : $_POST['limit'];
-        $page = 0;
 
-        if (isset($_GET["page"])) { $page  = $_GET["page"]; } else { $page=1; };  
+        if (isset($_POST["page"])) { $page  = $_POST["page"]; } else { $page=1; };  
         $start_from = ($page-1) * $limit; 
-
+        
         $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM servicos WHERE nome like '%$busca%' ";
         if($valor !=""){
           $sql .= " AND valor LIKE '%$valor%'"; 
@@ -302,6 +301,8 @@ switch ($acao) {
                   $('.returned_rows').html('[ <b>".$returned_rows."</b> ] de [ <b>".$retorno_rows_found->cad_rows_found."</b> ] registro(s) encontrado(s).');
 									$('.returned_rows_geral').val('".$retorno_rows_found->cad_rows_found."');
             </script>";
+
+            
 
             echo $resulServicos;
           }
