@@ -30,7 +30,7 @@ switch ($acao) {
     $resh = encrypt_decrypt($id,'encrypt');
 
     $mail = new PHPMailer(true);
-    $mail->SMTPDebug = 4;
+    // $mail->SMTPDebug = 4;
     $mail->isSMTP();                                      // Set mailer to use SMTP
     $mail->Host = 'smtp.office365.com';                   // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication

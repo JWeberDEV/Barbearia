@@ -34,12 +34,12 @@ function login() {
 }
 
 
-
 function changePassWord() {
   var newPD1 = $("#newPD1").val();
   var newPD2 = $("#newPD2").val();
   var id = $("#id").val();
   var resh = $("#resh").val();
+  var mail = $("input[name=mail]").val();
 
   if (newPD1.trim() === newPD2.trim()) {
     $.ajax({
@@ -52,6 +52,9 @@ function changePassWord() {
           }
           else{
             alert("Senha alterada com sucesso");
+            if (mail = 1) {
+                home();
+            }
           }
         }
     });
@@ -78,7 +81,7 @@ function sendEmail(){
         type: 'post',
         data: {acao: 'ENVIA EMEAIL', email },
         success:function (retorno) {
-            console.log(retorno);
+            // console.log(retorno);
             $(".salvar").attr("disabled",false)
             $(".salvar").removeClass("loader");
             $(".salvar").text("Enviar");
@@ -86,7 +89,7 @@ function sendEmail(){
         
     });
     
-    //   window.location.href = "../index.html";
+      window.location.href = "../index.html";
     }
 
     }

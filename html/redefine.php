@@ -28,6 +28,7 @@
             <input type="hidden" id="resh" value="<?=$resh?>">
             <div style="padding-top:3%">
               <span>Nova Senha</span>
+              <input type="hidden" name="mail" value="1">
               <input class="campos" type="password" id="newPD1" autocomplete="off" class="inputCustom" placeholder="Nova senha">
             </div>
             <div style="padding-top:3%">
