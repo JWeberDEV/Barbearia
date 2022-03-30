@@ -78,7 +78,7 @@ function sendEmail(){
         type: 'post',
         data: {acao: 'ENVIA EMEAIL', email },
         success:function (retorno) {
-            alert(retorno);
+            console.log(retorno);
             $(".salvar").attr("disabled",false)
             $(".salvar").removeClass("loader");
             $(".salvar").text("Enviar");

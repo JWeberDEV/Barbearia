@@ -30,14 +30,15 @@ switch ($acao) {
     $resh = encrypt_decrypt($id,'encrypt');
 
     $mail = new PHPMailer(true);
+    $mail->SMTPDebug = 4;
     $mail->isSMTP();                                      // Set mailer to use SMTP
-    $mail->Host = 'smtp.gmail.com';                   // Specify main and backup SMTP servers
+    $mail->Host = 'smtp.office365.com';                   // Specify main and backup SMTP servers
     $mail->SMTPAuth = true;                               // Enable SMTP authentication
-    $mail->Username = 'weberjosias1@gmail.com';                 // SMTP username
-    $mail->Password = '81l4f2wy@';                           // SMTP password
+    $mail->Username = 'weberjosias1@hotmail.com';                 // SMTP username
+    $mail->Password = 'AC04gr123@';                           // SMTP password
     $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
     $mail->Port = 587;                                    // TCP port to connect to
-    $mail->setFrom('weberjosias1@gmail.com', '');
+    $mail->setFrom('weberjosias1@hotmail.com', '');
     $mail->addAddress($email, 'Usuario');     // Add a recipient
     // $mail->addAddress('ellen@example.com');               // Name is optional
     // $mail->addReplyTo('weberjosias1@hotmail.com, 'Retorno');

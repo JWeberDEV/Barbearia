@@ -200,6 +200,43 @@ button > a:hover {
 
 }
 
+.page-link{
+    font-size: 20px;
+}
+
+.page-item .page-link{
+    color: #483eaf;
+}
+
+.page-item.active .page-link{
+    background-color: #675dd3;
+    border-color: #4f44be;
+}
+
+.fa-angle-right:before{
+    color: #483eaf;
+}
+
+.fa-angle-left:before{
+    color: #483eaf;
+}
+
+.fa-angle-double-left:before{
+    color: #483eaf;
+}
+
+.fa-angle-double-right:before{
+    color: #483eaf;
+} 
+
+li.page-item .first disabled{
+    color: #979797;
+}
+
+li.page-item .prev disabled{
+    color: #979797;
+}
+
 /*------------------------------------*\
 	        Create_clients
 \*------------------------------------*/

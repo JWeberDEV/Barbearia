@@ -121,14 +121,13 @@
     </div>
 
     <?php require_once "../includes/inportacoes _scripts.php"; ?>
-    <script src="../libs/pagination/jquery.twbsPagination.min.js" type="text/javascript"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.2/css/bootstrap.min.css">
 </body>
 </html>
 
 <script>
     mascara();
     listarServicos();
+    
    
 
     $("#servico").keyup(function(event) {

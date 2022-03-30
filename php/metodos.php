@@ -341,7 +341,7 @@ switch ($acao) {
 
         break;
 }
-
+// $data->cad_busca = str_replace(' ','',$data->cad_busca);
 
 ?>
 
