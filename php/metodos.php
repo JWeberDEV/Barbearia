@@ -258,8 +258,8 @@ switch ($acao) {
         $busca = $_POST['conteudo'];
         $valor = $_POST['preco'];
         $limit = $_POST['limit'] == "T" ? 0 : $_POST['limit'];
-
         if (isset($_POST["page"])) { $page  = $_POST["page"]; } else { $page=1; };  
+
         $start_from = ($page-1) * $limit; 
         
         $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM servicos WHERE nome like '%$busca%' ";
@@ -278,6 +278,11 @@ switch ($acao) {
 
         $exec_calc_rows 	= $mysqli->query("SELECT FOUND_ROWS() AS cad_rows_found;");
 			  $retorno_rows_found = mysqli_fetch_object($exec_calc_rows);
+
+        $pagina = $start_from + $limit;
+        if ($pagina >= $retorno_rows_found->cad_rows_found) {
+          $pagina = $retorno_rows_found->cad_rows_found;
+        }
 
         if ($resultado->num_rows > 0){
           while($servico = $resultado->fetch_assoc()) {
@@ -298,7 +303,7 @@ switch ($acao) {
             </tr>";
 
             $resulServicos .= "<script>
-                  $('.returned_rows').html('[ <b>".$returned_rows."</b> ] de [ <b>".$retorno_rows_found->cad_rows_found."</b> ] registro(s) encontrado(s).');
+                  $('.returned_rows').html('[ <b>".$pagina."</b> ] de [ <b>".$retorno_rows_found->cad_rows_found."</b> ] registro(s) encontrado(s).');
 									$('.returned_rows_geral').val('".$retorno_rows_found->cad_rows_found."');
             </script>";
 
