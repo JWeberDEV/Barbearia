@@ -7,8 +7,10 @@
             <button class="col home" style="background-color: #5c50e0;" id="sidebarToggle" onclick="home()"><i class="fa fa-home" aria-hidden="true"></i></button>
         </div>
     </div>
-</nav>
-<!-- Page content-->
-<div class="fundo">
+    
+    <!-- Page content-->
+    <div class="fundo">
     <img class="fundo" src="../img/Fundo.png" alt="Plano de fundo">
-</div>
+    </div>
+
+</nav>
