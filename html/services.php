@@ -45,7 +45,7 @@
                         </select>
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
-                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarServicos()"></i></button>
+                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="func_enter(listarServicos)"></i></button>
                     </div>
                 </div >
             </div>
