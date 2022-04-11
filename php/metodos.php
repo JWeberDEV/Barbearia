@@ -81,19 +81,31 @@ switch ($acao) {
   case 'RELATORIO':
     $busca =($_POST['conteudo']);
     $status =($_POST['status']);
-    
+    $limit = $_POST['limit'] == "T" ? 0 : $_POST['limit'];
+    if (isset($_POST["page"])) { $page  = $_POST["page"]; } else { $page=1; };  
 
-    $sql = "SELECT id,nome,email,perfil,user_status FROM usuario WHERE nome LIKE '%$busca%'"; 
+    $start_from = ($page-1) * $limit; 
+
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM usuario WHERE nome LIKE '%$busca%'"; 
     if($status !="Todos"){
     $sql .= " AND user_status = '$status'"; 
     }
     $sql .= " ORDER BY nome ";
 
-    $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
+    $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorio esta incorreta");
+    $returned_rows 	= mysqli_num_rows($resultado);
+
+    $exec_calc_rows 	= $mysqli->query("SELECT FOUND_ROWS() AS cad_rows_found;");
+    $retorno_rows_found = mysqli_fetch_object($exec_calc_rows);
+
+    $pagina = $start_from + $limit;
+    if ($pagina >= $retorno_rows_found->cad_rows_found || $pagina == 0) {
+      $pagina = $retorno_rows_found->cad_rows_found;
+    }
     
     if ($resultado->num_rows > 0) {
       while($user = $resultado->fetch_assoc()) {
-        echo "<tr>
+        $resultClients = "<tr>
                 <td>".$user["nome"]."</td>
                 <td>".$user["email"]." </td> 
                 <td>".$user["perfil"]."</td>
@@ -106,7 +118,13 @@ switch ($acao) {
                   </div>
                 </td>
               </tr>";
+
+              $resultClients .= "<script>
+                  $('.returned_rows').html('[ <b>".$pagina."</b> ] de [ <b>".$retorno_rows_found->cad_rows_found."</b> ] registro(s) encontrado(s).');
+									$('.returned_rows_geral').val('".$retorno_rows_found->cad_rows_found."');
+            </script>";
         
+              echo $resultClients ; 
       }
     }
 
@@ -174,18 +192,36 @@ switch ($acao) {
     case 'RELATORIO CLIENTE':
     $cliente = ($_POST['cliente']);
     $cpf = ($_POST['cpf']);
+    $limit = $_POST['limit'] == "T" ? 0 : $_POST['limit'];
+    if (isset($_POST["page"])) { $page  = $_POST["page"]; } else { $page=1; };  
 
-    $sql = "SELECT id,nome_cliente,email,telefone,total_agendados FROM cliente WHERE nome_cliente LIKE '%$cliente%'"; 
+    $start_from = ($page-1) * $limit; 
+
+
+    $sql = "SELECT SQL_CALC_FOUND_ROWS * FROM cliente WHERE nome_cliente LIKE '%$cliente%'"; 
     if($cpf !=""){
     $sql .= " AND cpf LIKE '%$cpf%'"; 
     }
     $sql .= " ORDER BY nome_cliente ";
 
-    $resultado = $mysqli->query($sql) or die ("ERRO: A query de relatorio esta incorreta");
-    
+    if($limit !="T"){
+      $sql .= " LIMIT $start_from, $limit "; 
+    }
+
+    $resultado = $mysqli->query($sql) or  die ("ERRO: A query de relatorio esta incorreta");
+    $returned_rows 	= mysqli_num_rows($resultado);
+
+    $exec_calc_rows 	= $mysqli->query("SELECT FOUND_ROWS() AS cad_rows_found;");
+    $retorno_rows_found = mysqli_fetch_object($exec_calc_rows);
+
+    $pagina = $start_from + $limit;
+    if ($pagina >= $retorno_rows_found->cad_rows_found || $pagina == 0) {
+      $pagina = $retorno_rows_found->cad_rows_found;
+    }
+
     if ($resultado->num_rows > 0) {
       while($client = $resultado->fetch_assoc()) {
-      echo "<tr>
+        $resulClientes = "<tr>
               <td>".$client["nome_cliente"]."</td>
               <td>".$client["email"]." </td> 
               <td>".$client["telefone"]."</td>
@@ -198,7 +234,15 @@ switch ($acao) {
                 </div>
               </td>
             </tr>";
+
+            $resulClientes .= "<script>
+                  $('.returned_rows').html('[ <b>".$pagina."</b> ] de [ <b>".$retorno_rows_found->cad_rows_found."</b> ] registro(s) encontrado(s).');
+									$('.returned_rows_geral').val('".$retorno_rows_found->cad_rows_found."');
+            </script>";
+
+            echo $resulClientes;
       }
+
     }
 
       break;
@@ -280,7 +324,7 @@ switch ($acao) {
 			  $retorno_rows_found = mysqli_fetch_object($exec_calc_rows);
 
         $pagina = $start_from + $limit;
-        if ($pagina >= $retorno_rows_found->cad_rows_found) {
+        if ($pagina >= $retorno_rows_found->cad_rows_found || $pagina == 0) {
           $pagina = $retorno_rows_found->cad_rows_found;
         }
 

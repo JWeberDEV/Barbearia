@@ -105,6 +105,15 @@ function logOut() {
     });
 }
 
+function func_enter(cad_nome_funcao){
+
+    var cad_tecla = window.event.keyCode; 
+        
+    if(cad_tecla == 13){ 
+        cad_nome_funcao();
+    }   
+}
+
 function newuser() {
     event.preventDefault()
     var nomecompleto = document.getElementById("fullname").value;
@@ -141,15 +150,17 @@ function newuser() {
 function listarUsuarios(){
     var pesquisa = document.getElementById("pesquisa").value;
     var status = document.getElementById("status").value;
-
+    var limit = $('#limit').val();
+    var page = $(".cad_num_page").val();
 
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data:{acao: 'RELATORIO', conteudo: pesquisa, status },
+        data:{acao: 'RELATORIO', conteudo: pesquisa, status, limit, page},
         dataType: "text",
         success: function (data) {
             $("#tabela-usuario").html(data)
+            paginacao(listarUsuarios);
         }
 
         
@@ -264,14 +275,18 @@ function newclient() {
 function listarclientes() {
     var cliente = document.getElementById("nome").value;
     var cpf= document.getElementById("cpf").value;
+    var limit = $('#limit').val();
+    var page = $(".cad_num_page").val();
 
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data:{acao: 'RELATORIO CLIENTE', cliente, cpf },
+        data:{acao: 'RELATORIO CLIENTE', cliente, cpf, limit, page},
         dataType: "text",
         success: function (data) {
-            $("#tabela-clientes").html(data)
+            $("#tabela-clientes").html(data);
+
+            paginacao(listarclientes);
         }
 
         
@@ -365,7 +380,7 @@ function criaservico() {
         success: function (data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/services.php"
+                window.location.href = "http://localhost/barbearia/html/services.php";
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -385,8 +400,9 @@ function listarServicos(){
         data:{acao: 'RELATORIO SERVICO', conteudo: pesquisa, preco, limit, page},
         dataType: "text",
         success: function (data) {
-            $("#tabela-servicos").html(data)
-            paginacao();
+            $("#tabela-servicos").html(data);
+
+            paginacao(listarServicos);
         }
 
         
@@ -450,7 +466,7 @@ function editarservico(id = servicoid) {
     });
 }
 
-function paginacao() {
+function paginacao(cad_nome_funcao) {
     var cad_page_atual = $("input[name=cad_num_page]").val();
     var cad_qtde_rows_page = ($("select[name=cad_qtde_rows_page]")[0]) ? $("select[name=cad_qtde_rows_page]").val() : "10";
     var cad_qtde_rows_geral = $("#returned_rows_geral").val();
@@ -472,14 +488,14 @@ function paginacao() {
             last: '<i style="font-size:25px;" class="fa fa-angle-double-right" data-tt="tooltip" data-placement="top" title="Último"></i>',
             initiateStartPageClick: false,
             onPageClick: function (event, page) {
-                console.log("ojashfouhasoidfja");
                 $("input[name=cad_num_page]").val(page);
                 
-                listarServicos();
+                cad_nome_funcao();
             }
-        }).on('page', function (event, page) {
-            console.info(page + ' (from event listening)');
-        });
+        })
+        // .on('page', function (event, page) {
+        //     console.info(page + ' (from event listening)');
+        // });
     });
 
 }

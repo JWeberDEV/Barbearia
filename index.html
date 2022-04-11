@@ -6,8 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LOGIN</title>
     <link rel="icon" href="img/logo_barber.png" alt="Icone Pagina" />
-    <!-- <link rel="stylesheet" href="../bootstrap-5.1.3-dist/css/bootstrap.min.css"> -->
-    <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-5.1.3-dist/css/bootstrap-grid.min.css">
+    <link rel="stylesheet" href="libs/bootstrap-5.1.3-dist/css/bootstrap-grid.rtl.min.css">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="css/login.css">
 
 </head>
@@ -23,7 +25,14 @@
                         <input class="campos" type="text" id="usuario" autocomplete="off" placeholder="Login" required>
                     </div>
                     <div class="caixa" style="padding-top: 4%;">
-                        <input class="campos" type="password" id="senha" autocomplete="off" placeholder="Senha" required>
+                        <div class="form-group">
+                            <div class="input-group">
+                                <input class="campos" type="password" id="senha" autocomplete="off" placeholder="Senha" required>
+                                <span class="input-group-text">
+                                    <i id="eye-icon" class="fa fa-eye" aria-hidden="true"></i>
+                                </span>
+                            </div>
+                        </div>
                     </div>
                 <br/>
                 <div class="submit" style="padding-bottom: 4%;">
@@ -35,9 +44,8 @@
                 </div>
             </div>
         </form>  
-    </main>
 
-
+        
 </body>
 </html>
 
@@ -45,6 +53,9 @@
 <script src="js/scripts.js" defer></script> 
 <!--ajax-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<!-- Boostrap -->
+<script src="libs/bootstrap-5.1.3-dist/js/bootstrap.bundle.min.js"></script>
+<!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script> -->
 
 <script>
 
@@ -64,6 +75,31 @@ $("#entrar").click(function() {
     login();
 });
 
+const pass = $('#password');
+    const eye = $(".eye");
+    let YesNot = 0;
+
+    eye.click(function() {
+        if (YesNot == 0) {
+            pass.attr("type", "text");
+            $("#eye-icon").removeClass("fa-eye");
+            $('#eye-icon').addClass('fa-eye-slash');
+            YesNot = 1;
+        }else{
+            pass.attr("type", "password");
+            $('#eye-icon').removeClass('fa-eye-slash');
+            $("#eye-icon").addClass("fa-eye");
+            YesNot = 0;
+        }
+    
+    });
+
+    // Caso seja preciso fazer com que quando o mouse saia de cimado olho, a senha não seja exibida na tela -- Josias 01/04/2022
+    // $( ".eye" ).mouseout(function() { 
+    //     $("#password").attr("type", "password");
+    // });
+
 </script>
+
 
 
