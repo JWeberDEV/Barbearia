@@ -10,7 +10,7 @@
     
     <!-- Page content-->
     <div class="fundo">
-    <img class="fundo" src="../img/Fundo.png" alt="Plano de fundo">
+        <img class="fundo" src="../img/Fundo.png" alt="Plano de fundo">
     </div>
 
 </nav>
