@@ -32,7 +32,7 @@
                     </div>
                     <div class="col-md-4">
                         <br>
-                        <button class="buscar" style="background-color: #5c50e0;"onclick=" atualizaCalendario()"><i class="fa fa-search" aria-hidden="true" ></i></button>
+                        <button class="buscar botao" onclick=" atualizaCalendario()"><i class="fa fa-search" aria-hidden="true" ></i></button>
                     </div>
                 </div>
             </div>
@@ -53,7 +53,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <input type="hidden" name="id_agenda">
-            <div class="modal-header" style="background-color: #aea7f8;">
+            <div class="modal-header table-color">
                 <h4 class="modal-title">Opções Agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
@@ -85,7 +85,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header" style="background-color: #aea7f8;">
+            <div class="modal-header table-color">
                 <h4 class="modal-title">Finalizar agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
@@ -113,7 +113,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header" style="background-color: #aea7f8;">
+            <div class="modal-header table-color">
                 <h4 class="modal-title">Finalizar agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
@@ -140,7 +140,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header" style="background-color: #aea7f8;">
+            <div class="modal-header table-color">
                 <h4 class="modal-title">Editar agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>
@@ -213,7 +213,7 @@
     <div class="modal-dialog">
         <div class="modal-content">
 
-            <div class="modal-header" style="background-color: #aea7f8;">
+            <div class="modal-header table-color">
                 <h4 class="modal-title">Novo Agendamento</h4>
                 <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
             </div>

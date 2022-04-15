@@ -22,15 +22,15 @@
                 <div class="container2 tabela">
                     <div class="item2">
                         <label>Nome Usuário</label>
-                        <input id="fullname" class="campos2" type="text" name="nome" autocomplete="off" placeholder=" Nome Completo">
+                        <input id="fullname" class="campos2" type="text" autocomplete="off" placeholder=" Nome Completo">
                     </div>
                     <div class="item2">
                         <label>CPF Usuário</label>
-                        <input id="cpf" class="campos2" type="text" name="nome" autocomplete="off" placeholder="___.___.___-__">
+                        <input id="cpf" class="campos2" type="text" autocomplete="off" placeholder="___.___.___-__">
                     </div>
                     <div class="item2">
                         <label>Email Usuário</label>
-                        <input id="email" class="campos2" type="text" name="nome" autocomplete="off" placeholder="email@exemplo.com">
+                        <input id="email" class="campos2" type="email" autocomplete="off" placeholder="email@exemplo.com">
                     </div>
                     <div class="item2">
                         <label>Perfil</label>
@@ -44,11 +44,11 @@
                     </div>
                     <div class="item2">
                         <label class="required">Usuário</label>
-                        <input id="login" class="campos2" type="text" name="nome" autocomplete="off" placeholder="Usuário Login" required>
+                        <input id="login" class="campos2" type="text" autocomplete="off" placeholder="Usuário Login" required>
                     </div>
                     <div class="item2">
                         <label class="required">Senha</label>
-                        <input id="password" class="campos2" type="password" name="nome" autocomplete="off" placeholder="*****" required>
+                        <input id="password" class="campos2" type="password" autocomplete="off" placeholder="*****" required>
                     </div>
                     <div class="item2">
                         <label for="status">Status</label>

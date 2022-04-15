@@ -8,13 +8,19 @@
     --color: #b0aaf1;
     --color1: #6558f5;
     --color2: #675dd3;
-    --color3 : #5c50e0;
+    --color3: #5c50e0;
     --color4: #4f44be;
     --color5: #f7c325;
     --color6: #d3455b;
     --color7: #979797;
     --color8: #8dd7cf;
     --color9: #1aae9f;
+    --color10:rgba(255, 255, 255, 0.829);
+    --color11:grey;
+    --botoes: #5c50e0;
+    --funcoes:#aea7f8;
+    --cabecalho: #aea7f8;
+    
     
 
   }
@@ -60,24 +66,28 @@ button > a:hover {
     color: white;
 }
 
+.botao{
+    background-color: var(--botoes) !important;
+}
+
 .campos{
     padding: 10px;
     width: 60%;
     line-height: 1.5;
     border-radius: 5px;
     border: 2px solid #ccc;
-    box-shadow: 1px 1px 1px #999;
+    box-shadow: 2px 2px 2px #999;
     display: flex;
 }
 
 .campos:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .campos:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 .profcampos{
@@ -101,12 +111,12 @@ button > a:hover {
 
 .profcampos > select:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .profcampos > select:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 .required:after {
@@ -118,18 +128,18 @@ button > a:hover {
 .home{
     box-shadow: 1px 1px 1px #999;
     padding: 7px;   
-    background-color: #6558f5;
+    background-color: var(--color1);
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
     border-radius: 5px;
     
 }
 
 .home:hover {
-    background-color: #4f44be;
-    border: 2px solid #483eaf;
+    background-color: var(--color4);
+    border: 2px solid var(--color3);
     color: white   ;
 }
 
@@ -149,22 +159,9 @@ button > a:hover {
 	            Tabelas
 \*------------------------------------*/
 
-.bem-vindo{
-    background-color: rgba(255, 255, 255, 0.801);
-    padding: 10px;
-    padding-right: 30px;
-    padding-left: 30px;
-    border: 2px solid grey;
-    border-radius: 10px;
+.table-color{
+    background-color: var(--cabecalho);
 }
-
-.bem-vindo > h1{
-    text-align: center;
-}
-
-/*------------------------------------*\
-	            Tabelas
-\*------------------------------------*/
 
 .btns{
     padding-top: 3%;
@@ -190,15 +187,15 @@ button > a:hover {
     box-shadow: 1px 1px 1px #999;
     padding: 3;  
     width: 100%;
-    background-color: #aea7f8;
+    background-color: var(--funcoes);
     font-size: 16px;
     margin-top: 10px;
-    border: 1px solid #5c50e0;
+    border: 1px solid var(--color3);
     border-radius: 5px;
 }
 
 .funcoes:hover{
-    background-color: #675dd3;
+    background-color: var(--color2);
 }
 
 .botoes{
@@ -210,19 +207,19 @@ button > a:hover {
 }
 
 .pencil{
-    color: #f7c325;
+    color: var(--color5);
 }
 
 .cross{
-    color: #d3455b;
+    color: var(--color6);
 }
 
 .tabela{
-    background-color: rgba(255, 255, 255, 0.664);
+    background-color: var(--color10);
     padding: 10px;
     padding-right: 30px;
     padding-left: 30px;
-    border: 2px solid grey;
+    border: 2px solid var(--color11);
     border-radius: 10px;
 
 }
@@ -236,8 +233,8 @@ button > a:hover {
 }
 
 .page-item.active .page-link{
-    background-color: #675dd3;
-    border-color: #4f44be;
+    background-color: var(--color2);
+    border-color: var(--color4);
 }
 
 .fa-angle-right:before{
@@ -257,11 +254,11 @@ button > a:hover {
 } 
 
 li.page-item .first disabled{
-    color: #979797;
+    color: var(--color7);
 }
 
 li.page-item .prev disabled{
-    color: #979797;
+    color: var(--color7);
 }
 
 /*------------------------------------*\
@@ -286,12 +283,12 @@ li.page-item .prev disabled{
 
 .itens:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .itens:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 #submit{
@@ -302,17 +299,17 @@ li.page-item .prev disabled{
 .salvar{
     box-shadow: 1px 1px 1px #999;
     padding: 7px;   
-    background-color: #6558f5;
+    background-color: var(--color1);
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
     border-radius: 5px;
     
 }
 
 .salvar:hover {
-    background-color: #4f44be;
+    background-color: var(--color4);
     border: 2px solid #483eaf;
     color: white   ;
 }
@@ -343,12 +340,12 @@ li.page-item .prev disabled{
 
 .status > select:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .status > select:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 select{
@@ -396,12 +393,12 @@ select{
 
 .item2 > select:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .item2 > select:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 .campos2{
@@ -415,14 +412,21 @@ select{
 
 .campos2:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .campos2:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
+/*------------------------------------*\
+	            modais
+\*------------------------------------*/
+
+.modal-header{
+    background-color:var(--cabecalho);
+}
 
 /*------------------------------------*\
 	            Schedules
@@ -435,7 +439,7 @@ select{
 }
 
 .filtro:hover{
-    color: #5c50e0;
+    color: var(--color3);
     text-decoration: underline;
 }
 
@@ -487,8 +491,8 @@ select{
 
 .hmodal{
     border-bottom: 1px 1px 1px #999;
-    background-color: #8dd7cf ;
-    border: 2px solid #1aae9f;
+    background-color: var(--color8) ;
+    border: 2px solid var(--color9);
     width: 100%;
 }
 
@@ -505,12 +509,12 @@ select{
 
 .campotexto:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .campotexto:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 .titulos{
@@ -526,17 +530,17 @@ select{
     padding: 7px; 
     padding-left: 7%;
     padding-right: 7%;  
-    background-color: #6558f5;
+    background-color: var;
     font-size: 16px;
     font-weight: bold;
     margin-top: 10px;
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
     border-radius: 5px;
     
 }
 
 .buscar:hover {
-    background-color: #4f44be;
+    background-color: var(--color4);
     border: 2px solid #483eaf;
     color: white   ;
 }
@@ -561,12 +565,12 @@ select{
 
 .item3 > select:hover{
     background-color: rgba(115,115,115,0.4); 
-    border: 2px solid #5c50e0;
+    border: 2px solid var(--color3);
 }
 
 .item3 > select:focus-visible{
-    border: 2px solid #5c50e0;
-    outline: #5c50e0;
+    border: 2px solid var(--color3);
+    outline: var(--color3);
 }
 
 .formulario2{

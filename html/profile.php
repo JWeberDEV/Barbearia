@@ -31,7 +31,7 @@
                     </div>
                     <div class="item2">
                         <label>Email</label>
-                        <input class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['email']);?>">
+                        <input class="campos2" type="email" autocomplete="off" value="<?php print($_SESSION['email']);?>">
                     </div>
                     <div class="item2">
                         <label>Perfil</label>

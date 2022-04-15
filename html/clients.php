@@ -21,7 +21,7 @@
             <div class="btns">
                 <div>
                     <a href="create_clients.php">
-                        <button type="button" class="salvar" style="background-color: #5c50e0;">Novo</button>
+                        <button type="button botao" class="salvar">Novo</button>
                     </a>
                 </div>
             </div>
@@ -46,7 +46,7 @@
                         </select>
                     </div>
                     <div class="col-md-2" style="padding-top: 2%;">
-                        <button class="buscar" style="background-color: #5c50e0;" ><i class="fa fa-search" aria-hidden="true" onclick="listarclientes();"></i></button>
+                        <button class="buscar botao"><i class="fa fa-search" aria-hidden="true" onclick="listarclientes();"></i></button>
                     </div>
                 </div >
             </div>
@@ -54,7 +54,7 @@
             <div style="padding-top: 1.5%;">
                 <div class="tabela tabela table-responsive-md container">
                     <table class="table table-striped ">
-                        <thead style="background-color: #aea7f8;">
+                        <thead class="table-color">
                         <tr>
                             <th scope="col">Nome</th>
                             <th scope="col">E-mail</th>
@@ -91,7 +91,7 @@
         <div class="modal-dialog">
             <div class="modal-content">
     
-                <div class="modal-header" style="background-color: #aea7f8;">
+                <div class="modal-header">
                     <h4 class="modal-title">Editar Cliente</h4>
                     <button type="button" class="close" data-bs-dismiss="modal"><i class="fa fa-times" aria-hidden="true"></i></button>
                 </div>

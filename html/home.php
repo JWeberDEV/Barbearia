@@ -18,9 +18,6 @@
             <!-- Top navigation-->
             <?php require_once "../includes/navbar.php"?>
             <div style="padding-top: 5%;"></div>
-            <div class="container bem-vindo">
-                <h1>Bem vindo <?php print($_SESSION['nome']);?></h1>
-            </div>
 
             <div class="container" style="padding-top: 3%;">
                 <div class="tabela">

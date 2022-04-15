@@ -22,31 +22,31 @@
                     <form class="formulario container2 tabela">
                         <div class="item2">
                             <label class="required">Nome Cliente</label>
-                            <input id="name" class="itens" type="text" name="nome" autocomplete="off" placeholder=" Nome Completo" required>
+                            <input id="name" class="itens" type="text" autocomplete="off" placeholder=" Nome Completo" required>
                         </div>
                         <div class="item2">
                             <label class="required">CPF Cliente</label>
-                            <input id="cpf" class="itens" type="text" name="nome" autocomplete="off" placeholder="___.___.___-__" required>
+                            <input id="cpf" class="itens" type="text" autocomplete="off" placeholder="___.___.___-__" required>
                         </div>
                         <div class="item2">
                             <label class="required">Numero Cliente</label>
-                            <input id="numberclient" class="itens" type="text" name="nome" autocomplete="off" placeholder="(__) _____-____" required>
+                            <input id="numberclient" class="itens" type="text" autocomplete="off" placeholder="(__) _____-____" required>
                         </div>
                         <div class="item2">
                             <label class="required">Email Usuário</label>
-                            <input id="mailclient" class="itens" type="text" name="nome" autocomplete="off" placeholder="email@exemplo.com" required>
+                            <input id="mailclient" class="itens" type="email" autocomplete="off" placeholder="email@exemplo.com" required>
                         </div>
                         <div class="item2">
                             <label>Data de Nascimento</label>
-                            <input id="dateborn" class="itens" type="date" name="nome" autocomplete="off" placeholder="__/__/___">
+                            <input id="dateborn" class="itens" type="date" autocomplete="off" placeholder="__/__/___">
                         </div>
                         <div class="item2">
                             <label>Profissão</label>
-                            <input id="profi" class="itens" type="text" name="nome" autocomplete="off">
+                            <input id="profi" class="itens" type="text" autocomplete="off">
                         </div>
                         <div class="item2">
                             <label>Cidade</label>
-                            <input id="city" class="itens" type="text" name="nome" autocomplete="off" placeholder="Novo Hambrugo">
+                            <input id="city" class="itens" type="text" autocomplete="off" placeholder="Novo Hambrugo">
                         </div>
                         <div class="item2">
                             
