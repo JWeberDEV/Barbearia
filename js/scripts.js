@@ -138,7 +138,7 @@ function newuser() {
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, pass1, status: status_user },
+        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, password: pass1, status: status_user },
         datatype: "text",
         success: function name(data) {
             if(data == 1){
