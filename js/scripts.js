@@ -115,24 +115,30 @@ function func_enter(cad_nome_funcao){
 
 function newuser() {
     event.preventDefault()
-    var nomecompleto = document.getElementById("fullname").value;
-    var cpf = document.getElementById("cpf").value;
-    var email = document.getElementById("email").value;
-    var perfil = document.getElementById("profile").value;
-    var login = document.getElementById("login").value;
-    var password = document.getElementById("password").value;
-    var status_user = document.getElementById("status").value;
+    var nomecompleto = $("#fullname").val();
+    var cpf = $("#cpf").val();
+    var email = $("#email").val();
+    var perfil = $("#profile").val();
+    var login = $("#login").val();
+    var pass1 = $("#pass1").val();
+    var pass2 = $("#pass2").val();
+    var status_user = $("#status").val();
 
     
-    if (password == "" || status_user == "" ) {
+    if (login == "" || pass1 == "" || pass2 == "" ||status_user == "" ) {
         alert("Os Campos obrigatórios precisam ser preenchidos");
+        return;
+    }
+
+    if (pass1 != pass2) {
+        alert("As senhas não são iguais");
         return;
     }
 
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, password, status: status_user },
+        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, pass1, status: status_user },
         datatype: "text",
         success: function name(data) {
             if(data == 1){

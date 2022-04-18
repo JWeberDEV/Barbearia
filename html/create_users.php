@@ -48,7 +48,11 @@
                     </div>
                     <div class="item2">
                         <label class="required">Senha</label>
-                        <input id="password" class="campos2" type="password" autocomplete="off" placeholder="*****" required>
+                        <input id="pass1" class="campos2" type="password" autocomplete="off" placeholder="*****" required>
+                    </div>
+                    <div class="item2">
+                        <label class="required">Confirmação de Senha</label>
+                        <input id="pass2" class="campos2" type="password" autocomplete="off" placeholder="*****" required>
                     </div>
                     <div class="item2">
                         <label for="status">Status</label>
@@ -75,13 +79,13 @@
 
 <script>
     
-    $("#login").keyup(function(event) {
+    $("#pass1").keyup(function(event) {
         if (event.keyCode === 13) {
             $("#salvar").click();
         }
     });
 
-    $("#password").keyup(function(event) {
+    $("#pass2").keyup(function(event) {
         if (event.keyCode === 13) {
             $("#salvar").click();
         }
