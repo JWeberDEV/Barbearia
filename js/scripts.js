@@ -122,10 +122,10 @@ function newuser() {
     var login = $("#login").val();
     var pass1 = $("#pass1").val();
     var pass2 = $("#pass2").val();
-    var status_user = $("#status").val();
+    var statusUser = $("#status").val();
 
     
-    if (login == "" || pass1 == "" || pass2 == "" ||status_user == "" ) {
+    if (login == "" || pass1 == "" || pass2 == "" ||statusUser == "" ) {
         alert("Os Campos obrigatórios precisam ser preenchidos");
         return;
     }
@@ -138,7 +138,7 @@ function newuser() {
     $.ajax({
         url: "../php/metodos.php",
         type: "post",
-        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, password: pass1, status: status_user },
+        data: {acao: 'NEW_USER',nome: nomecompleto, cpf, email, perfil, login, password: pass1, status: statusUser },
         datatype: "text",
         success: function name(data) {
             if(data == 1){
@@ -222,7 +222,7 @@ function editar() {
     var alteraprofile = document.getElementById("altprofile").value;
     var alterastatus = document.getElementById("altstatus").value;
     $.ajax({
-        url: "../barbearia/php/list.php",
+        url: "../php/list.php",
         type: "post",
         data: {acao: 'IDUSUARIO',id: exibeid },
         dataType: "text",

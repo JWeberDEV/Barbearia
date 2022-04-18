@@ -107,6 +107,7 @@ switch ($acao) {
       while($user = $resultado->fetch_assoc()) {
         $resultClients = "<tr>
                 <td>".$user["nome"]."</td>
+                <td>".$user["nome_usuario"]."</td>
                 <td>".$user["email"]." </td> 
                 <td>".$user["perfil"]."</td>
                 <td>".$user["user_status"]."</td>
