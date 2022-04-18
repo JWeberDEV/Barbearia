@@ -58,9 +58,8 @@
                         </select>
                     </div>
                     <div class="item2">
-                        <div class="submit">
-                            <br>
-                            <button class="salvar" type="submit" onclick="newuser()" >Salvar</button>
+                        <div class="submit" style="padding-top: 10px;">
+                            <button id="salvar" class="salvar" type="submit" onclick="newuser()" >Salvar</button>
                         </div>
                     </div>
                     
@@ -75,6 +74,19 @@
 </html>
 
 <script>
+    
+    $("#login").keyup(function(event) {
+        if (event.keyCode === 13) {
+            $("#salvar").click();
+        }
+    });
+
+    $("#password").keyup(function(event) {
+        if (event.keyCode === 13) {
+            $("#salvar").click();
+        }
+    });
+
     function mascara(){
         $('#cpf').mask('000.000.000-00', {reverse: true});
     };

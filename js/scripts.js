@@ -81,7 +81,6 @@ function sendEmail(){
         type: 'post',
         data: {acao: 'ENVIA EMEAIL', email },
         success:function (retorno) {
-            // console.log(retorno);
             $(".salvar").attr("disabled",false)
             $(".salvar").removeClass("loader");
             $(".salvar").text("Enviar");
@@ -138,7 +137,7 @@ function newuser() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/users.php"
+                window.location.href = "../html/users.php"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -217,7 +216,7 @@ function editar() {
     var alteraprofile = document.getElementById("altprofile").value;
     var alterastatus = document.getElementById("altstatus").value;
     $.ajax({
-        url: "http://localhost/barbearia/php/list.php",
+        url: "../barbearia/php/list.php",
         type: "post",
         data: {acao: 'IDUSUARIO',id: exibeid },
         dataType: "text",
@@ -264,7 +263,7 @@ function newclient() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/clients.php"
+                window.location.href = "../barbearia/html/clients.php"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -343,7 +342,7 @@ function editarcliente() {
     var altprofissao = document.getElementById("clientprofi").value;
     var altcidade = document.getElementById("clientcity").value;
     $.ajax({
-        url: "http://localhost/barbearia/php/list.php",
+        url: "../barbearia/php/list.php",
         type: "post",
         data: {acao:'IDCLIENTE' ,id: clientid },
         dataType: "text",
@@ -380,7 +379,7 @@ function criaservico() {
         success: function (data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "http://localhost/barbearia/html/services.php";
+                window.location.href = "../barbearia/html/services.php";
             }else{
                 alert("Erro ao criar o usuario");
             }

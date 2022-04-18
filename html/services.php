@@ -95,11 +95,11 @@
                         <div class="modal-body">
                             <form class="formulario2">
                                 <div class="item3">
-                                    <label>Nome Usuário</label>
+                                    <label>Nome do Serviço</label>
                                     <input id="altname" class="itens" type="text" autocomplete="off" placeholder=" Nome Completo">
                                 </div>
                                 <div class="item3">
-                                    <label>CPF Usuário</label>
+                                    <label>Preço do Serviço</label>
                                     <input id="altpreco" class="itens" type="text" autocomplete="off" placeholder="___.___.___-__">
                                 </div>
                             </form>
