@@ -329,7 +329,6 @@ function editarcliente(id = clientid) {
     var altdata = $("#clientdateborn").val();
     var altprofissao = $("#clientprofi").val();
     var altcidade = $("#clientcity").val();
-    var teste = id;
     $.ajax({
         url: "../php/metodos.php",
         type: "post",

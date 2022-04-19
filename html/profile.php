@@ -21,9 +21,9 @@
                 <div class="container2 tabela">
                     <div class="item2">
                         <input type="hidden" id="id" value="<?php print($_SESSION['id']);?>">
-                        <label>Seu Nome</label>
+                        <label>Nome</label>
                         <input id="id-login" type="hidden" >
-                        <input class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['nome']);?>">
+                        <input id="nome" class="campos2" type="text" desabled="ture" autocomplete="off" value="<?php print($_SESSION['nome']);?>">
                     </div>
                     <div class="item2">
                         <label>CPF</label>
@@ -31,11 +31,11 @@
                     </div>
                     <div class="item2">
                         <label>Email</label>
-                        <input class="campos2" type="email" autocomplete="off" value="<?php print($_SESSION['email']);?>">
+                        <input id="email" class="campos2" type="email" autocomplete="off" value="<?php print($_SESSION['email']);?>">
                     </div>
                     <div class="item2">
                         <label>Perfil</label>
-                        <select class="status" name="Perfil">
+                        <select id="status" class="status" name="Perfil">
                             <option value="<?php print($_SESSION['email']);?>"><?php print($_SESSION['perfil']);?></option>
                             
                         </select>
@@ -66,6 +66,7 @@
 
 <script>
     mascara();
+    inputDisable();
 
 $("#newPD1").keyup(function(event) {
   if (event.keyCode === 13) {
@@ -88,4 +89,11 @@ function mascara(){
     // $('#numberclient').mask('(00) 0000-00000');
     
 };
+
+function inputDisable(){
+    $('#nome').attr('disabled', true);
+    $('#cpf').attr('disabled', true);
+    $('#email').attr('disabled', true);
+    $('#status').attr('disabled', true);
+}
 </script>

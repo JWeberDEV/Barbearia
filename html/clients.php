@@ -147,6 +147,9 @@
 <?php require_once "../includes/inportacoes _scripts.php"; ?>
 
 <script>
+    mascara();
+    listarclientes();
+
     $("#nome").keyup(function(event) {
       if (event.keyCode === 13) {
         $(".buscar").click();
@@ -168,10 +171,5 @@
         $('#clientnumber').mask('(00) 00000-0000', {placeholder: "(00) 00000-0000"});
         
     };
-
-    mascara();
-    listarclientes();
-
     
-
 </script>
