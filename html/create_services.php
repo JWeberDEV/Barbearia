@@ -31,7 +31,7 @@
                     <div class="btnfull">
                         <div class="submit">
                             <br>
-                            <button class="salvar" type="submit" onclick="criaservico()">Salvar</button>
+                            <button class="salvar" type="button" onclick="criaservico()">Salvar</button>
                         </div>
                     </div>
                 </form>
@@ -46,11 +46,17 @@
 </html>
 
 <script>
+    mascara();
+
     function mascara(){
         $('#preco').mask('R$ 000.00', {reverse: true});
         
     };
 
-    mascara();
+        $("#preco").keyup(function(event) {
+    if (event.keyCode === 13) {
+        $(".salvar").click();
+    }
+    });
 
 </script>

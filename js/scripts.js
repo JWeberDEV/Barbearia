@@ -357,7 +357,7 @@ function criaservico() {
         success: function (data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "../barbearia/html/services.php";
+                window.location.href = "../html/services.php";
             }else{
                 alert("Erro ao criar o usuario");
             }

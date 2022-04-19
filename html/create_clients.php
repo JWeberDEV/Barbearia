@@ -54,7 +54,7 @@
                         <div class="btnfull">
                             <div class="submit">
                                 <br>
-                                <button class="salvar" type="submit" onclick="newclient()">Salvar</button>
+                                <button class="salvar" type="button" onclick="newclient()">Salvar</button>
                             </div>
                         </div>
                     </form>
@@ -76,5 +76,11 @@
         $('#numberclient').mask('(00) 0000-00000');
         
     };
+
+    $("#city").keyup(function(event) {
+        if (event.keyCode === 13) {
+            $(".salvar").click();
+        }
+    });
 
 </script>
