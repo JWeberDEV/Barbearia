@@ -8,10 +8,9 @@
 // 
 // --------------------------------------------------------------------------------------------
 
-
 function login() {
-    var usuario = document.getElementById("usuario").value;
-    var senha = document.getElementById("senha").value;
+    var usuario = $("#usuario").val();
+    var senha = $("#senha").val();
 
     if(usuario.trim() == "" || senha.trim() == ""){
         alert("Preencha os campos");
@@ -32,7 +31,6 @@ function login() {
         }
     });
 }
-
 
 function changePassWord() {
   var newPD1 = $("#newPD1").val();
@@ -91,7 +89,7 @@ function sendEmail(){
       window.location.href = "../index.html";
     }
 
-    }
+}
 
 function logOut() {
     $.ajax({
@@ -102,15 +100,6 @@ function logOut() {
             window.location.href = "../index.html";
         }
     });
-}
-
-function func_enter(cad_nome_funcao){
-
-    var cad_tecla = window.event.keyCode; 
-        
-    if(cad_tecla == 13){ 
-        cad_nome_funcao();
-    }   
 }
 
 function newuser() {
@@ -153,8 +142,8 @@ function newuser() {
 }
 
 function listarUsuarios(){
-    var pesquisa = document.getElementById("pesquisa").value;
-    var status = document.getElementById("status").value;
+    var pesquisa = $("#pesquisa").val();
+    var status = $("#status").val();
     var limit = $('#limit').val();
     var page = $(".cad_num_page").val();
 
@@ -206,7 +195,7 @@ function exibir(id) {
             $("#altprofile").val(data[0].perfil);
             $("#altstatus").val(data[0].user_status);
             
-            exibeid = (data[0].cpf);
+            exibeid = id;
             return exibeid;
         }
         
@@ -214,47 +203,39 @@ function exibir(id) {
     
 }
 
-function editar() {
-    var alteranome = document.getElementById("altname").value;
-    var alteracpf = document.getElementById("altcpf").value;
-    var alteranumero = document.getElementById("altnumberclient").value;
-    var alteraemail = document.getElementById("altmailclient").value;
-    var alteraprofile = document.getElementById("altprofile").value;
-    var alterastatus = document.getElementById("altstatus").value;
+function editar(id = exibeid) {
+    var alteranome = $("#altname").val();
+    var alteracpf = $("#altcpf").val();
+    var alteranumero = $("#altnumberclient").val();
+    var alteraemail = $("#altmailclient").val();
+    var alteraprofile = $("#altprofile").val();
+    var alterastatus = $("#altstatus").val();
     $.ajax({
-        url: "../php/list.php",
+        url: "../php/metodos.php",
         type: "post",
-        data: {acao: 'IDUSUARIO',id: exibeid },
+        data:{acao: 'EDITAR', id: id, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus},
         dataType: "text",
         success: function (data) {
-            $.ajax({
-                url: "../php/metodos.php",
-                type: "post",
-                data:{acao: 'EDITAR', id: data, altnome: alteranome, altcpf: alteracpf, altnumero: alteranumero, altemail: alteraemail, altprofissao: alteraprofile, altstatus: alterastatus},
-                dataType: "text",
-                success: function (data) {
-                    if(data == 1){
-                        alert("Usuário editado com sucesso");
-                        listarUsuarios();
-                    }else{
-                        alert("Erro ao criar o usuario");
-                    }
-                }
-            });
+            if(data == 1){
+                alert("Usuário editado com sucesso");
+                listarUsuarios();
+            }else{
+                alert("Erro ao criar o usuario");
+            }
         }
     });
-
 }
+
 
 function newclient() {
     event.preventDefault()
-    var nome = document.getElementById("name").value;
-    var cpf = document.getElementById("cpf").value;
-    var email = document.getElementById("mailclient").value;
-    var numero = document.getElementById("numberclient").value;
-    var datanasc = document.getElementById("dateborn").value;
-    var profissao = document.getElementById("profi").value;
-    var cidade = document.getElementById("city").value;
+    var nome = $("#name").val();
+    var cpf = $("#cpf").val();
+    var email = $("#mailclient").val();
+    var numero = $("#numberclient").val();
+    var datanasc = $("#dateborn").val();
+    var profissao = $("#profi").val();
+    var cidade = $("#city").val();
 
     if (nome == "" || cpf == "" || numero =="" || email == "") {
         alert("Os Campos obrigatórios precisam ser preenchidos");
@@ -269,7 +250,7 @@ function newclient() {
         success: function name(data) {
             if(data == 1){
                 alert("Usuário criado com sucesso");
-                window.location.href = "../barbearia/html/clients.php"
+                window.location.href = "../html/clients.php"
             }else{
                 alert("Erro ao criar o usuario");
             }
@@ -278,8 +259,8 @@ function newclient() {
 }
 
 function listarclientes() {
-    var cliente = document.getElementById("nome").value;
-    var cpf= document.getElementById("cpf").value;
+    var cliente = $("#nome").val();
+    var cpf= $("#cpf").val();
     var limit = $('#limit').val();
     var page = $(".cad_num_page").val();
 
@@ -324,6 +305,7 @@ function exibircliente(id) {
         dataType: "text",
         success: function (data) {
             data = JSON.parse(data);
+            $("#id").val(data[0].id);
             $("#clientname").val(data[0].nome_cliente);
             $("#clientcpf").val(data[0].cpf);
             $("#clientnumber").val(data[0].telefone);
@@ -332,50 +314,41 @@ function exibircliente(id) {
             $("#clientprofi").val(data[0].profissao);
             $("#clientcity").val(data[0].cidade);
             
-            clientid = (data[0].cpf);
+            clientid = (id);
             return clientid;
         }
         
     });
 }
 
-function editarcliente() {
-    var altnome = document.getElementById("clientname").value;
-    var altcpf = document.getElementById("clientcpf").value;
-    var altnumero = document.getElementById("clientnumber").value;
-    var altemail = document.getElementById("clientmail").value;
-    var altdata = document.getElementById("clientdateborn").value;
-    var altprofissao = document.getElementById("clientprofi").value;
-    var altcidade = document.getElementById("clientcity").value;
+function editarcliente(id = clientid) {
+    var altnome = $("#clientname").val();
+    var altcpf = $("#clientcpf").val();
+    var altnumero = $("#clientnumber").val();
+    var altemail = $("#clientmail").val();
+    var altdata = $("#clientdateborn").val();
+    var altprofissao = $("#clientprofi").val();
+    var altcidade = $("#clientcity").val();
+    var teste = id;
     $.ajax({
-        url: "../barbearia/php/list.php",
+        url: "../php/metodos.php",
         type: "post",
-        data: {acao:'IDCLIENTE' ,id: clientid },
+        data:{acao: 'EDITA CLIENTE', id: id, altnome: altnome, altcpf: altcpf, altnumero: altnumero, altemail: altemail, altdata: altdata, altprofissao: altprofissao, altcidade: altcidade},
         dataType: "text",
         success: function (data) {
-            alert(data);
-            $.ajax({
-                url: "../php/metodos.php",
-                type: "post",
-                data:{acao: 'EDITA CLIENTE', id: data, altnome: altnome, altcpf: altcpf, altnumero: altnumero, altemail: altemail, altdata: altdata, altprofissao: altprofissao, altcidade: altcidade},
-                dataType: "text",
-                success: function (data) {
-                    if(data == 1){
-                        alert("Usuário editado com sucesso");
-                        listarUsuarios();
-                    }else{
-                        alert("Erro ao criar o usuario");
-                    }
-                }
-            });
+            if(data == 1){
+                alert("Usuário editado com sucesso");
+                listarclientes();
+            }else{
+                alert("Erro ao criar o usuario");
+            }
         }
     });
-
 }
 
 function criaservico() {
-    var nomeservico = document.getElementById("servico").value;
-    var precoservico = document.getElementById("preco").value;
+    var nomeservico = $("#servico").val();
+    var precoservico = $("#preco").val();
 
     $.ajax({
         url: "../php/metodos.php",
@@ -439,7 +412,6 @@ function exibirservico(id) {
         dataType: "text",
         success: function (data) {
             data = JSON.parse(data);
-            
             $("#altname").val(data[0].nome);
             $("#altpreco").val(data[0].valor);
             
@@ -452,9 +424,8 @@ function exibirservico(id) {
 }
 
 function editarservico(id = servicoid) {
-    var nome = document.getElementById("altname").value;
-    var preco = document.getElementById("altpreco").value;
-    
+    var nome = $("#altname").val();
+    var preco = $("#altpreco").val();
     $.ajax({
         url: "../php/metodos.php",
         type: "post",

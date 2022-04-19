@@ -158,7 +158,7 @@ switch ($acao) {
       $altstatus = ($_POST['altstatus']);
       
       $sql = "UPDATE usuario SET nome = '$altnome', cpf = '$altcpf', email = '$altemail', telefone = '$altnumero', perfil= '$altprofissao', user_status = '$altstatus' WHERE id = '$id' ";
-      
+
       $resultado = $mysqli->query($sql) or die ("ERRO: A query de edição de úsuário, esta incorreta");
       echo $resultado;
 
@@ -223,6 +223,7 @@ switch ($acao) {
     if ($resultado->num_rows > 0) {
       while($client = $resultado->fetch_assoc()) {
         $resulClientes = "<tr>
+              <input type='hidden' id='id'>
               <td>".$client["nome_cliente"]."</td>
               <td>".$client["email"]." </td> 
               <td>".$client["telefone"]."</td>

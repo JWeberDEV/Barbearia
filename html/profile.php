@@ -27,7 +27,7 @@
                     </div>
                     <div class="item2">
                         <label>CPF</label>
-                        <input class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['cpf']);?>">
+                        <input id="cpf" class="campos2" type="text" autocomplete="off" value="<?php print($_SESSION['cpf']);?>">
                     </div>
                     <div class="item2">
                         <label>Email</label>
@@ -65,7 +65,7 @@
 </html>
 
 <script>
-    dadosProfile();
+    mascara();
 
 $("#newPD1").keyup(function(event) {
   if (event.keyCode === 13) {
@@ -82,4 +82,10 @@ $("#newPD2").keyup(function(event) {
 $("#changePD").click(function() {
   changePassWord()
 });
+
+function mascara(){
+    $('#cpf').mask('000.000.000-00', {reverse: true});
+    // $('#numberclient').mask('(00) 0000-00000');
+    
+};
 </script>

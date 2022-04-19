@@ -30,7 +30,7 @@
                 <div class="row">
                     <div class="col-md-4">
                         <label>Seu Nome</label>
-                        <input id="pesquisa" class="campos" type="text" name="nome" autocomplete="off" placeholder="Nome do Usuário" required>
+                        <input id="pesquisa" class="campos" type="text" autocomplete="off" placeholder="Nome do Usuário" required>
                     </div>
                     <div class="col-md-4 status">
                         <label for="status">Status</label>
@@ -50,7 +50,7 @@
                     </select>
                     </div>
                     <div class="col-md-2" style="padding-top: 1.5%;">
-                        <button class="buscar botao" onclick="func_enter(listarUsuarios) "><i class="fa fa-search" aria-hidden="true"></i></button>
+                        <button class="buscar botao" onclick="listarUsuarios();"><i class="fa fa-search" aria-hidden="true"></i></button>
                     </div>
                 </div>
             </div>

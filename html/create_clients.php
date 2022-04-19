@@ -69,11 +69,12 @@
 </html>
 
 <script>
+    mascara();
+
     function mascara(){
         $('#cpf').mask('000.000.000-00', {reverse: true});
         $('#numberclient').mask('(00) 0000-00000');
         
     };
 
-    mascara()
 </script>
