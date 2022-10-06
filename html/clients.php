@@ -29,12 +29,12 @@
             <div class="container nome_status">
                 <div class="row">
                     <div class="col-md-4">
-                        <label>Seu Nome</label>
+                        <label>Nome</label>
                         <input id="nome" class="campos" type="text" autocomplete="off" placeholder="Nome do cliente">
                     </div>
                     <div class="col-md-4">
-                        <label>CPF</label>
-                        <input id="cpf" class="campos" type="text" autocomplete="off" placeholder="CPF do cliente">
+                        <label>Apelido</label>
+                        <input id="cpf" class="campos" type="text" autocomplete="off" placeholder="Apelido">
                     </div>
                     <div class="col-md-2">
                         <label>Itens</label>

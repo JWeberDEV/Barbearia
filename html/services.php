@@ -100,7 +100,7 @@
                                 </div>
                                 <div class="item3">
                                     <label>Preço do Serviço</label>
-                                    <input id="altpreco" class="itens" type="text" autocomplete="off" placeholder="___.___.___-__">
+                                    <input id="altpreco" class="itens" type="text" autocomplete="off" placeholder="R$ 00.00">
                                 </div>
                             </form>
                                 <div style="padding-top: 1%;">
@@ -148,6 +148,7 @@
 
    function mascara(){
         $('#preco').mask('R$ 000.00', {reverse: true});
+        $('#altpreco').mask('R$ 000.00', {reverse: true});
         
     };
 

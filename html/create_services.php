@@ -22,11 +22,11 @@
                 <form class="formulario container2 tabela">
                     <div class="item2">
                         <label class="required">Serviço</label>
-                        <input id="servico" class="itens" type="text" name="nome" autocomplete="off" placeholder=" Nome do Serviço" required>
+                        <input id="servico" class="itens" type="text" autocomplete="off" placeholder=" Nome do Serviço" required>
                     </div>
                     <div class="item2">
                         <label class="required">Preço</label>
-                        <input id="preco" class="itens" type="text" name="nome" autocomplete="off" placeholder="R$ 00.00" required>
+                        <input id="preco" class="itens" type="text" autocomplete="off" placeholder="R$ 00.00" required>
                     </div>
                     <div class="btnfull">
                         <div class="submit">
